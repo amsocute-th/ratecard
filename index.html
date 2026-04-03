@@ -605,7 +605,7 @@
             </div>
 
             <div data-i18n="payment" class="mt-8 bg-slate-800/60 border border-slate-600 rounded-xl p-4 text-center text-sm text-slate-300">
-                <span class="inline-block mr-4">💳 <b>เงื่อนไขชำระเงิน:</b> เครดิตเทอม 30 วัน</span>
+                <span class="inline-block mr-4">💳 <b>เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน</span>
                 <span class="inline-block"><span class="text-pink-400">✨ <b>พิเศษ:</b></span> ชำระเงินสด (Cash) <b>รับส่วนลดทันที 10%</b> ทุกแพ็คเกจ</span>
             </div>
 
@@ -629,20 +629,21 @@
             </div>
         </section>
 
-        <!-- Section 3.5: Content Examples (Scrollable) -->
+        <!-- Section 3.5: Content Examples (Auto Scrollable) -->
         <section class="space-y-12 overflow-hidden">
             
             <!-- Session 1: Photo Portfolio -->
             <div>
                 <div class="flex items-center justify-between mb-6">
                     <h2 data-i18n="work_photo_title" class="text-2xl font-bold text-white border-l-4 border-pink-500 pl-4">📸 แกลเลอรี่ผลงานภาพนิ่ง</h2>
-                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Swipe &rarr;</span>
+                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Auto Scrolling &rarr;</span>
                 </div>
                 
-                <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar snap-x snap-mandatory">
+                <!-- เอาคลาส snap-x snap-mandatory ออก และใส่ id="photo-gallery" -->
+                <div id="photo-gallery" class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar">
                     <!-- รูปที่ 1 -->
-                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
-                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                    <!-- เอาคลาส snap-center sm:snap-start ออก -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
                         <img src="1775214505129.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
                         <div class="absolute bottom-0 left-0 p-4">
@@ -651,8 +652,7 @@
                     </div>
                     
                     <!-- รูปที่ 2 -->
-                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
-                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
                         <img src="1775214511926.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
                         <div class="absolute bottom-0 left-0 p-4">
@@ -661,8 +661,7 @@
                     </div>
                     
                     <!-- รูปที่ 3 -->
-                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
-                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
                         <img src="1775214507460.jpg" alt="[Image of แฟชั่น]" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
                         <div class="absolute bottom-0 left-0 p-4">
@@ -671,8 +670,7 @@
                     </div>
 
                     <!-- รูปที่ 4 -->
-                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
-                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
                         <img src="1775214502701.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
                         <div class="absolute bottom-0 left-0 p-4">
@@ -681,7 +679,7 @@
                     </div>
                     
                     <!-- รูปที่ 5 (ช่องสำหรับเพิ่มรูปอื่นๆ) -->
-                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 border-dashed bg-slate-800/40 snap-center sm:snap-start flex flex-col items-center justify-center">
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 border-dashed bg-slate-800/40 flex flex-col items-center justify-center">
                         <span class="text-4xl text-slate-600 mb-2">📸</span>
                         <span class="text-slate-500 font-bold text-sm">More Portfolio</span>
                     </div>
@@ -692,12 +690,13 @@
             <div>
                 <div class="flex items-center justify-between mb-6">
                     <h2 data-i18n="work_video_title" class="text-2xl font-bold text-white border-l-4 border-purple-500 pl-4">🎬 ผลงานวิดีโอสั้น</h2>
-                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Swipe &rarr;</span>
+                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Auto Scrolling &rarr;</span>
                 </div>
                 
-                <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar snap-x snap-mandatory">
+                <!-- เอาคลาส snap-x snap-mandatory ออก และใส่ id="video-gallery" -->
+                <div id="video-gallery" class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar">
                     <!-- Video 1 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/_w_udoOj7a4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -707,7 +706,7 @@
                     </div>
                     
                     <!-- Video 2 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/MlMgJu_BJtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -717,7 +716,7 @@
                     </div>
 
                     <!-- Video 3 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/fkUltL9swdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -727,7 +726,7 @@
                     </div>
 
                     <!-- Video 4 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/NYv2X56jo6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -737,7 +736,7 @@
                     </div>
                     
                     <!-- Video 5 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/KGi-vgVuc80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -747,7 +746,7 @@
                     </div>
 
                     <!-- Video 6 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/tdWkPUsQpg8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -757,7 +756,7 @@
                     </div>
 
                     <!-- Video 7 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/Z19GnGIh9os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -767,7 +766,7 @@
                     </div>
 
                     <!-- Video 8 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/na0ijTI65Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -777,7 +776,7 @@
                     </div>
 
                     <!-- Video 9 -->
-                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
                             <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/uaeUdIIZUjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -878,7 +877,7 @@
         <p data-i18n="footer" class="mt-2 text-xs">สามารถปรับแต่งแพ็คเกจ (Customize) ตาม Budget/Objective ของลูกค้าได้</p>
     </footer>
 
-    <!-- JavaScript for Translations -->
+    <!-- JavaScript for Translations and Auto-Scroll -->
     <script>
         const translations = {
             th: {
@@ -1443,6 +1442,42 @@
         
         // Initialize Default Language
         setLanguage('th');
+
+        // --- ระบบเลื่อนหน้าจออัตโนมัติ (Auto-Scroll) ---
+        function setupAutoScroll(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            let isDown = false;
+            
+            // หยุดเลื่อนเมื่อเอาเมาส์ชี้ หรือเอานิ้วแตะหน้าจอ
+            container.addEventListener('mouseenter', () => isDown = true);
+            container.addEventListener('mouseleave', () => isDown = false);
+            container.addEventListener('touchstart', () => isDown = true, {passive: true});
+            // หน่วงเวลาเล็กน้อยหลังจากเอานิ้วออกค่อยเลื่อนต่อ
+            container.addEventListener('touchend', () => {
+                setTimeout(() => { isDown = false; }, 1500); 
+            });
+
+            function step() {
+                if (!isDown) {
+                    container.scrollLeft += 1; // ความเร็วในการเลื่อน (ยิ่งมากยิ่งเร็ว)
+                    
+                    // เมื่อเลื่อนไปจนสุดทางขวา ให้กระโดดวนกลับมาเริ่มต้นใหม่
+                    if (container.scrollLeft >= (container.scrollWidth - container.clientWidth - 1)) {
+                        container.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        // เริ่มต้นการทำงานของระบบเลื่อนอัตโนมัติ
+        window.addEventListener('DOMContentLoaded', () => {
+            setupAutoScroll('photo-gallery');
+            setupAutoScroll('video-gallery');
+        });
     </script>
 
 </body>
