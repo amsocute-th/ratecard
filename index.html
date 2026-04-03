@@ -25,6 +25,14 @@
             color: white;
             border-color: #ec4899;
         }
+        /* ซ่อน Scrollbar สำหรับแนวนอน แต่ยังเลื่อนได้ */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body class="antialiased pb-20 relative">
@@ -621,39 +629,165 @@
             </div>
         </section>
 
-        <!-- Section 3.5: Content Examples -->
-        <section>
-            <h2 data-i18n="work_title" class="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">🎬 ตัวอย่างคอนเทนต์ (Content Examples)</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
-                    <img src="1775214505129.jpg" alt="" class="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <span data-i18n="work_1" class="text-white font-bold text-sm drop-shadow-md">Active & Fitness</span>
-                    </div>
+        <!-- Section 3.5: Content Examples (Scrollable) -->
+        <section class="space-y-12 overflow-hidden">
+            
+            <!-- Session 1: Photo Portfolio -->
+            <div>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 data-i18n="work_photo_title" class="text-2xl font-bold text-white border-l-4 border-pink-500 pl-4">📸 แกลเลอรี่ผลงานภาพนิ่ง</h2>
+                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Swipe &rarr;</span>
                 </div>
-                <div class="relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
-                    <img src="1775214511926.jpg" alt="" class="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <span data-i18n="work_2" class="text-white font-bold text-sm drop-shadow-md">Event & Brand Amb.</span>
+                
+                <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar snap-x snap-mandatory">
+                    <!-- รูปที่ 1 -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
+                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                        <img src="1775214505129.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span data-i18n="work_1" class="text-white font-bold text-sm drop-shadow-md">Active & Fitness</span>
+                        </div>
                     </div>
-                </div>
-                <div class="relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
-                    <img src="1775214507460.jpg" alt="[Image of แฟชั่น]" class="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <span data-i18n="work_3" class="text-white font-bold text-sm drop-shadow-md">Fashion & Lifestyle</span>
+                    
+                    <!-- รูปที่ 2 -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
+                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                        <img src="1775214511926.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span data-i18n="work_2" class="text-white font-bold text-sm drop-shadow-md">Event & Brand Amb.</span>
+                        </div>
                     </div>
-                </div>
-                <div class="relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700">
-                    <img src="1775214502701.jpg" alt="" class="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <span data-i18n="work_4" class="text-white font-bold text-sm drop-shadow-md">Gaming & Cosplay</span>
+                    
+                    <!-- รูปที่ 3 -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
+                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                        <img src="1775214507460.jpg" alt="[Image of แฟชั่น]" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span data-i18n="work_3" class="text-white font-bold text-sm drop-shadow-md">Fashion & Lifestyle</span>
+                        </div>
+                    </div>
+
+                    <!-- รูปที่ 4 -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 snap-center sm:snap-start">
+                        <!-- 📸 นำชื่อไฟล์รูปของคุณมาใส่ตรง src="..." -->
+                        <img src="1775214502701.jpg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <span data-i18n="work_4" class="text-white font-bold text-sm drop-shadow-md">Gaming & Cosplay</span>
+                        </div>
+                    </div>
+                    
+                    <!-- รูปที่ 5 (ช่องสำหรับเพิ่มรูปอื่นๆ) -->
+                    <div class="flex-none w-64 md:w-72 aspect-[3/4] relative group rounded-xl overflow-hidden cursor-pointer shadow-lg border border-slate-700 border-dashed bg-slate-800/40 snap-center sm:snap-start flex flex-col items-center justify-center">
+                        <span class="text-4xl text-slate-600 mb-2">📸</span>
+                        <span class="text-slate-500 font-bold text-sm">More Portfolio</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Session 2: Short Videos -->
+            <div>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 data-i18n="work_video_title" class="text-2xl font-bold text-white border-l-4 border-purple-500 pl-4">🎬 ผลงานวิดีโอสั้น</h2>
+                    <span class="text-xs text-slate-500 animate-pulse hidden sm:inline-block">Swipe &rarr;</span>
+                </div>
+                
+                <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar snap-x snap-mandatory">
+                    <!-- Video 1 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/_w_udoOj7a4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/MlMgJu_BJtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #2</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/fkUltL9swdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #3</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/NYv2X56jo6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #4</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 5 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/KGi-vgVuc80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #5</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 6 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/tdWkPUsQpg8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #6</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 7 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/Z19GnGIh9os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #7</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 8 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/na0ijTI65Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #8</span>
+                        </div>
+                    </div>
+
+                    <!-- Video 9 -->
+                    <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col snap-center sm:snap-start">
+                        <div class="w-full aspect-[9/16] bg-slate-900">
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/uaeUdIIZUjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 text-center bg-slate-800/80">
+                            <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- Section 4: Why Brands Trust -->
@@ -868,7 +1002,8 @@
                 why1: "ภาพลักษณ์สาวแอคทีฟมีเสน่ห์ ผสมผสานความมั่นใจ ทะมัดทะแมง และความเป็นแฟชั่นโมเดล ทำให้พรีเซนต์สินค้าได้ \"คูล\" และน่าใช้ตามแบบไม่ซ้ำใคร",
                 why2: "สถิติยอดคลิกลิงก์สูงถึง 1,909 ครั้ง/เดือน พิสูจน์ว่าผู้ติดตามพร้อม Action ตามคำแนะนำ โดยเฉพาะกลุ่มแฟชั่น แกดเจ็ต และอีคอมเมิร์ซ",
                 why3: "Tie-in สินค้ากลมกลืนไปกับชีวิตประจำวันที่มีพลังงานล้นเหลือ ไม่ว่าจะฟิตเนส วิ่งมาราธอน คอสเพลย์ ทำให้แบรนด์เข้าถึงใจคนดูอย่างเป็นธรรมชาติ",
-                work_title: "🎬 ตัวอย่างคอนเทนต์ (Content Examples)",
+                work_photo_title: "📸 แกลเลอรี่ผลงานภาพนิ่ง",
+                work_video_title: "🎬 ผลงานวิดีโอสั้น",
                 work_1: "ฟิตเนสและกีฬา (Active & Fitness)",
                 work_2: "อีเวนต์และพรีเซนเตอร์ (Event & Brand Amb.)",
                 work_3: "แฟชั่นและไลฟ์สไตล์ (Fashion & Lifestyle)",
@@ -1001,7 +1136,8 @@
                 why1: "Active, confident, and fashion-model image makes presenting products 'cool' and naturally appealing.",
                 why2: "Up to 1,909 link clicks/month proves followers take action, especially for fashion, gadgets, and e-commerce.",
                 why3: "Seamless product tie-ins in daily energetic activities like fitness, marathons, or cosplay, reaching hearts naturally.",
-                work_title: "🎬 Content Examples",
+                work_photo_title: "📸 Photo Portfolio",
+                work_video_title: "🎬 Short Video Content",
                 work_1: "Active & Fitness",
                 work_2: "Event & Brand Amb.",
                 work_3: "Fashion & Lifestyle",
@@ -1134,7 +1270,8 @@
                 why1: "活跃、自信和时装模特的形象让展示产品变得“酷”且自然吸引人。",
                 why2: "每月高达1,909次链接点击证明粉丝会采取行动，尤其是时尚、数码和电商领域。",
                 why3: "产品完美融入健身、马拉松或Cosplay等充满活力的日常活动中，自然触动人心。",
-                work_title: "🎬 内容示例 (Content Examples)",
+                work_photo_title: "📸 照片作品集 (Photo Portfolio)",
+                work_video_title: "🎬 短视频内容 (Short Videos)",
                 work_1: "健身与运动 (Active & Fitness)",
                 work_2: "活动与代言 (Event & Brand Amb.)",
                 work_3: "时尚与生活方式 (Fashion & Lifestyle)",
@@ -1267,7 +1404,8 @@
                 why1: "アクティブで自信に満ちたファッションモデルのイメージが、製品を「クール」で自然に魅力的なものとして提示します。",
                 why2: "月間最大1,909回のリンククリックは、特にファッションやガジェットにおいて、フォロワーが実際に行動を起こすことを証明しています。",
                 why3: "フィットネス、マラソン、コスプレなど、エネルギーに満ちた日常の活動に製品をシームレスに組み込みます。",
-                work_title: "🎬 コンテンツ例 (Content Examples)",
+                work_photo_title: "📸 写真ポートフォリオ",
+                work_video_title: "🎬 ショート動画コンテンツ",
                 work_1: "フィットネス＆スポーツ",
                 work_2: "イベント＆アンバサダー",
                 work_3: "ファッション＆ライフスタイル",
