@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nokia Sutasinee | Interactive Performance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Chosen Palette: Dark Mode Glassmorphism (Slate-900, Pink-500, Cyan-400 accents) -->
+    <!-- Application Structure Plan: Refactored into a Single Page Scrolling layout. Sections are stacked vertically for a continuous reading experience, optimized for storytelling from Overview -> Audience -> Platforms -> Lifecycle -> Sponsorship. Sidebar acts as a sticky navigation menu with Scroll Spy (updates active state based on scroll position) and smooth anchor scrolling. Internal sub-sections (Platforms, Lifecycle, Pricing toggle) remain interactive to keep the dashboard feel without making the page endlessly long. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Prompt', sans-serif; 
+            background-color: #0f172a; /* slate-900 */
+            color: #f8fafc; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism Styles */
+        .card-glass {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        
+        .glow-text-cyan { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
+        .glow-text-pink { text-shadow: 0 0 15px rgba(236, 72, 153, 0.6); }
+        
+        /* Chart Containers */
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (max-width: 640px) { .chart-container { height: 250px; } }
+        
+        /* Navigation Styles */
+        .nav-btn.active { 
+            background-color: #ec4899; /* pink-500 */
+            color: white; 
+            font-weight: 600; 
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); 
+        }
+        .nav-btn { color: #94a3b8; transition: all 0.2s ease-in-out; border: 1px solid transparent; }
+        .nav-btn:hover:not(.active) { background-color: rgba(30, 41, 59, 0.8); color: #f8fafc; border-color: #334155; }
+        
+        /* Interactive Sub-components */
+        .timeline-btn.active { background-color: #ec4899; color: white; border-color: #ec4899; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); }
+        .plat-btn.active { border-bottom: 2px solid #ec4899; color: #ec4899; font-weight: 600; }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- Print Stylesheet: สำหรับการบันทึกเป็น PDF สไตล์ Text-only -->
+    <style media="print">
+        @page { size: A4 portrait; margin: 1.5cm; }
+        body { background-color: #ffffff !important; color: #000000 !important; }
+        
+        /* ซ่อนส่วนที่ไม่จำเป็นสำหรับการปริ้นท์ */
+        nav, .fixed, .chart-container, button, script, iframe, .drop-shadow-md { 
+            display: none !important; 
+        }
+        
+        main { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+        
+        /* ลบพื้นหลังสีดำและกรอบออกให้เป็นสไตล์เอกสารขาวดำ */
+        .card-glass, .bg-slate-800, .bg-slate-900, .bg-gradient-to-r, .bg-gradient-to-br, .bg-slate-800\/50, .bg-slate-900\/80 { 
+            background: transparent !important; 
+            border: 1px solid #e5e7eb !important; 
+            box-shadow: none !important; 
+            backdrop-filter: none !important;
+        }
+        
+        /* เปลี่ยนสีตัวอักษรทั้งหมดให้เป็นสีดำ/เทาเข้ม */
+        * { text-shadow: none !important; color: #1f2937 !important; }
+        h1, h2, h3, h4, .text-pink-500, .text-cyan-400, .text-rose-500, .text-amber-400, .text-green-400 { 
+            color: #000000 !important; 
+            font-weight: 800 !important;
+        }
+        
+        /* จัดการการขึ้นหน้าใหม่ไม่ให้เนื้อหาขาดครึ่ง */
+        h1, h2, h3 { page-break-after: avoid; }
+        section { page-break-inside: avoid; margin-bottom: 2rem !important; }
+        .w-full.h-px { background: #e5e7eb !important; margin: 2rem 0 !important; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row relative">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-pink-500/10 rounded-full blur-[100px]"></div>
+    </div>
+
+    <!-- Sidebar Navigation (Sticky) -->
+    <nav class="w-full md:w-64 bg-slate-900/90 backdrop-blur-xl border-b md:border-b-0 md:border-r border-slate-800 flex flex-col p-4 md:p-6 flex-shrink-0 z-50 sticky top-0 h-auto md:h-screen shadow-2xl">
+        <div class="mb-4 md:mb-8 text-center md:text-left flex items-center md:block gap-4">
+            <div class="w-12 h-12 md:w-20 md:h-20 mx-auto md:mx-0 md:mb-4 rounded-full overflow-hidden border-2 border-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.4)] flex-shrink-0">
+                <div class="w-full h-full bg-slate-800 flex items-center justify-center text-xl md:text-2xl">👩🏻‍🚀</div>
+            </div>
+            <div class="text-left md:text-left">
+                <h1 class="text-base md:text-xl font-bold text-white leading-tight uppercase tracking-wider">Nokia Sutasinee</h1>
+                <p class="text-[10px] md:text-xs text-pink-400 font-bold tracking-widest uppercase mt-1">Performance Hub</p>
+            </div>
+        </div>
+        <div class="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 hide-scrollbar">
+            <button onclick="scrollToSection('overview')" id="btn-overview" class="nav-btn active px-4 py-2.5 rounded-lg text-sm text-left whitespace-nowrap flex items-center gap-2">📊 ภาพรวมประสิทธิภาพ</button>
+            <button onclick="scrollToSection('audience')" id="btn-audience" class="nav-btn px-4 py-2.5 rounded-lg text-sm text-left whitespace-nowrap flex items-center gap-2">🎯 เจาะลึกกลุ่มเป้าหมาย</button>
+            <button onclick="scrollToSection('sponsorship')" id="btn-sponsorship" class="nav-btn px-4 py-2.5 rounded-lg text-sm text-left whitespace-nowrap flex items-center gap-2">🛍️ แพ็คเกจ & เรทราคา</button>
+        </div>
+        <div class="hidden md:block mt-auto pt-6 border-t border-slate-800">
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Update: 1/4/2026</p>
+            <p class="text-[9px] text-slate-500 leading-tight mb-5">Insight 28 วันล่าสุด<br>(4 มี.ค. - 31 มี.ค. 2026)</p>
+            
+            <!-- 📄 ปุ่มดาวน์โหลด PDF -->
+            <button id="btn-download-pdf" onclick="downloadPDF()" class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-pink-600 hover:text-white border border-slate-600 text-slate-300 py-2.5 rounded-lg text-xs font-bold transition-all shadow-sm">
+                <span class="text-sm">📄</span> โหลดสรุป PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content (Scrollable Area) -->
+    <main class="flex-grow p-6 md:p-10 lg:p-12 w-full z-10 relative">
+        <div class="max-w-5xl mx-auto space-y-24 pb-20">
+
+            <!-- SECTION: OVERVIEW -->
+            <section id="sec-overview" class="scroll-mt-32 md:scroll-mt-12">
+                <header class="mb-6">
+                    <h2 class="text-3xl font-black text-white mb-3 tracking-wide">ภาพรวมประสิทธิภาพ <span class="text-pink-500">(Executive Summary)</span></h2>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base card-glass p-5 rounded-xl shadow-lg border-l-4 border-cyan-400">
+                        ส่วนนี้สรุปสถิติความสำเร็จของโนเกีย โดยสามารถคลิกสลับดูภาพรวมหรือเจาะลึกเฉพาะแพลตฟอร์มได้ ข้อมูลเหล่านี้พิสูจน์ถึงประสิทธิภาพในการเป็นเครื่องมือ (Engine of Growth) สำหรับแบรนด์ที่ต้องการสร้าง Mass Awareness และ Conversion
+                    </p>
+                </header>
+
+                <!-- Platform Toggle for Executive Summary -->
+                <div class="flex overflow-x-auto hide-scrollbar gap-3 mb-6 pb-2">
+                    <button onclick="updateExec('all')" id="exec-tab-all" class="exec-tab active px-5 py-2 rounded-full text-sm font-bold bg-pink-500 text-white shadow-[0_0_10px_rgba(236,72,153,0.4)] whitespace-nowrap transition-all">🌍 Overall (ภาพรวม)</button>
+                    <button onclick="updateExec('fb')" id="exec-tab-fb" class="exec-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">📘 Facebook</button>
+                    <button onclick="updateExec('ig')" id="exec-tab-ig" class="exec-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">📸 Instagram</button>
+                    <button onclick="updateExec('tk')" id="exec-tab-tk" class="exec-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">🎵 TikTok</button>
+                    <button onclick="updateExec('yt')" id="exec-tab-yt" class="exec-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">▶️ YouTube</button>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="card-glass p-5 rounded-2xl text-center hover:border-cyan-400 transition-colors">
+                        <div class="text-2xl mb-2">👥</div>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Followers</p>
+                        <h3 id="exec-foll" class="text-2xl md:text-3xl font-black text-white">3.7M<span class="text-lg text-pink-500">+</span></h3>
+                    </div>
+                    <div id="exec-views-card" class="card-glass p-5 rounded-2xl text-center border-t-4 border-pink-500 shadow-[0_0_20px_rgba(236,72,153,0.15)] transform md:-translate-y-2 transition-transform duration-300">
+                        <div class="text-2xl mb-2 drop-shadow-md">🔥</div>
+                        <p class="text-[10px] text-pink-400 font-bold uppercase tracking-widest mb-1">Monthly Views</p>
+                        <h3 id="exec-views" class="text-2xl md:text-3xl font-black text-white">15.6M<span class="text-lg text-pink-500">+</span></h3>
+                    </div>
+                    <div class="card-glass p-5 rounded-2xl text-center hover:border-cyan-400 transition-colors">
+                        <div class="text-2xl mb-2">💬</div>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Engagement</p>
+                        <h3 id="exec-eng" class="text-2xl md:text-3xl font-black text-white">1.02M<span class="text-lg text-pink-500">+</span></h3>
+                    </div>
+                    <div class="card-glass p-5 rounded-2xl text-center hover:border-cyan-400 transition-colors">
+                        <div id="exec-metric-icon" class="text-2xl mb-2">🔗</div>
+                        <p id="exec-metric-title" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Link Clicks</p>
+                        <h3 id="exec-metric-val" class="text-2xl md:text-3xl font-black text-cyan-400">1,909</h3>
+                    </div>
+                </div>
+
+                <div class="card-glass p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center gap-8 shadow-xl relative overflow-hidden mb-8">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+                    <div class="w-full md:w-1/2 z-10">
+                        <h3 id="exec-reach-title" class="text-2xl font-bold text-white mb-3">พลังแห่ง Viral Reach</h3>
+                        <p id="exec-reach-desc" class="text-sm text-slate-300 mb-6 leading-relaxed">
+                            จากสถิติยอดเข้าชมวิดีโอรวม 15.6 ล้านครั้ง พบว่ายอดวิวส่วนใหญ่มาจาก <b class="text-pink-400">Non-followers (ผู้ที่ไม่เคยติดตามมาก่อน)</b> พิสูจน์ให้เห็นว่าอัลกอริทึมดันคอนเทนต์ของโนเกียไปหาคนกลุ่มใหม่ๆ ได้อย่างมีประสิทธิภาพสูงสุด เหมาะกับการขยายฐานลูกค้าให้แบรนด์
+                        </p>
+                        <ul class="text-sm space-y-3 font-medium">
+                            <li class="flex items-center gap-3 bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                <span class="w-4 h-4 rounded-full bg-pink-500 shadow-[0_0_10px_rgba(236,72,153,0.8)]"></span> 
+                                <span id="exec-label-1" class="text-white">Non-Followers:</span> <span id="exec-val-1" class="text-pink-400 font-bold ml-auto">74.1%</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                <span class="w-4 h-4 rounded-full bg-cyan-500"></span> 
+                                <span id="exec-label-2" class="text-white">Current Followers:</span> <span id="exec-val-2" class="text-cyan-400 font-bold ml-auto">25.9%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/2 chart-container z-10">
+                        <canvas id="reachChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Executive Highlights Additions -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700 shadow-lg relative overflow-hidden">
+                        <div class="text-3xl mb-3 drop-shadow-md">🏎️</div>
+                        <h4 class="font-bold text-white mb-2 tracking-wide">Unique Positioning</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-3">
+                            ภาพลักษณ์ <b class="text-pink-400">Circuit Racer & Lifestyle Model</b> ทำให้การ Tie-in ดูเนียนตา น่าเชื่อถือ ไม่ยัดเยียด
+                        </p>
+                        <div class="mt-auto">
+                            <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-2">Perfect For:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] bg-slate-800 border border-slate-600 px-2 py-1 rounded text-slate-300">Automotive</span>
+                                <span class="text-[10px] bg-slate-800 border border-slate-600 px-2 py-1 rounded text-slate-300">Tech & Gadget</span>
+                                <span class="text-[10px] bg-slate-800 border border-slate-600 px-2 py-1 rounded text-slate-300">Sport Fashion</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700 shadow-lg border-t-4 border-t-cyan-400">
+                        <div class="text-3xl mb-3 drop-shadow-md">🎬</div>
+                        <h4 class="font-bold text-white mb-2 tracking-wide">The Growth Engine</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            <b class="text-cyan-400">68.6% ของยอดวิวทั้งหมดมาจาก Reels / Short-Video</b> ซึ่งเป็นฟอร์แมตที่สร้างกระแสไวรัลได้ดีที่สุด 
+                        </p>
+                        <div class="mt-4 bg-slate-900/50 p-3 rounded-xl border border-slate-700">
+                            <p class="text-[11px] text-slate-400">Top Viral Content เดือนล่าสุด</p>
+                            <p class="text-lg font-black text-white">3,000,000+ Views</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700 shadow-lg border-t-4 border-t-pink-500">
+                        <div class="text-3xl mb-3 drop-shadow-md">🛒</div>
+                        <h4 class="font-bold text-white mb-2 tracking-wide">High Conversion</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-2">
+                            ยอดคลิกลิงก์ภายนอกสูงถึง <b class="text-pink-400">1,909 ครั้ง/เดือน</b> พิสูจน์ว่าผู้ติดตามพร้อม Action ทันที
+                        </p>
+                        <p class="text-xs text-slate-400 italic">
+                            "เหมาะอย่างยิ่งสำหรับการผลักดันทราฟฟิกไปยังหน้า e-Commerce หรือกิจกรรมส่งเสริมการขายของแบรนด์"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+
+            <!-- SECTION: AUDIENCE -->
+            <section id="sec-audience" class="scroll-mt-32 md:scroll-mt-12">
+                <header class="mb-6">
+                    <h2 class="text-3xl font-black text-white mb-3 tracking-wide">เจาะลึกกลุ่มเป้าหมาย <span class="text-cyan-400">(Audience)</span></h2>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base card-glass p-5 rounded-xl shadow-lg border-l-4 border-pink-500">
+                        หน้านี้แสดงการแจกแจงโครงสร้างฐานแฟนคลับ เพื่อให้แบรนด์มั่นใจว่าการลงทุนสื่อสารจะตรงกลุ่มเป้าหมาย สามารถกดสลับดูโครงสร้างเชิงลึกของแต่ละแพลตฟอร์มได้ ฐานแฟนคลับของโนเกียมีความเฉพาะกลุ่มแต่มีขนาดใหญ่ (High-Niche to Mass) โดดเด่นด้วยผู้ที่มีศักยภาพการซื้อสูง
+                    </p>
+                </header>
+
+                <!-- Platform Toggle for Audience -->
+                <div class="flex overflow-x-auto hide-scrollbar gap-3 mb-6 pb-2">
+                    <button onclick="updateAudience('all')" id="aud-tab-all" class="aud-tab active px-5 py-2 rounded-full text-sm font-bold bg-cyan-500 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)] whitespace-nowrap transition-all">🌍 Overall (ภาพรวม)</button>
+                    <button onclick="updateAudience('fb')" id="aud-tab-fb" class="aud-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">📘 Facebook</button>
+                    <button onclick="updateAudience('ig')" id="aud-tab-ig" class="aud-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">📸 Instagram</button>
+                    <button onclick="updateAudience('tk')" id="aud-tab-tk" class="aud-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">🎵 TikTok</button>
+                    <button onclick="updateAudience('yt')" id="aud-tab-yt" class="aud-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all">▶️ YouTube</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="col-span-1 md:col-span-2 card-glass p-6 rounded-3xl shadow-xl">
+                        <h3 class="text-lg font-bold text-white mb-4 text-center tracking-wide">สัดส่วนอายุ (Age Distribution)</h3>
+                        <div class="chart-container h-64">
+                            <canvas id="ageChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-1 flex flex-col gap-6">
+                        <div class="card-glass p-6 rounded-3xl text-center flex-grow flex flex-col justify-center border-t-4 border-cyan-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                            <h3 class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-4">สัดส่วนเพศ (Gender)</h3>
+                            <div class="flex items-end justify-center gap-4">
+                                <div class="text-center">
+                                    <div class="text-4xl text-cyan-400 mb-2 drop-shadow-md">👨</div>
+                                    <div id="aud-male" class="text-3xl font-black text-white transition-all duration-300">86%</div>
+                                    <div class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Male</div>
+                                </div>
+                                <div class="text-center opacity-80">
+                                    <div class="text-2xl text-pink-400 mb-2 drop-shadow-md">👩</div>
+                                    <div id="aud-female" class="text-xl font-bold text-slate-300 transition-all duration-300">14%</div>
+                                    <div class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Female</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/80 p-6 rounded-3xl border border-slate-700 shadow-xl text-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-slate-900 to-transparent"></div>
+                            <div class="relative z-10">
+                                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">พื้นที่หลัก (Geography)</h3>
+                                <div class="text-4xl mb-2 drop-shadow-md">🇹🇭</div>
+                                <div id="aud-geo-main" class="text-lg font-bold text-white mb-2 transition-all duration-300">กรุงเทพฯ และปริมณฑล</div>
+                                <p id="aud-geo-sub" class="text-[11px] text-slate-400 leading-relaxed transition-all duration-300">คิดเป็น 66.7% ของผู้ติดตามในไทย<br><span class="text-pink-400">(รวมแฟน SEA 5-10%)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-pink-900/40 to-cyan-900/40 p-6 rounded-2xl border border-pink-500/30 shadow-[0_0_20px_rgba(236,72,153,0.1)]">
+                    <h4 class="text-pink-400 font-bold mb-3 flex items-center gap-2 text-lg">💡 Key Audience Insight</h4>
+                    <p id="aud-insight" class="text-sm text-slate-300 leading-relaxed font-medium transition-all duration-300">
+                        กลุ่ม <b class="text-white">First Jobber และวัยทำงาน (25-34 ปี)</b> คือเป้าหมายหลักที่แข็งแกร่งมาก มี <b class="text-cyan-400">Purchasing Power สูง</b> สอดคล้องกับสถิติยอดกดลิงก์ออกไปหน้า E-Commerce ถึง 1,909 ครั้งต่อเดือน เหมาะอย่างยิ่งสำหรับสินค้าประเภทยานยนต์, น้ำมันเครื่อง, แกดเจ็ต/ไอที, เกม และอุปกรณ์กีฬา
+                    </p>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+
+            <!-- SECTION: SPONSORSHIP -->
+            <section id="sec-sponsorship" class="scroll-mt-32 md:scroll-mt-12">
+                <header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-black text-white mb-3 tracking-wide">รูปแบบการร่วมงาน <span class="text-green-400">(Sponsorship)</span></h2>
+                        <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+                            นำเสนอแพ็คเกจโซลูชั่นที่ออกแบบมาเพื่อลดความซับซ้อนและเพิ่มความคุ้มค่า (ROI) ให้กับแบรนด์โดยเฉพาะ พร้อมเรทราคาแบบ A La Carte สำหรับการปรับแต่งแคมเปญเอง
+                        </p>
+                    </div>
+                    <div class="flex bg-slate-800 p-1.5 rounded-xl border border-slate-700 shadow-inner">
+                        <button onclick="togglePricing('pkg')" id="btn-toggle-pkg" class="px-5 py-2 text-sm font-bold bg-pink-500 text-white rounded-lg shadow-md transition-all">Packages</button>
+                        <button onclick="togglePricing('alc')" id="btn-toggle-alc" class="px-5 py-2 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all">A La Carte / Add-ons</button>
+                    </div>
+                </header>
+
+                <!-- VIEW: PACKAGES -->
+                <div id="view-packages" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch animate-fadeIn">
+                    <!-- PKG 1 -->
+                    <div class="card-glass rounded-3xl overflow-hidden border-t-4 border-cyan-400 flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                        <div class="h-48 w-full relative bg-slate-800">
+                            <!-- Placeholder -->
+                            <div class="absolute inset-0 flex items-center justify-center text-5xl">☕</div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        </div>
+                        <div class="p-8 pt-4 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-black text-white tracking-wide">ON THE GO</h3>
+                            <p class="text-xs text-cyan-400 mb-4 font-bold uppercase tracking-widest">Awareness Builder</p>
+                            <p class="text-sm text-slate-300 mb-6 flex-grow">เหมาะสำหรับแบรนด์ที่ต้องการสร้างการรับรู้ (Mass Awareness) เจาะกลุ่มคนรุ่นใหม่ด้วยคอนเทนต์ที่ดูเป็นธรรมชาติ ไม่ยัดเยียด</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                                <ul class="text-sm text-slate-300 space-y-3 font-medium">
+                                    <li class="flex items-start"><span class="mr-2 text-cyan-400">✓</span> <b>1x Short Video</b> (FB/IG/TikTok)</li>
+                                    <li class="flex items-start"><span class="mr-2 text-cyan-400">✓</span> <b>1x IG/FB Story</b> พร้อม Link</li>
+                                    <li class="flex items-start"><span class="mr-2 text-cyan-400">✓</span> <b>Ads Asset</b> สิทธิ์ 1 เดือน</li>
+                                    <li class="flex items-start"><span class="mr-2 text-cyan-400">✓</span> Data Report (3, 5, 15, 30 วัน)</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-auto bg-slate-900/80 rounded-2xl p-5 text-center border border-slate-700 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+                                <p class="text-xs text-slate-500 line-through mb-1 font-medium">Value: 40,000 THB</p>
+                                <p class="text-4xl font-black text-cyan-400 mb-2">35,000 ฿</p>
+                                <span class="text-[10px] font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full uppercase tracking-wider">SAVE 5,000 ฿</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PKG 2 -->
+                    <div class="card-glass rounded-3xl overflow-hidden border-2 border-pink-500 flex flex-col relative transform lg:-translate-y-4 shadow-[0_0_30px_rgba(236,72,153,0.2)]">
+                        <div class="absolute top-0 right-0 z-20 bg-gradient-to-l from-pink-600 to-pink-500 text-white text-[10px] font-black px-4 py-1.5 rounded-bl-xl rounded-tr-2xl shadow-lg tracking-widest">⭐ BEST SELLER</div>
+                        <div class="h-48 w-full relative bg-slate-800">
+                            <!-- Placeholder -->
+                            <div class="absolute inset-0 flex items-center justify-center text-5xl">👟</div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        </div>
+                        <div class="p-8 pt-4 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-black text-white tracking-wide">STREET CHIC</h3>
+                            <p class="text-xs text-pink-500 mb-4 font-bold uppercase tracking-widest">Engagement & Conversion</p>
+                            <p class="text-sm text-slate-300 mb-6 flex-grow">แบรนด์แฟชั่น แกดเจ็ต ที่ต้องการกระตุ้นยอดขาย ผสมผสานวิดีโอไลฟ์สไตล์และภาพนิ่งระดับโมเดล</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                                <ul class="text-sm text-slate-300 space-y-3 font-medium">
+                                    <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span> <b>2x Short Videos</b> (FB/IG/TikTok)</li>
+                                    <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span> <b>1x Photo Album</b> (4-6 ภาพ)</li>
+                                    <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span> <b>3x IG/FB Stories</b> พร้อม Link</li>
+                                    <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span> <b>Ads Asset</b> สิทธิ์ 1 เดือน</li>
+                                    <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span> Data Report (3, 5, 15, 30 วัน)</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-auto bg-slate-900/80 rounded-2xl p-5 text-center border border-pink-500/30 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
+                                <p class="text-xs text-slate-500 line-through mb-1 font-medium">Value: 95,000 THB</p>
+                                <p class="text-5xl font-black text-pink-500 mb-2 drop-shadow-[0_0_10px_rgba(236,72,153,0.4)]">55,000 ฿</p>
+                                <span class="text-[10px] font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full uppercase tracking-wider">SAVE 40,000 ฿</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PKG 3 -->
+                    <div class="card-glass rounded-3xl overflow-hidden border-t-4 border-amber-400 flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                        <div class="h-48 w-full relative bg-slate-800">
+                            <!-- Placeholder -->
+                            <div class="absolute inset-0 flex items-center justify-center text-5xl">🌟</div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        </div>
+                        <div class="p-8 pt-4 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-black text-white tracking-wide">THE V.I.P.</h3>
+                            <p class="text-xs text-amber-400 mb-4 font-bold uppercase tracking-widest">Full Brand Integration</p>
+                            <p class="text-sm text-slate-300 mb-6 flex-grow">Main Sponsor สร้าง Brand Loyalty ระยะยาว ครอบคลุมทุกแพลตฟอร์ม ตามติดชีวิตแบบเจาะลึก</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                                <ul class="text-sm text-slate-300 space-y-3 font-medium">
+                                    <li class="flex items-start"><span class="mr-2 text-amber-400">✓</span> <b>4x Short Videos</b> ปูพรม</li>
+                                    <li class="flex items-start"><span class="mr-2 text-amber-400">✓</span> <b>1x Premium Photo Album</b></li>
+                                    <li class="flex items-start"><span class="mr-2 text-amber-400">✓</span> <b>5x IG/FB Stories</b></li>
+                                    <li class="flex items-start"><span class="mr-2 text-amber-400">✓</span> <b>1x Event Shoot</b> / Special Loc.</li>
+                                    <li class="flex items-start"><span class="mr-2 text-amber-400">✓</span> <b>Media & Ads Asset</b> สิทธิ์ 3 เดือน</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-auto bg-slate-900/80 rounded-2xl p-5 text-center border border-slate-700 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+                                <p class="text-xs text-slate-500 line-through mb-1 font-medium">Value: 205,000 THB</p>
+                                <p class="text-4xl font-black text-amber-400 mb-2">100,000 ฿</p>
+                                <span class="text-[10px] font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full uppercase tracking-wider">SAVE 105,000 ฿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: A LA CARTE & ADD-ONS -->
+                <div id="view-alc" class="hidden animate-fadeIn space-y-8">
+                    
+                    <!-- A La Carte Media Rate -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-pink-500 pl-4">💸 A La Carte Media Rate</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-cyan-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">Short Video<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(FB/IG/TikTok/YT)</span></p>
+                                <p class="text-2xl font-black text-white">30,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-pink-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">Photo Album<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(FB/IG Post)</span></p>
+                                <p class="text-2xl font-black text-white">15,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-emerald-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">Single Photopost<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(FB/IG Post)</span></p>
+                                <p class="text-2xl font-black text-white">10,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-yellow-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">IG/FB Story<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(พร้อมแปะ Link)</span></p>
+                                <p class="text-2xl font-black text-white">5,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add - On -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-green-500 pl-4">➕ Add - On</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-green-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">Media Asset<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(สิทธิ์ใช้งาน 3 เดือน)</span></p>
+                                <p class="text-2xl font-black text-white">10,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                            <div class="card-glass p-5 rounded-2xl text-center hover:border-red-400 transition-colors">
+                                <p class="text-sm text-slate-300 font-bold mb-2">Ads Asset<br><span class="text-[10px] text-slate-500 font-normal uppercase tracking-wider">(สิทธิ์ยิงแอด 1 เดือน)</span></p>
+                                <p class="text-2xl font-black text-white">5,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exclusive Appearances & Production -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">🎬 Exclusive Appearances & Production</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Card 1: Social Media -->
+                            <div class="card-glass p-6 rounded-3xl border-t-4 border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
+                                <h3 class="text-lg font-bold text-white mb-4">📱 Social Media</h3>
+                                <ul class="space-y-3 text-sm mb-4">
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Post & Share<br><span class="text-[10px] text-slate-500">(ลูกค้ามีคอนเทนต์)</span></span>
+                                        <span class="font-bold text-white">10,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Live On Social<br><span class="text-[10px] text-slate-500">(ช่องโนเกีย)</span></span>
+                                        <span class="font-bold text-white">20,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Product Review<br><span class="text-[10px] text-slate-500">(5-10 Min)</span></span>
+                                        <span class="font-bold text-white">45,000 ฿</span>
+                                    </li>
+                                </ul>
+                                <div class="mb-2 pt-3 border-t border-slate-700/50">
+                                    <span class="text-[11px] text-yellow-400 font-black uppercase tracking-widest drop-shadow-md">💡 รายการ สาระโน!!</span>
+                                </div>
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium">Logo Tie-in</span>
+                                        <span class="font-bold text-white">5,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Product Showcase<br><span class="text-[10px] text-slate-500">(10 Sec)</span></span>
+                                        <span class="font-bold text-white">10,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Product Showcase<br><span class="text-[10px] text-slate-500">(30 Sec x 10 EP)</span></span>
+                                        <span class="font-bold text-white">85,000 ฿</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Card 2: Event -->
+                            <div class="card-glass p-6 rounded-3xl border-t-4 border-emerald-500 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
+                                <h3 class="text-lg font-bold text-white mb-4">🎤 Event Appearance</h3>
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Pretty Indoor<br><span class="text-[10px] text-slate-500">(8 hr + PhotoPost)</span></span>
+                                        <span class="font-bold text-white">10,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Pretty RaceQueen<br><span class="text-[10px] text-slate-500">(+ PhotoPost)</span></span>
+                                        <span class="font-bold text-white">12,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">MC Host Event<br><span class="text-[10px] text-slate-500">(+ PhotoPost)</span></span>
+                                        <span class="font-bold text-white">15,000 ฿</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Card 3: Model -->
+                            <div class="card-glass p-6 rounded-3xl border-t-4 border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.15)] transition-all">
+                                <div class="mb-3">
+                                    <h3 class="text-lg font-bold text-white">📸 Modeling</h3>
+                                </div>
+                                <div class="mb-2">
+                                    <span class="text-[10px] text-pink-400 font-bold uppercase tracking-widest">(Non-commercial rate)</span>
+                                </div>
+                                <ul class="space-y-3 text-sm mb-4">
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium">Portrait Model</span>
+                                        <span class="font-bold text-white">10,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium">Cosplay Model</span>
+                                        <span class="font-bold text-white">20,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium">Lingerie Model</span>
+                                        <span class="font-bold text-white">35,000 ฿</span>
+                                    </li>
+                                </ul>
+                                <div class="mb-2 pt-3 border-t border-slate-700/50">
+                                    <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest">(Commercial Rate)</span>
+                                </div>
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Event Shooting<br><span class="text-[10px] text-slate-500">(8 hr)</span></span>
+                                        <span class="font-bold text-white text-right"><span class="text-[10px] text-slate-400 font-normal block leading-none mb-1">Starts</span>20,000 ฿</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Card 4: Actress -->
+                            <div class="card-glass p-6 rounded-3xl border-t-4 border-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all">
+                                <h3 class="text-lg font-bold text-white mb-4">🎬 Actress & Host</h3>
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
+                                        <span class="text-slate-300 font-medium">Guest Interview</span>
+                                        <span class="font-bold text-white">10,000 ฿</span>
+                                    </li>
+                                    <li class="flex justify-between items-end pb-1">
+                                        <span class="text-slate-300 font-medium leading-tight pr-2">Host / Actress<br><span class="text-[10px] text-slate-500">(TVC / Online)</span></span>
+                                        <span class="font-bold text-white">15,000 ฿</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-8 card-glass rounded-2xl p-4 text-center text-sm text-slate-300 font-medium border-slate-700 shadow-sm">
+                    <span class="inline-block mr-4 mb-2 md:mb-0">💳 <b class="text-white">เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน</span>
+                    <span class="inline-block"><span class="text-pink-400">✨ <b class="text-pink-400 drop-shadow-md">พิเศษ:</b></span> ชำระเงินสด (Cash) <b class="text-green-400">รับส่วนลดทันที 10%</b></span>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // Set global chart font and dark mode colors
+        Chart.defaults.font.family = "'Prompt', sans-serif";
+        Chart.defaults.color = '#94a3b8'; // slate-400
+
+        // --- Scrolling & Spy Navigation Logic ---
+        function scrollToSection(sectionId) {
+            const element = document.getElementById('sec-' + sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Scroll Spy
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id^="sec-"]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Adjust offset to account for sticky header on mobile and some padding
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id').replace('sec-', '');
+                }
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.id === 'btn-' + current) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+
+        // --- Package / A La Carte Toggle ---
+        function togglePricing(view) {
+            const btnPkg = document.getElementById('btn-toggle-pkg');
+            const btnAlc = document.getElementById('btn-toggle-alc');
+            const viewPkg = document.getElementById('view-packages');
+            const viewAlc = document.getElementById('view-alc');
+
+            if(view === 'pkg') {
+                viewPkg.classList.remove('hidden');
+                viewAlc.classList.add('hidden');
+                
+                btnPkg.className = 'px-5 py-2 text-sm font-bold bg-pink-500 text-white rounded-lg shadow-md transition-all';
+                btnAlc.className = 'px-5 py-2 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all';
+            } else {
+                viewPkg.classList.add('hidden');
+                viewAlc.classList.remove('hidden');
+                
+                btnPkg.className = 'px-5 py-2 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all';
+                btnAlc.className = 'px-5 py-2 text-sm font-bold bg-pink-500 text-white rounded-lg shadow-md transition-all';
+            }
+        }
+
+        // --- Executive Summary Platform Toggle ---
+        const execData = {
+            all: {
+                foll: '3.7M<span class="text-lg text-pink-500">+</span>',
+                views: '15.6M<span class="text-lg text-pink-500">+</span>',
+                eng: '1.02M<span class="text-lg text-pink-500">+</span>',
+                metricIcon: '🔗', metricTitle: 'Link Clicks', metricVal: '1,909',
+                rTitle: 'พลังแห่ง Viral Reach',
+                rDesc: 'จากสถิติยอดเข้าชมวิดีโอรวม 15.6 ล้านครั้ง พบว่ายอดวิวส่วนใหญ่มาจาก <b class="text-pink-400">Non-followers (ผู้ที่ไม่เคยติดตามมาก่อน)</b> พิสูจน์ให้เห็นว่าอัลกอริทึมดันคอนเทนต์ของโนเกียไปหาคนกลุ่มใหม่ๆ ได้อย่างมีประสิทธิภาพสูงสุด เหมาะกับการขยายฐานลูกค้าให้แบรนด์',
+                l1: 'Non-Followers (Viral):', v1: '74.1%',
+                l2: 'Current Followers:', v2: '25.9%',
+                chart: [74.1, 25.9]
+            },
+            fb: {
+                foll: '1.17M<span class="text-lg text-pink-500">+</span>',
+                views: '14.0M<span class="text-lg text-pink-500">+</span>',
+                eng: '990K<span class="text-lg text-pink-500">+</span>',
+                metricIcon: '📱', metricTitle: 'Reels Share', metricVal: '68.6%',
+                rTitle: 'การเติบโตผ่านระบบแนะนำ',
+                rDesc: 'สถิติบน Facebook แสดงให้เห็นว่า ทราฟฟิกส่วนใหญ่ถูกดันไปหาคนนอกเพจผ่านฟีเจอร์ <b class="text-pink-400">Reels และฟีดแนะนำ</b> ทำให้สามารถเข้าถึงกลุ่มคนที่มีแนวโน้มจะสนใจสินค้าได้อย่างกว้างขวางและรวดเร็ว',
+                l1: 'ระบบแนะนำ (Non-foll):', v1: '80.0%',
+                l2: 'ผู้ติดตามเพจ (Followers):', v2: '20.0%',
+                chart: [80, 20]
+            },
+            ig: {
+                foll: '1.0M<span class="text-lg text-pink-500">+</span>',
+                views: '4.8M<span class="text-lg text-pink-500">+</span>',
+                eng: '314K<span class="text-lg text-pink-500">+</span>',
+                metricIcon: '🔗', metricTitle: 'Link Clicks', metricVal: '1,909',
+                rTitle: 'พลังการสร้าง Conversion',
+                rDesc: 'แม้ Instagram จะเน้นความสวยงามพรีเมียม แต่สถิติระบุชัดเจนว่าผู้ติดตามพร้อม Action โดยมียอด <b class="text-pink-400">คลิกลิงก์ออกนอกแพลตฟอร์มสูงมาก</b> และยังเข้าถึงบัญชีใหม่ๆ ผ่านหน้า Explore ได้อย่างดี',
+                l1: 'หน้า Explore/Reels:', v1: '22.5%',
+                l2: 'ผู้ติดตามเดิม (Followers):', v2: '77.5%',
+                chart: [22.5, 77.5]
+            },
+            tk: {
+                foll: '1.3M<span class="text-lg text-pink-500">+</span>',
+                views: '3.0M<span class="text-lg text-pink-500">+</span>',
+                eng: '150K<span class="text-lg text-pink-500">+</span>',
+                metricIcon: '👀', metricTitle: 'Profile Visits', metricVal: '41K+',
+                rTitle: 'การเจาะตลาดกระแสหลัก',
+                rDesc: 'TikTok เป็นแพลตฟอร์มที่คอนเทนต์มีโอกาสไวรัลสูงที่สุด ยอดวิวส่วนใหญ่มาจากการที่ระบบดันขึ้นหน้า <b class="text-pink-400">For You Page (FYP)</b> ทำให้แบรนด์เป็นที่รู้จักในวงกว้างได้อย่างรวดเร็วมาก',
+                l1: 'For You Page (FYP):', v1: '85.0%',
+                l2: 'ผู้ติดตาม (Following):', v2: '15.0%',
+                chart: [85, 15]
+            },
+            yt: {
+                foll: '260K<span class="text-lg text-pink-500">+</span>',
+                views: '500K<span class="text-lg text-pink-500">+</span>',
+                eng: '45K<span class="text-lg text-pink-500">+</span>',
+                metricIcon: '⏱️', metricTitle: 'Retention', metricVal: '132%',
+                rTitle: 'ฐานแฟนเดนตายแบบ Evergreen',
+                rDesc: 'YouTube โดดเด่นด้านคอมมูนิตี้เชิงลึก ผู้ชมมีแนวโน้มดูซ้ำและดูจนจบสูง (Retention Rate ทะลุ 100%) และเนื้อหายังถูกค้นหาเจอจาก <b class="text-pink-400">Search Engine</b> ได้ตลอดเวลา',
+                l1: 'Search & Suggested:', v1: '40.0%',
+                l2: 'ผู้ติดตาม (Subscribers):', v2: '60.0%',
+                chart: [40, 60] 
+            }
+        };
+
+        function updateExec(platform) {
+            // Update Tab Styling
+            document.querySelectorAll('.exec-tab').forEach(btn => {
+                btn.className = 'exec-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all';
+            });
+            document.getElementById('exec-tab-' + platform).className = 'exec-tab active px-5 py-2 rounded-full text-sm font-bold bg-pink-500 text-white shadow-[0_0_10px_rgba(236,72,153,0.4)] whitespace-nowrap transition-all';
+
+            // Animate card down
+            const viewsCard = document.getElementById('exec-views-card');
+            viewsCard.classList.remove('md:-translate-y-2', 'shadow-[0_0_20px_rgba(236,72,153,0.15)]');
+            
+            setTimeout(() => {
+                const data = execData[platform];
+                // Update KPI Cards
+                document.getElementById('exec-foll').innerHTML = data.foll;
+                document.getElementById('exec-views').innerHTML = data.views;
+                document.getElementById('exec-eng').innerHTML = data.eng;
+                document.getElementById('exec-metric-icon').innerText = data.metricIcon;
+                document.getElementById('exec-metric-title').innerText = data.metricTitle;
+                document.getElementById('exec-metric-val').innerText = data.metricVal;
+                
+                // Update Reach Section
+                document.getElementById('exec-reach-title').innerText = data.rTitle;
+                document.getElementById('exec-reach-desc').innerHTML = data.rDesc;
+                document.getElementById('exec-label-1').innerText = data.l1;
+                document.getElementById('exec-val-1').innerText = data.v1;
+                document.getElementById('exec-label-2').innerText = data.l2;
+                document.getElementById('exec-val-2').innerText = data.v2;
+
+                // Animate card up
+                viewsCard.classList.add('md:-translate-y-2', 'shadow-[0_0_20px_rgba(236,72,153,0.15)]');
+
+                // Update Chart
+                if(window.reachChartInstance) {
+                    window.reachChartInstance.data.datasets[0].data = data.chart;
+                    window.reachChartInstance.update();
+                }
+            }, 150);
+        }
+
+        // --- Audience Platform Toggle ---
+        const audienceData = {
+            all: {
+                male: '86%', female: '14%',
+                geoMain: 'กรุงเทพฯ และปริมณฑล', geoSub: 'คิดเป็น 66.7% ของผู้ติดตามในไทย<br><span class="text-pink-400">(รวมแฟน SEA 5-10%)</span>',
+                insight: 'กลุ่ม <b class="text-white">First Jobber และวัยทำงาน (25-34 ปี)</b> คือเป้าหมายหลักที่แข็งแกร่งมาก มี <b class="text-cyan-400">Purchasing Power สูง</b> สอดคล้องกับสถิติยอดกดลิงก์ออกไปหน้า E-Commerce ถึง 1,909 ครั้งต่อเดือน เหมาะอย่างยิ่งสำหรับสินค้าประเภทยานยนต์, น้ำมันเครื่อง, แกดเจ็ต/ไอที, เกม และอุปกรณ์กีฬา',
+                ageChart: [5, 31.5, 45.2, 11.8, 6.5]
+            },
+            fb: {
+                male: '92.0%', female: '8.0%',
+                geoMain: 'ประเทศไทย', geoSub: 'คิดเป็น 68.8% ของผู้ติดตามทั้งหมด<br><span class="text-pink-400">เน้น Mass Scale</span>',
+                insight: 'กลุ่ม <b class="text-white">วัยทำงาน (25-34 ปี)</b> บน Facebook มีกำลังซื้อสูงมาก ตอบสนองต่อไวรัลได้ดี และเป็นช่องทางที่สร้าง Reach ให้คนนอกเห็นได้มากที่สุดผ่านฟีเจอร์ Reels แบบก้าวกระโดด',
+                ageChart: [3, 25.0, 45.0, 18.0, 9.0] 
+            },
+            ig: {
+                male: '93.0%', female: '7.0%',
+                geoMain: 'กรุงเทพมหานคร', geoSub: 'กลุ่มคนเมืองเป็นหลัก<br><span class="text-pink-400">เน้น Lifestyle & Fashion</span>',
+                insight: 'กลุ่ม <b class="text-white">วัยรุ่น-วัยทำงาน (Urban Lifestyle)</b> ที่เน้นภาพลักษณ์ ความสวยงาม แฟชั่น และเทรนด์ใหม่ๆ เป็นแพลตฟอร์มที่มีโอกาสเกิด <b class="text-cyan-400">Conversion (คลิกซื้อสินค้า) สูงที่สุด</b>',
+                ageChart: [4, 34.0, 46.6, 12.0, 3.4] 
+            },
+            tk: {
+                male: '92.4%', female: '7.6%',
+                geoMain: 'ประเทศไทย', geoSub: 'คิดเป็น 86.2% ของผู้ติดตาม<br><span class="text-pink-400">เจาะลึก Gen Z & Young Adult</span>',
+                insight: 'กลุ่ม <b class="text-white">Gen Z และ Young Adults</b> ที่ชอบคอนเทนต์ความเรียล สนุกสนาน ครีเอทีฟ และตามเทรนด์ มักจะตัดสินใจซื้อหรือโต้ตอบจากคอนเทนต์สไตล์ป้ายยาและแกะกล่อง',
+                ageChart: [12, 38.0, 43.8, 4.2, 2.0] 
+            },
+            yt: {
+                male: '58.5%', female: '41.5%',
+                geoMain: 'ประเทศไทย', geoSub: 'ฐานแฟนคลับชาวไทยเหนียวแน่น<br><span class="text-pink-400">สัดส่วนผู้หญิงสูงสุด</span>',
+                insight: 'ช่องทางที่มี <b class="text-white">สัดส่วนผู้ชมผู้หญิงสูงที่สุด (41.5%)</b> กลุ่มเป้าหมายชอบเสพคอมมูนิตี้แบบเจาะลึก ดูวิดีโอขนาดยาว และมีความภักดีต่อช่องสูง (High Loyalty)',
+                ageChart: [8, 28.0, 39.0, 15.0, 10.0] 
+            }
+        };
+
+        function updateAudience(platform) {
+            // Update Tab Styling
+            document.querySelectorAll('.aud-tab').forEach(btn => {
+                btn.className = 'aud-tab px-5 py-2 rounded-full text-sm font-bold bg-slate-800 text-slate-400 hover:text-white border border-slate-700 whitespace-nowrap transition-all';
+            });
+            document.getElementById('aud-tab-' + platform).className = 'aud-tab active px-5 py-2 rounded-full text-sm font-bold bg-cyan-500 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)] whitespace-nowrap transition-all';
+            
+            const data = audienceData[platform];
+            
+            // Fade out text slightly for smooth transition
+            const elementsToUpdate = ['aud-male', 'aud-female', 'aud-geo-main', 'aud-geo-sub', 'aud-insight'];
+            elementsToUpdate.forEach(id => document.getElementById(id).style.opacity = '0');
+            
+            setTimeout(() => {
+                // Update Text Data
+                document.getElementById('aud-male').innerText = data.male;
+                document.getElementById('aud-female').innerText = data.female;
+                document.getElementById('aud-geo-main').innerText = data.geoMain;
+                document.getElementById('aud-geo-sub').innerHTML = data.geoSub;
+                document.getElementById('aud-insight').innerHTML = data.insight;
+                
+                // Fade back in
+                elementsToUpdate.forEach(id => document.getElementById(id).style.opacity = '1');
+                
+                // Update Chart
+                if (window.ageChartInstance) {
+                    window.ageChartInstance.data.datasets[0].data = data.ageChart;
+                    window.ageChartInstance.update();
+                }
+            }, 150);
+        }
+
+        // --- Charts Implementation (Render immediately since they are not display:none) ---
+        
+        // 1. Overview: Viral Reach Doughnut
+        const ctxReach = document.getElementById('reachChart').getContext('2d');
+        window.reachChartInstance = new Chart(ctxReach, {
+            type: 'doughnut',
+            data: {
+                labels: ['Non-Followers (Viral Reach)', 'Current Followers'],
+                datasets: [{
+                    data: [74.1, 25.9],
+                    backgroundColor: ['#ec4899', '#0ea5e9'], // pink-500, cyan-500
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#f8fafc',
+                        bodyColor: '#f8fafc',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(context) { return ' ' + context.label + ': ' + context.parsed + '%'; }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. Audience: Age Distribution Bar
+        const ctxAge = document.getElementById('ageChart').getContext('2d');
+        window.ageChartInstance = new Chart(ctxAge, {
+            type: 'bar',
+            data: {
+                labels: ['13-17 ปี', '18-24 ปี', '25-34 ปี', '35-44 ปี', '45+ ปี'],
+                datasets: [{
+                    label: 'สัดส่วนอายุ',
+                    data: [5, 31.5, 45.2, 11.8, 6.5],
+                    backgroundColor: ['#1e293b', '#1e293b', '#0ea5e9', '#1e293b', '#1e293b'], // Changed active bar to cyan to match audience theme
+                    borderRadius: 4,
+                    barPercentage: 0.7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { display: true, color: 'rgba(51, 65, 85, 0.5)' }, 
+                        border: {display: false}, 
+                        ticks: { color: '#94a3b8', callback: function(value){return value+'%'} } 
+                    },
+                    x: { grid: { display: false }, border: {display: false}, ticks: { color: '#cbd5e1' } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        callbacks: { label: function(context) { return ' ' + context.parsed.y + '%'; } }
+                    }
+                }
+            }
+        });
+
+        // --- PDF Download Logic using html2pdf.js (1-Page Text-Only Report Format) ---
+        function downloadPDF() {
+            const btn = document.getElementById('btn-download-pdf');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ กำลังสร้างไฟล์...';
+            btn.disabled = true;
+
+            // สร้างเนื้อหา HTML แบบ Text-only จัด Layout ให้กระชับเพื่อให้อยู่ในหน้าเดียว (1-Page)
+            const printContent = document.createElement('div');
+            printContent.innerHTML = `
+                <div style="font-family: 'Prompt', Tahoma, sans-serif; color: #111; line-height: 1.5; font-size: 13px; max-width: 800px; margin: 0 auto; background: #fff;">
+                    
+                    <!-- Header -->
+                    <h1 style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 4px; color: #000; line-height: 1.2;">NOKIA SUTASINEE</h1>
+                    <h2 style="text-align: center; font-size: 16px; color: #333; margin-top: 0; margin-bottom: 10px; line-height: 1.4;">Interactive Performance Summary 2026</h2>
+                    <p style="text-align: center; font-size: 11px; color: #666; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;">
+                        อัปเดตล่าสุด: 1/4/2026 | Insight 28 วันล่าสุด (4 มี.ค. - 31 มี.ค. 2026)
+                    </p>
+
+                    <!-- Section 1: Executive Summary -->
+                    <h3 style="font-size: 16px; font-weight: bold; color: #000; margin-top: 15px; background-color: #f4f4f5; padding: 8px 12px; border-left: 5px solid #ec4899; line-height: 1.4;">
+                        📊 1. ภาพรวมประสิทธิภาพ (Executive Summary)
+                    </h3>
+                    <ul style="margin-top: 10px; margin-bottom: 15px; padding-left: 25px; list-style-type: disc;">
+                        <li style="margin-bottom: 5px;"><b>Total Followers:</b> 3.7 ล้านบัญชี+</li>
+                        <li style="margin-bottom: 5px;"><b>Monthly Views:</b> 15.6 ล้านวิว+</li>
+                        <li style="margin-bottom: 5px;"><b>Total Engagement:</b> 1.02 ล้านครั้ง+</li>
+                        <li style="margin-bottom: 5px;"><b>Link Clicks:</b> 1,909 ครั้ง</li>
+                    </ul>
+                    <p style="margin-bottom: 20px; text-align: justify;">
+                        <b>พลังแห่ง Viral Reach:</b> จากสถิติยอดเข้าชมวิดีโอรวม 15.6 ล้านครั้ง พบว่ายอดวิวส่วนใหญ่มาจาก <b>Non-followers สูงถึง 74.1%</b> (ผู้ติดตามเดิม 25.9%) พิสูจน์ให้เห็นว่าอัลกอริทึมดันคอนเทนต์ของโนเกียไปหาคนกลุ่มใหม่ๆ ได้อย่างมีประสิทธิภาพสูงสุด
+                    </p>
+
+                    <!-- Section 2: Audience -->
+                    <h3 style="font-size: 16px; font-weight: bold; color: #000; margin-top: 20px; background-color: #f4f4f5; padding: 8px 12px; border-left: 5px solid #0ea5e9; line-height: 1.4;">
+                        🎯 2. เจาะลึกกลุ่มเป้าหมาย (Audience Demographics)
+                    </h3>
+                    <ul style="margin-top: 10px; margin-bottom: 15px; padding-left: 25px; list-style-type: disc;">
+                        <li style="margin-bottom: 5px;"><b>สัดส่วนเพศ:</b> ชาย 86% | หญิง 14%</li>
+                        <li style="margin-bottom: 5px;"><b>อายุหลัก:</b> 25-34 ปี (45.2%), 18-24 ปี (31.5%)</li>
+                        <li style="margin-bottom: 5px;"><b>พื้นที่หลัก:</b> กรุงเทพฯ และปริมณฑล (66.7% ของผู้ติดตามในไทย)</li>
+                    </ul>
+                    <p style="margin-bottom: 30px; text-align: justify;">
+                        <b>Key Insight:</b> กลุ่ม First Jobber และวัยทำงาน (25-34 ปี) คือเป้าหมายหลักที่แข็งแกร่งมาก มี Purchasing Power สูง สอดคล้องกับสถิติยอดกดลิงก์ออกไปหน้า E-Commerce เหมาะอย่างยิ่งสำหรับสินค้าประเภทยานยนต์, น้ำมันเครื่อง, แกดเจ็ต/ไอที, เกม และอุปกรณ์กีฬา
+                    </p>
+
+                    <!-- Contact Section -->
+                    <div style="margin-top: 30px; padding: 15px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center;">
+                        <h4 style="font-size: 15px; font-weight: bold; color: #0f172a; margin-top: 0; margin-bottom: 10px; line-height: 1.4;">📞 ช่องทางการติดต่อ (Contact Us)</h4>
+                        <p style="margin: 5px 0; font-size: 14px; color: #334155; font-weight: bold;">บริษัท แอม โซ คิว จำกัด (AM SO CUTE Co.,Ltd.)</p>
+                        <p style="margin: 5px 0; font-size: 13px; color: #334155;"><b>โทรศัพท์:</b> คุณบี 094-791-5154 &nbsp; | &nbsp; <b>อีเมล:</b> amsocutecorp@gmail.com</p>
+                        <p style="margin: 5px 0; font-size: 13px; color: #334155;"><b>Line OA:</b> <a href="https://lin.ee/oBw7GTC" style="color: #0ea5e9; text-decoration: none;">https://lin.ee/oBw7GTC</a></p>
+                    </div>
+
+                </div>
+            `;
+
+            const opt = {
+              margin:       [0.4, 0.5, 0.4, 0.5], // ปรับขอบลดลงเพื่อให้เนื้อหาพอดี 1 หน้า (top, left, bottom, right in inches)
+              filename:     'Nokia_Performance_Summary_2026.pdf',
+              image:        { type: 'jpeg', quality: 1 },
+              html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+              jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // สร้างไฟล์ PDF จากเนื้อหา Text-only ที่เตรียมไว้
+            html2pdf().set(opt).from(printContent).save().then(() => {
+                // คืนค่าปุ่มกลับเป็นเหมือนเดิม
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+
+    </script>
+</body>
+</html>
