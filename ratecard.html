@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOKIA | Exclusive RateCard & Media Packages 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .glow-text-cyan { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
+        .glow-text-pink { text-shadow: 0 0 15px rgba(236, 72, 153, 0.6); }
+        .card-glass {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        .lang-btn.active {
+            background-color: #ec4899;
+            color: white;
+            border-color: #ec4899;
+        }
+    </style>
+</head>
+<body class="antialiased pb-20 relative">
+
+    <!-- Language Switcher & Navigation (Fixed) -->
+    <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2 bg-slate-900/80 p-1.5 rounded-full backdrop-blur-md border border-slate-700 shadow-xl">
+        <a href="Nokia_Sponsorship_Proposal.html" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-cyan-400 hover:text-white bg-cyan-950/50 hover:bg-cyan-500 transition-all border border-cyan-500/30 mr-1">
+            <span>👈</span> <span data-i18n="nav_mediakit">Media Kit Main</span>
+        </a>
+        <button onclick="setLanguage('th')" id="btn-th" class="lang-btn active px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white transition-colors border border-transparent flex items-center gap-1.5">
+            <span class="text-sm leading-none">🇹🇭</span> TH
+        </button>
+        <button onclick="setLanguage('en')" id="btn-en" class="lang-btn px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white transition-colors border border-transparent flex items-center gap-1.5">
+            <span class="text-sm leading-none">🇬🇧</span> EN
+        </button>
+        <button onclick="setLanguage('zh')" id="btn-zh" class="lang-btn px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white transition-colors border border-transparent flex items-center gap-1.5">
+            <span class="text-sm leading-none">🇨🇳</span> CN
+        </button>
+        <button onclick="setLanguage('ja')" id="btn-ja" class="lang-btn px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white transition-colors border border-transparent flex items-center gap-1.5">
+            <span class="text-sm leading-none">🇯🇵</span> JP
+        </button>
+    </div>
+
+    <!-- Header / Banner -->
+    <header class="relative pt-24 pb-16 overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 z-0">
+            <img src="DSC01030.jpg" alt="" class="w-full h-full object-cover opacity-20 object-top" onerror="this.src='https://placehold.co/1200x600/0f172a/ec4899?text=NOKIA+RATECARD'">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/80 to-slate-900"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="w-28 h-28 md:w-36 md:h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pink-500 shadow-[0_0_25px_rgba(236,72,153,0.5)]">
+                <img src="651983562_18571092487044606_2744104541458264522_n.jpg" alt="" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x400/1e293b/ec4899?text=Nokia'">
+            </div>
+
+            <div data-i18n="header_sub" class="inline-block bg-slate-800/80 border border-slate-700 rounded-full px-4 py-1.5 text-xs font-bold text-slate-300 tracking-widest mb-4 backdrop-blur-sm">
+                OFFICIAL RATECARD & MEDIA PACKAGES 2026
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase">
+                <span class="text-cyan-400 glow-text-cyan">Nokia</span> 
+                <span class="text-white" data-i18n="header_sponsorship">RateCard</span> 
+                <span class="text-pink-500 glow-text-pink" data-i18n="header_packages">Pricing Guide</span>
+            </h1>
+            <p data-i18n="hero_desc" class="text-base md:text-lg text-slate-400 font-medium max-w-2xl mx-auto mb-8 drop-shadow-md">
+                ตารางอัตราค่าบริการสื่อและแพ็คเกจสปอนเซอร์อย่างเป็นทางการ สำหรับ Nokia Sutasinee (สุธาสินี ศิริรักษ์)
+            </p>
+
+            <!-- Navigation back to Media Kit Main -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="Nokia_Sponsorship_Proposal.html" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-6 py-2.5 rounded-full text-sm font-bold text-white transition-all flex items-center gap-2 shadow-lg hover:scale-105">
+                    <span>📊</span> <span data-i18n="btn_view_mediakit">ดูพอร์ตผลงานและ Insight หลัก (Media Kit)</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 mt-16 space-y-20">
+
+        <!-- Section 1: A La Carte Media Rate -->
+        <section>
+            <h2 data-i18n="alacarte_title" class="text-2xl font-bold text-white mb-3 border-l-4 border-pink-500 pl-4">💸 A La Carte Media Rate</h2>
+            <p data-i18n="alacarte_desc" class="text-sm text-slate-400 mb-8">เรทราคาจ้างงานแบบแยกชิ้น สำหรับแบรนด์ที่ต้องการ Custom งานเอง</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Short Video -->
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 text-center hover:border-cyan-400 transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-3">🎬</div>
+                        <p data-i18n="alc_v" class="text-sm font-bold text-slate-300 mb-1">Short Video</p>
+                        <p data-i18n="alc_v_sub" class="text-[11px] text-slate-400 font-normal mb-3">(FB / IG / TikTok / YouTube)</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-cyan-400">35,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                        <p data-i18n="alc_v_cross" class="text-[10px] font-semibold text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 rounded-md py-1 px-2 mt-2">Crossplatform +5,000 ฿ / ช่องทาง</p>
+                    </div>
+                </div>
+
+                <!-- Photo Album -->
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 text-center hover:border-pink-400 transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-3">📸</div>
+                        <p data-i18n="alc_p" class="text-sm font-bold text-slate-300 mb-1">Photo Album</p>
+                        <p data-i18n="alc_p_sub" class="text-[11px] text-slate-400 font-normal mb-3">(4-6 รูป FB / IG Post)</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-pink-400">20,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                        <p data-i18n="alc_p_cross" class="text-[10px] font-semibold text-pink-300 bg-pink-950/60 border border-pink-500/30 rounded-md py-1 px-2 mt-2">Crossplatform +5,000 ฿</p>
+                    </div>
+                </div>
+
+                <!-- Single Photopost -->
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 text-center hover:border-emerald-400 transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-3">🖼️</div>
+                        <p data-i18n="alc_sp" class="text-sm font-bold text-slate-300 mb-1">Single Photopost</p>
+                        <p data-i18n="alc_sp_sub" class="text-[11px] text-slate-400 font-normal mb-3">(1 รูป FB / IG Post)</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-emerald-400">15,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                        <p data-i18n="alc_sp_cross" class="text-[10px] font-semibold text-emerald-300 bg-emerald-950/60 border border-emerald-500/30 rounded-md py-1 px-2 mt-2">Crossplatform +5,000 ฿</p>
+                    </div>
+                </div>
+
+                <!-- Story -->
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 text-center hover:border-yellow-400 transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-3">📱</div>
+                        <p data-i18n="alc_s" class="text-sm font-bold text-slate-300 mb-1">IG / FB Story</p>
+                        <p data-i18n="alc_s_sub" class="text-[11px] text-slate-400 font-normal mb-3">(พร้อมแปะ Link)</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-yellow-400">5,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                        <p data-i18n="alc_s_cross" class="text-[10px] font-semibold text-yellow-300/80 bg-yellow-950/40 border border-yellow-500/20 rounded-md py-1 px-2 mt-2">1 แพลตฟอร์ม (FB หรือ IG)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Add - On -->
+        <section>
+            <h2 data-i18n="addon_title" class="text-2xl font-bold text-white mb-6 border-l-4 border-green-500 pl-4">➕ Add - On</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 flex items-center justify-between hover:border-green-400 transition-colors shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-900/30 rounded-xl flex items-center justify-center text-2xl border border-green-500/30">📦</div>
+                        <div>
+                            <p data-i18n="alc_ma_title" class="font-bold text-white">Media Asset Right</p>
+                            <p data-i18n="alc_ma_sub" class="text-xs text-slate-400">สิทธิ์แบรนด์นำไฟล์ภาพ/วิดีโอไปโพสต์สื่อแบรนด์ 3 เดือน</p>
+                        </div>
+                    </div>
+                    <p class="text-2xl font-black text-green-400 whitespace-nowrap">10,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                </div>
+                <div class="card-glass p-6 rounded-2xl border border-slate-700/80 flex items-center justify-between hover:border-red-400 transition-colors shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-900/30 rounded-xl flex items-center justify-center text-2xl border border-red-500/30">🎯</div>
+                        <div>
+                            <p data-i18n="alc_aa_title" class="font-bold text-white">Ads Asset Right</p>
+                            <p data-i18n="alc_aa_sub" class="text-xs text-slate-400">สิทธิ์ยิงโฆษณาผ่านเพจครีเอเตอร์ (Partnership Ads) 1 เดือน</p>
+                        </div>
+                    </div>
+                    <p class="text-2xl font-black text-red-400 whitespace-nowrap">5,000 <span class="text-xs font-normal text-slate-400">฿</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Exclusive Appearances & Production -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 data-i18n="app_title" class="text-3xl font-black text-white mb-3">🎬 Exclusive Appearances & Production</h2>
+                <p data-i18n="app_desc" class="text-slate-400 text-sm">บริการงานหน้ากล้อง โปรดักชั่นพิเศษ และการปรากฏตัวในงานอีเวนต์</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                
+                <!-- Card 1: Social Media -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-blue-500 flex flex-col justify-between hover:border-blue-400 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-700/50">
+                            <span class="text-2xl">📱</span>
+                            <h3 data-i18n="app_c1_title" class="text-lg font-bold text-white">Social Media</h3>
+                        </div>
+                        
+                        <div class="space-y-4 text-xs">
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c1_i1_title" class="font-bold text-slate-200 text-sm">Post & Share</p>
+                                    <p data-i18n="app_c1_i1_sub" class="text-slate-400">(ลูกค้ามีคอนเทนต์)</p>
+                                </div>
+                                <span class="font-black text-blue-400 text-base whitespace-nowrap">10,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c1_i2_title" class="font-bold text-slate-200 text-sm">Live On Social</p>
+                                    <p data-i18n="app_c1_i2_sub" class="text-slate-400">(ช่องโนเกีย)</p>
+                                </div>
+                                <span class="font-black text-blue-400 text-base whitespace-nowrap">20,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c1_i3_title" class="font-bold text-slate-200 text-sm">Product Review</p>
+                                    <p data-i18n="app_c1_i3_sub" class="text-slate-400">(5-10 Min)</p>
+                                </div>
+                                <span class="font-black text-blue-400 text-base whitespace-nowrap">45,000 ฿</span>
+                            </div>
+
+                            <!-- Sub Section: รายการ สาระโน!! -->
+                            <div class="mt-4 bg-slate-900/80 p-3.5 rounded-xl border border-yellow-500/30">
+                                <p data-i18n="app_c1_saranok_title" class="text-xs font-bold text-yellow-400 mb-2 flex items-center gap-1">💡 รายการ สาระโน!!</p>
+                                
+                                <div class="space-y-2.5">
+                                    <div class="flex justify-between items-center text-[11px]">
+                                        <span data-i18n="app_c1_sn_1" class="text-slate-300">Logo Tie-in</span>
+                                        <span class="font-bold text-yellow-300">5,000 ฿</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-[11px]">
+                                        <div>
+                                            <span data-i18n="app_c1_sn_2" class="text-slate-300 font-medium">Product Showcase</span>
+                                            <span class="block text-[9px] text-slate-500">(10 Sec)</span>
+                                        </div>
+                                        <span class="font-bold text-yellow-300">10,000 ฿</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-[11px]">
+                                        <div>
+                                            <span data-i18n="app_c1_sn_3" class="text-slate-300 font-medium">Product Showcase</span>
+                                            <span class="block text-[9px] text-slate-500">(30 Sec x 10 EP)</span>
+                                        </div>
+                                        <span class="font-bold text-yellow-300">85,000 ฿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Event Appearance -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-emerald-500 flex flex-col justify-between hover:border-emerald-400 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-700/50">
+                            <span class="text-2xl">🎤</span>
+                            <h3 data-i18n="app_c2_title" class="text-lg font-bold text-white">Event Appearance</h3>
+                        </div>
+                        
+                        <div class="space-y-4 text-xs">
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c2_i1_title" class="font-bold text-slate-200 text-sm">Pretty Indoor</p>
+                                    <p data-i18n="app_c2_i1_sub" class="text-slate-400">(8 hr + PhotoPost)</p>
+                                </div>
+                                <span class="font-black text-emerald-400 text-base whitespace-nowrap">10,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c2_i2_title" class="font-bold text-slate-200 text-sm">Pretty RaceQueen</p>
+                                    <p data-i18n="app_c2_i2_sub" class="text-slate-400">(+ PhotoPost)</p>
+                                </div>
+                                <span class="font-black text-emerald-400 text-base whitespace-nowrap">12,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c2_i3_title" class="font-bold text-slate-200 text-sm">MC Host Event</p>
+                                    <p data-i18n="app_c2_i3_sub" class="text-slate-400">(+ PhotoPost)</p>
+                                </div>
+                                <span class="font-black text-emerald-400 text-base whitespace-nowrap">15,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c2_i4_title" class="font-bold text-slate-200 text-sm">Cosplayer Event</p>
+                                    <p data-i18n="app_c2_i4_sub" class="text-slate-400">(8 hr + PhotoPost + Tie-in Reel)</p>
+                                </div>
+                                <span class="font-black text-emerald-400 text-base whitespace-nowrap">30,000 ฿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Modeling -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-pink-500 flex flex-col justify-between hover:border-pink-400 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-700/50">
+                            <span class="text-2xl">📸</span>
+                            <h3 data-i18n="app_c3_title" class="text-lg font-bold text-white">Modeling</h3>
+                        </div>
+                        
+                        <div class="space-y-4 text-xs">
+                            <p data-i18n="app_c3_noncom" class="text-[10px] font-bold text-pink-400 uppercase tracking-wider">Non-Commercial Rate</p>
+                            
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span data-i18n="app_c3_m1" class="font-bold text-slate-200 text-sm">Portrait Model</span>
+                                <span class="font-black text-pink-400 text-base whitespace-nowrap">10,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span data-i18n="app_c3_m2" class="font-bold text-slate-200 text-sm">Cosplay Model</span>
+                                <span class="font-black text-pink-400 text-base whitespace-nowrap">20,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                                <span data-i18n="app_c3_m3" class="font-bold text-slate-200 text-sm">Lingerie Model</span>
+                                <span class="font-black text-pink-400 text-base whitespace-nowrap">45,000 ฿</span>
+                            </div>
+
+                            <div class="mt-4 pt-2 border-t border-slate-700/50">
+                                <p data-i18n="app_c3_com" class="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-2">Commercial Rate</p>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p data-i18n="app_c3_es_title" class="font-bold text-slate-200 text-sm">Event Shooting</p>
+                                        <p data-i18n="app_c3_es_sub" class="text-slate-400">(ทำงาน 8 ชม.)</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span data-i18n="starts_from" class="text-[9px] text-slate-400 block">เริ่มต้นที่</span>
+                                        <span class="font-black text-cyan-400 text-base whitespace-nowrap">35,000 ฿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Actress & Host -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-purple-500 flex flex-col justify-between hover:border-purple-400 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-700/50">
+                            <span class="text-2xl">🎬</span>
+                            <h3 data-i18n="app_c4_title" class="text-lg font-bold text-white">Actress & Host</h3>
+                        </div>
+                        
+                        <div class="space-y-4 text-xs">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                                <span data-i18n="app_c4_i1" class="font-bold text-slate-200 text-sm">Guest Interview</span>
+                                <span class="font-black text-purple-400 text-base whitespace-nowrap">10,000 ฿</span>
+                            </div>
+
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <p data-i18n="app_c4_i2_title" class="font-bold text-slate-200 text-sm">Host / Actress</p>
+                                    <p data-i18n="app_c4_i2_sub" class="text-slate-400">(TVC / Online)</p>
+                                </div>
+                                <span class="font-black text-purple-400 text-base whitespace-nowrap">15,000 ฿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Sponsorship Packages -->
+        <section>
+            <div class="text-center mb-12">
+                <h2 data-i18n="pkg_title" class="text-3xl font-black text-white mb-3">🛍️ RATECARD MEDIA PACKAGES</h2>
+                <p data-i18n="pkg_desc" class="text-slate-400 text-sm">ซื้อเป็นแพ็คเกจคุ้มค่ากว่า! รับส่วนลดพิเศษพร้อมสรุป Data Report หลังแคมเปญ</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Package 1 -->
+                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-cyan-400 flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 shadow-xl">
+                    <div class="h-48 w-full relative">
+                        <img src="S__39870481_0 (1).jpg" alt="" class="w-full h-full object-cover object-[center_30%]" onerror="this.src='https://placehold.co/800x400/0ea5e9/ffffff?text=ON+THE+GO'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                    </div>
+                    <div class="p-8 pt-2 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black text-white tracking-wide">☕ ON THE GO</h3>
+                        <p data-i18n="p1_sub" class="text-sm text-cyan-400 mb-4 font-semibold uppercase tracking-wider">Awareness Builder</p>
+                        <p data-i18n="p1_desc" class="text-sm text-slate-300 mb-6 flex-grow">เหมาะสำหรับแบรนด์ที่ต้องการสร้างการรับรู้ (Mass Awareness) เจาะกลุ่มคนรุ่นใหม่ด้วยคอนเทนต์ที่ดูเป็นธรรมชาติ ไม่ยัดเยียด</p>
+                        
+                        <div class="mb-6">
+                            <p data-i18n="p_del" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                            <ul class="text-sm text-slate-300 space-y-3">
+                                <li class="flex items-center justify-between"><span data-i18n="p1_l1"><b>1x Short Video</b></span><span class="text-xs text-cyan-400 font-medium">FB/IG/TikTok</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p1_l2"><b>1x Story</b></span><span class="text-xs text-slate-400">พร้อมแปะ Link</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p1_l3"><b>Ads Asset</b></span><span class="text-xs text-slate-400">สิทธิ์ยิงแอด 1 เดือน</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p1_l4"><b>Insight Report</b></span><span class="text-xs text-slate-400">3, 5, 15, 30 วัน</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-slate-700 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 40,000 THB</p>
+                            <p class="text-4xl font-black text-cyan-400 mb-2">35,000 ฿</p>
+                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 5,000 ฿</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-pink-500 flex flex-col relative transform lg:-translate-y-4 shadow-[0_0_30px_rgba(236,72,153,0.15)] ring-1 ring-pink-500/30">
+                    <div class="absolute top-0 right-0 z-20 bg-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl shadow-lg">⭐ BEST SELLER</div>
+                    <div class="h-48 w-full relative">
+                        <img src="IMG_1649.jpg" alt="" class="w-full h-full object-cover object-[center_20%]" onerror="this.src='https://placehold.co/800x400/ec4899/ffffff?text=STREET+CHIC'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                    </div>
+                    <div class="p-8 pt-2 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black text-white tracking-wide">👟 STREET CHIC</h3>
+                        <p data-i18n="p2_sub" class="text-sm text-pink-500 mb-4 font-semibold uppercase tracking-wider">Engagement & Conversion</p>
+                        <p data-i18n="p2_desc" class="text-sm text-slate-300 mb-6 flex-grow">แบรนด์แฟชั่น แกดเจ็ต สกินแคร์ ที่ต้องการกระตุ้นยอดขาย ผสมผสานวิดีโอไลฟ์สไตล์และภาพนิ่งคุณภาพสูง</p>
+                        
+                        <div class="mb-6">
+                            <p data-i18n="p_del2" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                            <ul class="text-sm text-slate-300 space-y-3">
+                                <li class="flex items-center justify-between"><span data-i18n="p2_l1"><b>2x Short Videos</b></span><span class="text-xs text-pink-400 font-medium">FB/IG/TikTok</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p2_l2"><b>1x Photo Album</b></span><span class="text-xs text-slate-400">4-6 ภาพ FB/IG</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p2_l3"><b>3x Stories</b></span><span class="text-xs text-slate-400">พร้อมแปะ Link</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p2_l4"><b>Ads Asset</b></span><span class="text-xs text-slate-400">สิทธิ์ยิงแอด 1 เดือน</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p2_l5"><b>Insight Report</b></span><span class="text-xs text-slate-400">3, 5, 15, 30 วัน</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-pink-500/30 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
+                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 95,000 THB</p>
+                            <p class="text-5xl font-black text-pink-500 mb-2">55,000 ฿</p>
+                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 40,000 ฿</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-purple-400 flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 shadow-xl">
+                    <div class="h-48 w-full relative">
+                        <img src="DSC04618.jpg" alt="" class="w-full h-full object-cover object-[center_40%]" onerror="this.src='https://placehold.co/800x400/a855f7/ffffff?text=THE+VIP'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                    </div>
+                    <div class="p-8 pt-2 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black text-white tracking-wide">🌟 THE V.I.P.</h3>
+                        <p data-i18n="p3_sub" class="text-sm text-purple-400 mb-4 font-semibold uppercase tracking-wider">Full Brand Integration</p>
+                        <p data-i18n="p3_desc" class="text-sm text-slate-300 mb-6 flex-grow">เหมาะสำหรับ Main Sponsor สร้าง Brand Loyalty ระยะยาว ครอบคลุมทุกแพลตฟอร์มตามติดชีวิตแบบเจาะลึก</p>
+                        
+                        <div class="mb-6">
+                            <p data-i18n="p_del3" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
+                            <ul class="text-sm text-slate-300 space-y-3">
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l1"><b>4x Short Videos</b></span><span class="text-xs text-purple-400 font-medium">ลงครบทุกช่องทาง</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l2"><b>1x Photo Album</b></span><span class="text-xs text-slate-400">จัดเต็ม FB/IG</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l3"><b>5x Stories</b></span><span class="text-xs text-slate-400">กระจายตลอดแคมเปญ</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l4"><b>1x Event Shoot</b></span><span class="text-xs text-slate-400">Special Location</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l5"><b>Media Asset</b></span><span class="text-xs text-slate-400">สิทธิ์ใช้ 3 เดือน</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l6"><b>Ads Asset</b></span><span class="text-xs text-slate-400">สิทธิ์ยิงแอด 3 เดือน</span></li>
+                                <li class="flex items-center justify-between"><span data-i18n="p3_l7"><b>Insight Report</b></span><span class="text-xs text-slate-400">3, 5, 15, 30 วัน</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-slate-700 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent"></div>
+                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 205,000 THB</p>
+                            <p class="text-4xl font-black text-purple-400 mb-2">100,000 ฿</p>
+                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 105,000 ฿</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-i18n="payment" class="mt-8 bg-slate-800/60 border border-slate-600 rounded-xl p-5 text-center text-sm text-slate-300 shadow-md">
+                <span class="inline-block mr-4 mb-2 md:mb-0">💳 <b>เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน</span>
+                <span class="inline-block"><span class="text-pink-400">✨ <b>พิเศษ:</b></span> ชำระเงินสด (Cash) <b>รับส่วนลดทันที 10%</b> ทุกแพ็คเกจ</span>
+            </div>
+        </section>
+
+        <!-- Section 5: Exclusive Partnership -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 data-i18n="am_title" class="text-3xl font-black text-white mb-3">🤝 EXCLUSIVE PARTNERSHIP</h2>
+                <p data-i18n="am_desc" class="text-slate-400 text-sm">แพ็กเกจสัญญาแบรนด์แอมบาสเดอร์ระยะยาว ควบคุมภาพลักษณ์และทำแคมเปญต่อเนื่อง</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+                <!-- Demo Set -->
+                <div class="card-glass rounded-2xl p-8 md:p-10 flex flex-col h-full border-t-4 border-slate-400 relative hover:border-slate-300 transition-colors">
+                    <div class="mb-8">
+                        <div class="inline-block px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-bold uppercase tracking-widest mb-4">Trial Option</div>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-wider mb-2">PhotoSetDemo</h3>
+                        <p data-i18n="am_p1_desc" class="text-sm text-slate-400">แพ็กเกจเริ่มต้น สำหรับทดสอบประสิทธิภาพและเคมีระหว่างแบรนด์กับครีเอเตอร์</p>
+                    </div>
+                    
+                    <div class="mb-8 pb-8 border-b border-slate-700/50">
+                        <p data-i18n="starts_at" class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-1">Starts at</p>
+                        <div class="flex items-end gap-2">
+                            <span class="text-5xl font-black text-white jetbrains leading-none">85,000</span>
+                            <span class="text-xl text-slate-400 font-bold uppercase mb-1">฿ / Set</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 flex-grow mb-8 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-400 mt-0.5">✓</span>
+                            <span data-i18n="am_p1_l1" class="text-slate-300 font-medium"><b>Full Production</b> (รวมค่าตัวนางแบบ, รถเข้าฉาก, ช่างภาพ)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-400 mt-0.5">✓</span>
+                            <span data-i18n="am_p1_l2" class="text-slate-300 font-medium"><b>5x Social Publish</b> (โพสต์ 5 รูป ลงสื่อโนเกีย)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-400 mt-0.5">✓</span>
+                            <span data-i18n="am_p1_l3" class="text-slate-300 font-medium"><b>20x Photos Delivered</b> (ส่งมอบ 20 รูป ให้แบรนด์ใช้งาน)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-400 mt-0.5">✦</span>
+                            <span data-i18n="am_p1_l4" class="text-white font-bold">6-Month Usage Right (สิทธิ์ใช้ภาพ 6 เดือน)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-400 mt-0.5">✦</span>
+                            <span data-i18n="am_p1_l5" class="text-white font-bold">1-Month Ads Asset (สิทธิ์ยิงแอด 1 เดือน)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Brand AM -->
+                <div class="card-glass rounded-2xl p-8 md:p-10 flex flex-col h-full border-t-4 border-yellow-400 relative shadow-[0_0_30px_rgba(250,204,21,0.15)] transform lg:-translate-y-4">
+                    <div class="absolute top-0 right-0 z-20 bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl shadow-lg">⭐ STRATEGIC PARTNER</div>
+                    
+                    <div class="mb-6 relative z-10">
+                        <div class="inline-block px-3 py-1 rounded bg-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-4 border border-yellow-400/30">1-Year Contract</div>
+                        <h3 class="text-4xl font-black text-white uppercase tracking-wider mb-2 drop-shadow-md">Brand AM</h3>
+                        <p data-i18n="am_p2_desc" class="text-sm text-slate-300">แพ็กเกจแอมบาสเดอร์ 1 ปี พร้อมสิทธิ์ส่วนลดพิเศษ</p>
+                    </div>
+
+                    <div class="flex-grow flex flex-col justify-center relative z-10 mt-4">
+                        <div class="bg-gradient-to-r from-pink-900/40 to-purple-900/40 backdrop-blur-md p-6 rounded-2xl border-2 border-pink-500/50 flex flex-col sm:flex-row items-center justify-center gap-4 shadow-[0_0_30px_rgba(236,72,153,0.2)] hover:shadow-[0_0_40px_rgba(236,72,153,0.4)] hover:border-pink-400 transition-all duration-300 hover:scale-[1.02]">
+                            <span class="text-4xl md:text-5xl drop-shadow-lg">🎁</span>
+                            <span data-i18n="am_p2_l5" class="text-pink-100 font-black text-xl md:text-2xl tracking-wide text-center drop-shadow-md">ส่วนลดของ A La Carte Media 50%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Box -->
+        <section class="bg-gradient-to-r from-slate-900 via-pink-950/40 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl text-center">
+            <h2 data-i18n="contact_work" class="text-xl md:text-2xl font-black text-green-400 uppercase tracking-widest mb-4">ติดต่อขอรับใบเสนอราคา / Contact for Work</h2>
+            <p class="text-slate-300 text-sm max-w-xl mx-auto mb-8">ทีมงานยินดีให้คำปรึกษาและวางแผนสื่อโฆษณาที่คุ้มค่าที่สุดสำหรับแบรนด์ของคุณ</p>
+            
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <a href="https://lin.ee/oBw7GTC" target="_blank" rel="noopener noreferrer" class="hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_20px_rgba(0,198,82,0.5)]">
+                    <img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="" height="44" border="0" class="h-12">
+                </a>
+                
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm text-slate-200 bg-slate-900/80 px-8 py-3 rounded-full border border-slate-700 backdrop-blur-md shadow-lg">
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-pink-400">📞</span> <a href="tel:0947915154" class="hover:text-pink-300 transition-colors font-medium">โทร. คุณบี 0947915154</a>
+                    </div>
+                    <div class="hidden sm:block text-slate-600">|</div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-cyan-400">✉️</span> <a href="mailto:amsocutecorp@gmail.com" class="hover:text-cyan-300 transition-colors font-medium">amsocutecorp@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>NOKIA RateCard Media Packages &copy; 2026. AM SO CUTE Co.,Ltd.</p>
+        <p data-i18n="footer" class="mt-2 text-xs">สามารถปรับแต่งแพ็คเกจ (Customize) ตาม Budget/Objective ของลูกค้าได้</p>
+    </footer>
+
+    <!-- Translations & Interactivity -->
+    <script>
+        const translations = {
+            th: {
+                nav_mediakit: "หน้าพอร์ต Media Kit หลัก",
+                btn_view_mediakit: "ดูพอร์ตผลงานและ Insight หลัก (Media Kit)",
+                header_sub: "OFFICIAL RATECARD & MEDIA PACKAGES 2026",
+                header_sponsorship: "RateCard",
+                header_packages: "Pricing Guide",
+                hero_desc: "ตารางอัตราค่าบริการสื่อและแพ็คเกจสปอนเซอร์อย่างเป็นทางการ สำหรับ Nokia Sutasinee (สุธาสินี ศิริรักษ์)",
+                alacarte_title: "💸 A La Carte Media Rate",
+                alacarte_desc: "เรทราคาจ้างงานแบบแยกชิ้น สำหรับแบรนด์ที่ต้องการ Custom งานเอง",
+                alc_v: "Short Video", alc_v_sub: "(FB / IG / TikTok / YouTube)", alc_v_cross: "Crossplatform +5,000 ฿ / ช่องทาง",
+                alc_p: "Photo Album", alc_p_sub: "(4-6 รูป FB / IG Post)", alc_p_cross: "Crossplatform +5,000 ฿",
+                alc_sp: "Single Photopost", alc_sp_sub: "(1 รูป FB / IG Post)", alc_sp_cross: "Crossplatform +5,000 ฿",
+                alc_s: "IG / FB Story", alc_s_sub: "(พร้อมแปะ Link)", alc_s_cross: "1 แพลตฟอร์ม (FB หรือ IG)",
+                addon_title: "➕ Add - On",
+                alc_ma_title: "Media Asset Right", alc_ma_sub: "สิทธิ์แบรนด์นำไฟล์ภาพ/วิดีโอไปโพสต์สื่อแบรนด์ 3 เดือน",
+                alc_aa_title: "Ads Asset Right", alc_aa_sub: "สิทธิ์ยิงโฆษณาผ่านเพจครีเอเตอร์ (Partnership Ads) 1 เดือน",
+                pkg_title: "🛍️ RATECARD MEDIA PACKAGES",
+                pkg_desc: "ซื้อเป็นแพ็คเกจคุ้มค่ากว่า! รับส่วนลดพิเศษพร้อมสรุป Data Report หลังแคมเปญ",
+                payment: "💳 <b>เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน ✨ <b>พิเศษ:</b> ชำระเงินสด (Cash) <b>รับส่วนลดทันที 10%</b> ทุกแพ็คเกจ",
+                am_title: "🤝 EXCLUSIVE PARTNERSHIP",
+                am_desc: "แพ็กเกจสัญญาแบรนด์แอมบาสเดอร์ระยะยาว ควบคุมภาพลักษณ์และทำแคมเปญต่อเนื่อง",
+                app_title: "🎬 Exclusive Appearances & Production",
+                app_desc: "บริการงานหน้ากล้อง โปรดักชั่นพิเศษ และการปรากฏตัวในงานอีเวนต์",
+                app_c1_title: "Social Media",
+                app_c1_i1_title: "Post & Share", app_c1_i1_sub: "(ลูกค้ามีคอนเทนต์)",
+                app_c1_i2_title: "Live On Social", app_c1_i2_sub: "(ช่องโนเกีย)",
+                app_c1_i3_title: "Product Review", app_c1_i3_sub: "(5-10 Min)",
+                app_c1_saranok_title: "💡 รายการ สาระโน!!",
+                app_c1_sn_1: "Logo Tie-in", app_c1_sn_2: "Product Showcase", app_c1_sn_3: "Product Showcase",
+                app_c2_title: "Event Appearance",
+                app_c2_i1_title: "Pretty Indoor", app_c2_i1_sub: "(8 hr + PhotoPost)",
+                app_c2_i2_title: "Pretty RaceQueen", app_c2_i2_sub: "(+ PhotoPost)",
+                app_c2_i3_title: "MC Host Event", app_c2_i3_sub: "(+ PhotoPost)",
+                app_c2_i4_title: "Cosplayer Event", app_c2_i4_sub: "(8 hr + PhotoPost + Tie-in Reel)",
+                app_c3_title: "Modeling", app_c3_noncom: "NON-COMMERCIAL RATE",
+                app_c3_m1: "Portrait Model", app_c3_m2: "Cosplay Model", app_c3_m3: "Lingerie Model",
+                app_c3_com: "COMMERCIAL RATE", app_c3_es_title: "Event Shooting", app_c3_es_sub: "(ทำงาน 8 ชม.)",
+                app_c4_title: "Actress & Host", app_c4_i1: "Guest Interview", app_c4_i2_title: "Host / Actress", app_c4_i2_sub: "(TVC / Online)",
+                starts_from: "เริ่มต้นที่", starts_at: "Starts at",
+                contact_work: "ติดต่อขอรับใบเสนอราคา / Contact for Work",
+                footer: "สามารถปรับแต่งแพ็คเกจ (Customize) ตาม Budget/Objective ของลูกค้าได้"
+            },
+            en: {
+                nav_mediakit: "Main Media Kit Hub",
+                btn_view_mediakit: "View Main Media Kit & Insights",
+                header_sub: "OFFICIAL RATECARD & MEDIA PACKAGES 2026",
+                header_sponsorship: "RateCard",
+                header_packages: "Pricing Guide",
+                hero_desc: "Official Media Rates & Sponsorship Packages Guide for Nokia Sutasinee",
+                alacarte_title: "💸 A La Carte Media Rate",
+                alacarte_desc: "Individual rates for brands looking to customize their own campaigns.",
+                alc_v: "Short Video", alc_v_sub: "(FB / IG / TikTok / YouTube)", alc_v_cross: "Crossplatform +5,000 ฿ / channel",
+                alc_p: "Photo Album", alc_p_sub: "(4-6 photos FB / IG Post)", alc_p_cross: "Crossplatform +5,000 ฿",
+                alc_sp: "Single Photopost", alc_sp_sub: "(1 photo FB / IG Post)", alc_sp_cross: "Crossplatform +5,000 ฿",
+                alc_s: "IG / FB Story", alc_s_sub: "(with Link Sticker)", alc_s_cross: "1 Platform (FB or IG)",
+                addon_title: "➕ Add - On",
+                alc_ma_title: "Media Asset Right", alc_ma_sub: "Right to post media files on brand channels for 3 months",
+                alc_aa_title: "Ads Asset Right", alc_aa_sub: "Right to run partnership ads via creator page for 1 month",
+                pkg_title: "🛍️ RATECARD MEDIA PACKAGES",
+                pkg_desc: "Bundled packages offer greater value! Get special discounts and post-campaign data reports.",
+                payment: "💳 <b>Payment Terms:</b> Corporate 30 days credit | Individual 50% deposit ✨ <b>Special:</b> Cash payments get <b>10% instant discount</b>",
+                am_title: "🤝 EXCLUSIVE PARTNERSHIP",
+                am_desc: "Long-term Brand Ambassador contracts. Brand exclusivity & continuous campaign management.",
+                app_title: "🎬 Exclusive Appearances & Production",
+                app_desc: "On-camera services, special production, and event appearance rates.",
+                app_c1_title: "Social Media",
+                app_c1_i1_title: "Post & Share", app_c1_i1_sub: "(Client content)",
+                app_c1_i2_title: "Live On Social", app_c1_i2_sub: "(Nokia channel)",
+                app_c1_i3_title: "Product Review", app_c1_i3_sub: "(5-10 Min)",
+                app_c1_saranok_title: "💡 Sara-Nokia Show!!",
+                app_c1_sn_1: "Logo Tie-in", app_c1_sn_2: "Product Showcase", app_c1_sn_3: "Product Showcase",
+                app_c2_title: "Event Appearance",
+                app_c2_i1_title: "Pretty Indoor", app_c2_i1_sub: "(8 hr + PhotoPost)",
+                app_c2_i2_title: "Pretty RaceQueen", app_c2_i2_sub: "(+ PhotoPost)",
+                app_c2_i3_title: "MC Host Event", app_c2_i3_sub: "(+ PhotoPost)",
+                app_c2_i4_title: "Cosplayer Event", app_c2_i4_sub: "(8 hr + PhotoPost + Tie-in Reel)",
+                app_c3_title: "Modeling", app_c3_noncom: "NON-COMMERCIAL RATE",
+                app_c3_m1: "Portrait Model", app_c3_m2: "Cosplay Model", app_c3_m3: "Lingerie Model",
+                app_c3_com: "COMMERCIAL RATE", app_c3_es_title: "Event Shooting", app_c3_es_sub: "(8 hr Session)",
+                app_c4_title: "Actress & Host", app_c4_i1: "Guest Interview", app_c4_i2_title: "Host / Actress", app_c4_i2_sub: "(TVC / Online)",
+                starts_from: "Starts at", starts_at: "Starts at",
+                contact_work: "Request Quotation / Contact for Work",
+                footer: "Packages can be fully customized based on client budget and objectives."
+            },
+            zh: {
+                nav_mediakit: "主媒体手册 Hub",
+                btn_view_mediakit: "查看主媒体手册与数据 (Media Kit)",
+                header_sub: "2026 官方媒体报价单与套餐",
+                header_sponsorship: "RateCard",
+                header_packages: "Pricing Guide",
+                hero_desc: "Nokia Sutasinee 2026 官方媒体服务与赞助套餐指南",
+                alacarte_title: "💸 单项媒体报价 (A La Carte Rate)",
+                alacarte_desc: "针对需要定制特定内容的品牌 provide 单项报价。",
+                alc_v: "短视频 Short Video", alc_v_sub: "(FB / IG / TikTok / YouTube)", alc_v_cross: "多平台发布 +5,000 ฿ / 渠道",
+                alc_p: "图文 Photo Album", alc_p_sub: "(4-6 张 FB / IG Post)", alc_p_cross: "多平台发布 +5,000 ฿",
+                alc_sp: "单图 Single Post", alc_sp_sub: "(1 张 FB / IG Post)", alc_sp_cross: "多平台发布 +5,000 ฿",
+                alc_s: "IG/FB Story 限时动态", alc_s_sub: "(带链接)", alc_s_cross: "1 个平台 (FB 或 IG)",
+                addon_title: "➕ 附加服务 (Add - On)",
+                alc_ma_title: "Media Asset 媒体使用权", alc_ma_sub: "品牌在自媒体渠道发布内容 3 个月",
+                alc_aa_title: "Ads Asset 广告投放权", alc_aa_sub: "通过创作者主页投放合作广告 1 个月",
+                pkg_title: "🛍️ 媒体报价单套餐 (PACKAGES)",
+                pkg_desc: "购买套餐更划算！享受专属折扣及结案数据报告。",
+                payment: "💳 <b>付款条件：</b> 企业 30 天账期 | 个人 需预付 50% 订金 ✨ <b>特别优惠：</b> 现金支付立享 <b>10% 折扣</b>",
+                am_title: "🤝 独家品牌大使 (Brand Ambassador)",
+                am_desc: "年度品牌大使长约。独家竞业避嫌与持续营销推广。",
+                app_title: "🎬 独家出席与拍摄制作 (Appearances & Production)",
+                app_desc: "镜头出镜服务、特殊拍摄制作及线下活动出席报价。",
+                app_c1_title: "社交媒体 (Social Media)",
+                app_c1_i1_title: "转发/发布 (Post & Share)", app_c1_i1_sub: "（品牌自带内容）",
+                app_c1_i2_title: "直播 (Live On Social)", app_c1_i2_sub: "（诺基亚主页）",
+                app_c1_i3_title: "产品测评 (Product Review)", app_c1_i3_sub: "（5-10 分钟）",
+                app_c1_saranok_title: "💡 Sara-Nokia 节目!!",
+                app_c1_sn_1: "Logo 植入", app_c1_sn_2: "产品展示 (Showcase)", app_c1_sn_3: "产品展示 (Showcase)",
+                app_c2_title: "活动出席 (Event Appearance)",
+                app_c2_i1_title: "室内展会 Pretty", app_c2_i1_sub: "（8小时 + 拍照发文）",
+                app_c2_i2_title: "赛车女郎 RaceQueen", app_c2_i2_sub: "（+ 拍照发文）",
+                app_c2_i3_title: "活动主持人 MC Host", app_c2_i3_sub: "（+ 拍照发文）",
+                app_c2_i4_title: "Cosplay 角色出席", app_c2_i4_sub: "（8小时 + 发文 + 短视频植入）",
+                app_c3_title: "模特拍摄 (Modeling)", app_c3_noncom: "非商业拍摄 (Non-Commercial)",
+                app_c3_m1: "人像模特 (Portrait)", app_c3_m2: "Cosplay 模特", app_c3_m3: "内衣/泳装模特 (Lingerie)",
+                app_c3_com: "商业拍摄 (Commercial)", app_c3_es_title: "活动商业拍摄 (Event Shooting)", app_c3_es_sub: "（全天 8 小时）",
+                app_c4_title: "演员与主持 (Actress & Host)", app_c4_i1: "嘉宾访谈 (Guest Interview)", app_c4_i2_title: "主持人 / 演员", app_c4_i2_sub: "（TVC 广告 / 线上）",
+                starts_from: "起", starts_at: "Starts at",
+                contact_work: "获取报价 / Contact for Work",
+                footer: "可根据客户预算与营销目标定制专属套餐。"
+            },
+            ja: {
+                nav_mediakit: "メイン Media Kit",
+                btn_view_mediakit: "メイン Media Kit & インサイトを見る",
+                header_sub: "2026 公式メディア料金表＆パッケージ",
+                header_sponsorship: "RateCard",
+                header_packages: "Pricing Guide",
+                hero_desc: "Nokia Sutasinee (ノキア) 公式メディア料金＆スポンサーパッケージガイド",
+                alacarte_title: "💸 アラカルトメディア料金 (A La Carte Rate)",
+                alacarte_desc: "カスタムキャンペーン Word を希望するブランド向けの個別料金。",
+                alc_v: "ショート動画", alc_v_sub: "(FB / IG / TikTok / YouTube)", alc_v_cross: "クロสプラットフォーム +5,000 ฿ / 1チャネル",
+                alc_p: "フォトアルバム", alc_p_sub: "(4-6枚 FB / IG Post)", alc_p_cross: "クロスプラットフォーム +5,000 ฿",
+                alc_sp: "シングルフォト", alc_sp_sub: "(1枚 FB / IG Post)", alc_sp_cross: "クロスプラットフォーム +5,000 ฿",
+                alc_s: "IG/FB ストーリー", alc_s_sub: "(リンク貼り付け付き)", alc_s_cross: "1プラットフォーム (FB または IG)",
+                addon_title: "➕ 追加オプション (Add - On)",
+                alc_ma_title: "Media Asset Right", alc_ma_sub: "ブランド公式チャネルでの3ヶ月間二次 use 権",
+                alc_aa_title: "Ads Asset Right", alc_aa_sub: "クリエイターページ経由での1ヶ月间タイアップ広告出稿権",
+                pkg_title: "🛍️ เมเดีย料金表パッケージ (PACKAGES)",
+                pkg_desc: "パッケージ購入がお得！特別割引とレポートをご提供。",
+                payment: "💳 <b>支払い条件：</b> 法人 30日売掛け | 個人 開始前50%デポジット ✨ <b>特別特典：</b> 現金支払いで <b>10% 即時割引</b>",
+                am_title: "🤝 独占パートナーシップ (Brand Ambassador)",
+                am_desc: "年間ブランドアンバサダー契約。競合避嫌と継続的なプロモーション。",
+                app_title: "🎬 出演・撮影プロダクション (Appearances & Production)",
+                app_desc: "カメラ出演サービス、特別撮影制作、オフラインイベント出演料金。",
+                app_c1_title: "ソーシャルメディア (Social Media)",
+                app_c1_i1_title: "投稿・シェア", app_c1_i1_sub: "(クライアント素材)",
+                app_c1_i2_title: "ライブ配信", app_c1_i2_sub: "(ノキアチャネル)",
+                app_c1_i3_title: "製品レビュー", app_c1_i3_sub: "(5-10分)",
+                app_c1_saranok_title: "💡 Sara-Nokia 番組!!",
+                app_c1_sn_1: "ロゴタイアップ", app_c1_sn_2: "製品ショーケース", app_c1_sn_3: "製品ショーケース",
+                app_c2_title: "イベント出演 (Event Appearance)",
+                app_c2_i1_title: "インドア Pretty", app_c2_i1_sub: "(8時間 + 写真投稿)",
+                app_c2_i2_title: "レースクイーン", app_c2_i2_sub: "(+ 写真投稿)",
+                app_c2_i3_title: "イベント MC", app_c2_i3_sub: "(+ 写真投稿)",
+                app_c2_i4_title: "コスプレ出演", app_c2_i4_sub: "(8時間 + 写真投稿 + リールタイアップ)",
+                app_c3_title: "モデル撮影 (Modeling)", app_c3_noncom: "非商用撮影 (NON-COMMERCIAL)",
+                app_c3_m1: "ポートレートモデル", app_c3_m2: "コスプレモデル", app_c3_m3: "ランジェリーモデル",
+                app_c3_com: "商用撮影 (COMMERCIAL)", app_c3_es_title: "イベント商用撮影", app_c3_es_sub: "(8時間セッション)",
+                app_c4_title: "女優・MC (Actress & Host)", app_c4_i1: "ゲストインタビュー", app_c4_i2_title: "MC / 女優", app_c4_i2_sub: "(TVC / WebCM)",
+                starts_from: "〜", starts_at: "Starts at",
+                contact_work: "見積もり依頼 / Contact for Work",
+                footer: "予算や目的に応じてパッケージのカスタマイズが可能です。"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById('btn-' + lang);
+            if(btn) btn.classList.add('active');
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage('th');
+        });
+    </script>
+</body>
+</html>
