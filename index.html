@@ -27,11 +27,10 @@
             border-color: #ec4899;
         }
         .comp-btn.active {
-            background-color: #10b981; /* Default green, changes by JS */
+            background-color: #10b981;
             color: white;
             border-color: transparent;
         }
-        /* ซ่อน Scrollbar สำหรับแนวนอน แต่ยังเลื่อนได้ */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -39,35 +38,17 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Modal Transition */
-        #lightbox-modal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        #lightbox-modal.hidden-modal {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        #lightbox-modal.active-modal {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-        #lightbox-img {
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: scale(0.9);
-        }
-        #lightbox-modal.active-modal #lightbox-img {
-            transform: scale(1);
-        }
         .fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased pb-20 relative">
 
-    <!-- Language Switcher (Fixed) -->
-    <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex gap-1 sm:gap-2 bg-slate-900/80 p-1.5 rounded-full backdrop-blur-md border border-slate-700 shadow-xl">
+    <!-- Language Switcher & Quick Navigation (Fixed) -->
+    <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-1 sm:gap-2 bg-slate-900/80 p-1.5 rounded-full backdrop-blur-md border border-slate-700 shadow-xl">
+        <a href="Nokia_RateCard.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-pink-400 hover:text-white bg-pink-950/60 hover:bg-pink-500 transition-all border border-pink-500/40 mr-1 shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+            <span>🏷️</span> <span data-i18n="nav_ratecard">Rate Card Only</span>
+        </a>
         <button onclick="setLanguage('th')" id="btn-th" class="lang-btn active px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white transition-colors border border-transparent flex items-center gap-1.5">
             <span class="text-sm leading-none">🇹🇭</span> TH
         </button>
@@ -85,7 +66,7 @@
     <!-- Hero Section -->
     <header class="relative pt-24 pb-16 overflow-hidden border-b border-slate-800">
         <div class="absolute inset-0 z-0">
-            <img src="DSC01030.jpg" alt="" class="w-full h-full object-cover opacity-20 object-top" onerror="this.src='https://placehold.co/1920x1080/0f172a/1e293b?text=Nokia+Sutasinee'">
+            <img src="DSC01030.jpg" alt="" class="w-full h-full object-cover opacity-20 object-top" onerror="this.src='https://placehold.co/1200x600/0f172a/0ea5e9?text=NOKIA+MEDIA+KIT'">
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/80 to-slate-900"></div>
         </div>
 
@@ -95,25 +76,25 @@
             </div>
 
             <div data-i18n="header_sub" class="inline-block bg-slate-800/80 border border-slate-700 rounded-full px-4 py-1.5 text-xs font-bold text-slate-300 tracking-widest mb-6 backdrop-blur-sm">
-                MEDIA KIT & RATE CARD 2026
+                MEDIA KIT & PERFORMANCE HUB 2026
             </div>
             <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase">
                 <span class="text-cyan-400 glow-text-cyan">Nokia</span> 
-                <span class="text-white" data-i18n="header_sponsorship">Ratecard</span> 
-                <span class="text-pink-500 glow-text-pink" data-i18n="header_packages">Media Packages</span>
+                <span class="text-white" data-i18n="header_sponsorship">Media Kit</span> 
+                <span class="text-pink-500 glow-text-pink" data-i18n="header_packages">& Analytics</span>
             </h1>
             <p data-i18n="hero_desc" class="text-lg md:text-xl text-slate-400 font-medium max-w-3xl mx-auto mb-8 drop-shadow-md">
                 ตัวแทนนำเสนอแบรนด์ไลฟ์สไตล์ของคุณให้เข้าถึงกลุ่มเป้าหมายอย่างเป็นธรรมชาติ ผ่านคาแรคเตอร์สาวแอคทีฟ พลังงานสูง และที่มีเสน่ห์ไม่เหมือนใคร
             </p>
             
-            <div class="flex flex-wrap justify-center gap-4 text-sm">
+            <div class="flex flex-wrap justify-center gap-4 text-sm mb-8">
                 <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
                     <span data-i18n="creator_label" class="text-slate-400 block text-xs">Creator</span>
                     <span data-i18n="creator_val" class="font-bold text-white">สุธาสินี ศิริรักษ์ (โนเกีย)</span>
                 </div>
                 <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
                     <span data-i18n="followers_label" class="text-slate-400 block text-xs">Followers Base</span>
-                    <span data-i18n="followers_val" class="font-bold text-cyan-400">~3.8 ล้านบัญชี</span>
+                    <span data-i18n="followers_val" class="font-bold text-cyan-400">~3.89 ล้านบัญชี</span>
                 </div>
                 <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
                     <span data-i18n="audience_label" class="text-slate-400 block text-xs">Top Audience</span>
@@ -121,8 +102,14 @@
                 </div>
             </div>
 
-            <div data-i18n="hero_highlight" class="mt-8 max-w-3xl mx-auto bg-pink-900/30 backdrop-blur-sm border border-pink-500/50 p-5 rounded-2xl text-sm text-pink-100 shadow-[0_0_20px_rgba(236,72,153,0.2)]">
-                🚀 ด้วยยอดเข้าชมวิดีโอรวมทะลุ <b>43.2 ล้านวิว/เดือน</b> จากทุกแพลตฟอร์ม และอัลกอริทึมวิดีโอสั้นสุดแกร่ง โนเกียพร้อมพาสินค้าของคุณไวรัลและเข้าถึงกลุ่มเป้าหมายหน้าใหม่ได้อย่างไร้ขีดจำกัด!
+            <!-- Dedicated RateCard Banner CTA -->
+            <div class="max-w-2xl mx-auto bg-gradient-to-r from-pink-900/50 via-purple-900/50 to-cyan-900/50 backdrop-blur-md border border-pink-500/50 p-6 rounded-2xl text-center shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:scale-[1.02] transition-all">
+                <p data-i18n="rc_banner_title" class="text-xs font-extrabold text-pink-400 uppercase tracking-widest mb-1">🏷️ Dedicated Price List & Packages</p>
+                <h3 data-i18n="rc_banner_heading" class="text-xl md:text-2xl font-black text-white mb-3">ต้องการดูเรทราคาและแพ็คเกจโฆษณาฉบับเต็ม?</h3>
+                <a href="Nokia_RateCard.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white font-extrabold text-sm px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
+                    <span data-i18n="btn_goto_ratecard">ดูตารางราคา & RateCard ฉบับแยกหน้า</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
             
             <div class="mt-8 flex flex-col items-center justify-center space-y-3">
@@ -154,7 +141,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4 relative z-10">
                     <div>
                         <h3 data-i18n="growth_subtitle" class="text-lg font-bold text-white mb-1">Monthly Views & Followers Growth</h3>
-                        <p data-i18n="growth_desc" class="text-sm text-slate-400">เปรียบเทียบสถิติการเติบโตย้อนหลัง 4 เดือน</p>
+                        <p data-i18n="growth_desc" class="text-sm text-slate-400">เปรียบเทียบสถิติการเติบโตย้อนหลัง 6 เดือน</p>
                     </div>
                     <div class="flex flex-wrap gap-3 text-[10px] font-bold uppercase tracking-widest bg-slate-900/80 px-4 py-2 rounded-full border border-slate-700 justify-center">
                         <div class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-blue-500 rounded-full shadow-[0_0_5px_rgba(59,130,246,0.8)]"></span> FB</div>
@@ -175,7 +162,6 @@
             <div class="flex flex-col md:flex-row md:justify-between md:items-end border-l-4 border-green-400 pl-4 mb-8" id="comp-header-border">
                 <h2 data-i18n="comp_title" id="comp-title-main" class="text-2xl font-bold text-white mb-4 md:mb-0">🚀 อัปเดตสถิติล่าสุด (Performance Comparison)</h2>
                 
-                <!-- Toggle FB/IG/TK/YT -->
                 <div class="flex gap-2 bg-slate-800 p-1.5 rounded-xl border border-slate-700 overflow-x-auto hide-scrollbar">
                     <button onclick="updateCompView('fb')" id="comp-tab-fb" class="comp-btn active px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2 whitespace-nowrap">📘 Facebook</button>
                     <button onclick="updateCompView('ig')" id="comp-tab-ig" class="comp-btn px-4 py-1.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-colors border border-transparent flex items-center gap-2 whitespace-nowrap">📸 Instagram</button>
@@ -185,57 +171,56 @@
             </div>
 
             <div id="comp-card" class="card-glass p-6 md:p-8 rounded-3xl shadow-xl border-t-4 border-t-green-400 relative overflow-hidden transition-all duration-300">
-                 <!-- Background effect -->
                  <div id="comp-glow" class="absolute -right-20 -bottom-20 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] pointer-events-none transition-all"></div>
                  
                  <div class="mb-8 relative z-10 fade-in">
-                     <p data-i18n="comp_period" id="comp-period-header" class="text-sm text-slate-400 font-bold uppercase tracking-widest mb-2">รอบการวิเคราะห์: 28 วันล่าสุด (พฤษภาคม 2026)</p>
-                     <p id="comp-desc-text" class="text-slate-300 text-sm">สถิติรอบนี้ถือเป็น <b class="text-white">Breakout Month</b> ยอดวิวเติบโตขึ้นกว่า 1 เท่าตัว (108%) โดยมีฟีเจอร์ Reels เป็นแกนหลัก</p>
+                     <p data-i18n="comp_period" class="text-sm text-slate-400 font-bold uppercase tracking-widest mb-2">รอบการวิเคราะห์: 28 วันล่าสุด (11 ก.ค. - 7 ส.ค. 2026)</p>
+                     <p id="comp-desc-text" class="text-slate-300 text-sm">สถิติรอบนี้คือการกลับมาเติบโตอย่างทรงพลัง (Massive Recovery)</p>
                  </div>
 
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10 fade-in">
                      <!-- Views -->
                      <div class="bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 hover:border-slate-500 transition-colors relative overflow-hidden">
-                          <div id="comp-v-title" class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Total Views</div>
+                          <div class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Total Views</div>
                           <div class="flex items-baseline gap-2 mb-2">
-                              <span id="comp-v-main" class="text-2xl md:text-3xl font-black text-white jetbrains">32.0M</span>
+                              <span id="comp-v-main" class="text-2xl md:text-3xl font-black text-white jetbrains">31.1M</span>
                           </div>
                           <div class="flex justify-between items-center text-xs mt-4 pt-4 border-t border-slate-700/50">
-                              <span id="comp-v-old" class="text-slate-500 line-through">เดิม 17.4M</span>
-                              <span id="comp-v-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +108.4%</span>
+                              <span id="comp-v-old" class="text-slate-500 line-through">เดิม 16.7M</span>
+                              <span id="comp-v-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +83.9%</span>
                           </div>
                      </div>
                      <!-- Engagement -->
                      <div class="bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 hover:border-slate-500 transition-colors relative overflow-hidden">
-                          <div id="comp-e-title" class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Interactions</div>
+                          <div class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Interactions</div>
                           <div class="flex items-baseline gap-2 mb-2">
-                              <span id="comp-e-main" class="text-2xl md:text-3xl font-black text-white jetbrains">1.1M</span>
+                              <span id="comp-e-main" class="text-2xl md:text-3xl font-black text-white jetbrains">1.0M</span>
                           </div>
                           <div class="flex justify-between items-center text-xs mt-4 pt-4 border-t border-slate-700/50">
-                              <span id="comp-e-old" class="text-slate-500 line-through">เดิม</span>
-                              <span id="comp-e-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +65.1%</span>
+                              <span id="comp-e-old" class="text-slate-500 line-through">เดิม 777.2K</span>
+                              <span id="comp-e-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +30.8%</span>
                           </div>
                      </div>
                      <!-- Followers -->
                      <div class="bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 hover:border-slate-500 transition-colors relative overflow-hidden">
-                          <div id="comp-f-title" class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Total Followers</div>
+                          <div class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Total Followers</div>
                           <div class="flex items-baseline gap-2 mb-2">
-                              <span id="comp-f-main" class="text-2xl md:text-3xl font-black text-white jetbrains">1.19M</span>
+                              <span id="comp-f-main" class="text-2xl md:text-3xl font-black text-white jetbrains">1.29M</span>
                           </div>
                           <div class="flex justify-between items-center text-xs mt-4 pt-4 border-t border-slate-700/50">
-                              <span id="comp-f-old" class="text-slate-500 line-through">เดิม 1.17M</span>
-                              <span id="comp-f-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +1.8%</span>
+                              <span id="comp-f-old" class="text-slate-500">ผู้ติดตามสะสม</span>
+                              <span id="comp-f-trend" class="text-green-400 font-bold flex items-center gap-1">▲ +39.6K (New)</span>
                           </div>
                      </div>
                      <!-- Dynamic Box -->
                      <div id="comp-dyn-border" class="bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 border-b-4 border-b-green-400 relative overflow-hidden">
-                          <div id="comp-n-title" class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">1-Minute Views</div>
+                          <div id="comp-n-title" class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Total Viewers</div>
                           <div class="flex items-baseline gap-2 mb-2">
-                              <span id="comp-n-main" class="text-2xl md:text-3xl font-black text-green-400 jetbrains">73.1K</span>
+                              <span id="comp-n-main" class="text-2xl md:text-3xl font-black text-green-400 jetbrains">11.6M</span>
                           </div>
                           <div class="flex justify-between items-center text-xs mt-4 pt-4 border-t border-slate-700/50">
-                              <span id="comp-n-old" class="text-slate-400">คนดูคลิปยาวขึ้น</span>
-                              <span id="comp-n-trend" class="text-green-400 font-bold">🔥 +525.1%</span>
+                              <span id="comp-n-old" class="text-slate-400">ผู้ชมไม่ซ้ำ</span>
+                              <span id="comp-n-trend" class="text-green-400 font-bold">🔥 +89.6%</span>
                           </div>
                      </div>
                  </div>
@@ -243,7 +228,7 @@
                  <div id="comp-insight-box" class="mt-8 bg-green-900/20 p-5 rounded-2xl border border-green-500/30 relative z-10 fade-in">
                       <p id="comp-insight-text" class="text-sm text-slate-200 leading-relaxed font-medium">
                           <span class="text-green-400 font-black text-lg mr-2">💡</span>
-                          <b class="text-white">คุณภาพการรับชมก้าวกระโดด:</b> นอกจากยอดวิวจะทะลุ 32 ล้านแล้ว สถิติ <b class="text-green-400">1-Minute Views ยังเติบโตถึง 525%</b> เป็นเครื่องการันตีว่าคอนเทนต์สามารถ "สะกดคนดู" ให้อยู่กับคลิปได้ยาวนานขึ้น เหมาะสมอย่างยิ่งสำหรับแบรนด์ที่ต้องการ Tie-in สินค้าที่ต้องใช้เวลาอธิบาย
+                          <b class="text-white">Massive Recovery:</b> การกลับมาทวงบัลลังก์ของ Facebook! ยอดวิวพุ่งกลับขึ้นมาแตะ <b class="text-green-400">31.1 ล้านวิว (เติบโต 83.9%)</b> พร้อมยอดผู้ชมไม่ซ้ำ (Viewers) ที่ทะยานทะลุ 11.6 ล้านบัญชี แสดงให้เห็นถึงพลังการนำส่งคอนเทนต์ที่เข้าถึงคนหมู่มาก (Mass Scale) ได้อย่างทรงพลัง
                       </p>
                  </div>
             </div>
@@ -252,614 +237,233 @@
         <!-- Section 1: Platform Details -->
         <section>
             <h2 data-i18n="platform_title" class="text-2xl font-bold text-white mb-8 border-l-4 border-cyan-400 pl-4">📱 Platform & Channel Details</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- FB -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-4">
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.facebook.com/nokia.sutasinee" target="_blank" rel="noopener noreferrer" class="text-3xl hover:scale-110 transition-transform cursor-pointer drop-shadow-md">📘</a>
+                            <div>
+                                <a href="https://www.facebook.com/nokia.sutasinee" target="_blank" rel="noopener noreferrer" class="hover:underline text-white">
+                                    <h3 class="text-lg font-bold leading-tight">Facebook</h3>
+                                </a>
+                                <div class="mt-1 inline-block bg-blue-500/20 text-blue-400 px-2.5 py-0.5 rounded-full text-xs font-extrabold border border-blue-500/30 shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+                                    1.29M+ Followers
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.facebook.com/nokia.sutasinee" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-1.5 bg-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
+                            <span data-i18n="btn_visit">ดูโปรไฟล์</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    <ul class="text-sm text-slate-300 space-y-2 flex-grow mb-4">
+                        <li data-i18n="fb_l1"><b class="text-white">จุดเด่น:</b> เข้าถึงคนกลุ่มใหญ่ (Mass Scale) ไวรัลได้ง่ายและรวดเร็ว</li>
+                        <li data-i18n="fb_l2"><b class="text-white">สถิติ:</b> ยอดวิว 31.1M+ /ด | Interactions 1.0M+ ครั้ง</li>
+                        <li data-i18n="fb_l3"><b class="text-white">เป้าหมาย:</b> วัยทำงาน 25-34 ปี มีกำลังซื้อสูง</li>
+                        <li data-i18n="fb_l4"><b class="text-white">Format:</b> คลิปวิดีโอสั้น Vlogs และ Photo Album</li>
+                    </ul>
+                    
+                    <div class="mt-auto pt-4 border-t border-slate-700/50">
+                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-3">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
+                                <span data-i18n="gender" class="text-slate-500 mb-0.5">เพศ</span>
+                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 91.5%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 8.5%</span></div>
+                            </div>
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
+                                <span data-i18n="age" class="text-slate-500 mb-0.5">อายุหลัก</span>
+                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(40.0%)</span></span>
+                            </div>
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
+                                <span data-i18n="location" class="text-slate-500 mb-0.5">พื้นที่</span>
+                                <span data-i18n="loc_fb" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (62.1%)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-900/20 p-3 rounded-lg border border-blue-500/30">
+                            <p data-i18n="agency_title" class="text-[10px] font-bold text-yellow-400 mb-1.5 uppercase tracking-wider flex items-center gap-1">🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่</p>
+                            <ul class="text-[11px] text-slate-300 space-y-1.5">
+                                <li data-i18n="fb_h1"><b class='text-white'>Traffic Source:</b> 83.9% ของยอดวิวมาจาก Non-followers (ดันฟีดคนนอก)</li>
+                                <li data-i18n="fb_h2"><b class='text-white'>Top Format:</b> 81.0% ของยอดวิวมาจากฟีเจอร์ Reels</li>
+                                <li data-i18n="fb_h3"><b class='text-white'>Reach Growth:</b> ยอดผู้ชมไม่ซ้ำ (Total Viewers) โตขึ้น 89.6% (11.6M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- 1. FACEBOOK CARD -->
-                <div class="card-glass p-6 md:p-8 rounded-3xl border-t-4 border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-shadow duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-4xl drop-shadow-md">📘</span>
-                                <div>
-                                    <h3 class="text-xl font-bold leading-none text-white">Facebook</h3>
-                                    <span data-i18n="fb_foll" class="inline-block mt-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full text-xs font-bold text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.1)]">1.2M+ Followers</span>
+                <!-- IG -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-pink-500 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)] transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-4">
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/nokia_sutasinee/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:scale-110 transition-transform cursor-pointer drop-shadow-md">📸</a>
+                            <div>
+                                <a href="https://www.instagram.com/nokia_sutasinee/" target="_blank" rel="noopener noreferrer" class="hover:underline text-white">
+                                    <h3 class="text-lg font-bold leading-tight">Instagram</h3>
+                                </a>
+                                <div class="mt-1 inline-block bg-pink-500/20 text-pink-400 px-2.5 py-0.5 rounded-full text-xs font-extrabold border border-pink-500/30 shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+                                    1.03M+ Followers
                                 </div>
                             </div>
-                            <a href="https://www.facebook.com/nokia.sutasinee" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-2 bg-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
-                                <span data-i18n="btn_visit">ดูโปรไฟล์</span>
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
                         </div>
-                        <ul class="text-sm text-slate-300 space-y-3 mb-6">
-                            <li data-i18n="fb_l1"><b class="text-white">จุดเด่น:</b> เข้าถึงคนกลุ่มใหญ่ (Mass Scale) ไวรัลได้ง่ายและรวดเร็ว</li>
-                            <li data-i18n="fb_l2"><b class="text-white">สถิติ:</b> ยอดวิว 32.0M+ /ด | Interactions 1.1M+ ครั้ง</li>
-                            <li data-i18n="fb_l3"><b class="text-white">เป้าหมาย:</b> วัยทำงาน 25-34 ปี มีกำลังซื้อสูง</li>
-                            <li data-i18n="fb_l4"><b class="text-white">Format:</b> คลิปวิดีโอสั้น Vlogs และ Photo Album</li>
-                        </ul>
+                        <a href="https://www.instagram.com/nokia_sutasinee/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-1.5 bg-pink-500/20 text-pink-400 hover:bg-pink-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
+                            <span data-i18n="btn_visit">ดูโปรไฟล์</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    
-                    <div class="pt-4 border-t border-slate-700/50">
-                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-3 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
-                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-4">
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                    <ul class="text-sm text-slate-300 space-y-2 flex-grow mb-4">
+                        <li data-i18n="ig_l1"><b class="text-white">จุดเด่น:</b> ภาพลักษณ์พรีเมียม โมเดลลิ่ง และการสร้าง Conversion</li>
+                        <li data-i18n="ig_l2"><b class="text-white">สถิติ:</b> ยอดวิว 35.0M+ /ด | Engagement 1.4M+ ครั้ง</li>
+                        <li data-i18n="ig_l3"><b class="text-white">เป้าหมาย:</b> วัยรุ่น-วัยทำงาน เน้นแฟชั่นและไลฟ์สไตล์</li>
+                        <li data-i18n="ig_l4"><b class="text-white">Format:</b> IG Reels, Photo Post OOTD, IG Stories แปะลิงก์</li>
+                    </ul>
+
+                    <div class="mt-auto pt-4 border-t border-slate-700/50">
+                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-3">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="gender" class="text-slate-500 mb-0.5">เพศ</span>
-                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 92.0%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 8.0%</span></div>
+                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 93.2%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 6.8%</span></div>
                             </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="age" class="text-slate-500 mb-0.5">อายุหลัก</span>
-                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(44.9%)</span></span>
+                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(42.0%)</span></span>
                             </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="location" class="text-slate-500 mb-0.5">พื้นที่</span>
-                                <span data-i18n="loc_fb" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (68.9%)</span>
+                                <span data-i18n="loc_ig" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (49.9%)</span>
                             </div>
                         </div>
-                        
-                        <div class="bg-blue-900/20 p-3.5 rounded-2xl border border-blue-500/30">
+
+                        <div class="bg-pink-900/20 p-3 rounded-lg border border-pink-500/30">
                             <p data-i18n="agency_title" class="text-[10px] font-bold text-yellow-400 mb-1.5 uppercase tracking-wider flex items-center gap-1">🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่</p>
                             <ul class="text-[11px] text-slate-300 space-y-1.5">
-                                <li data-i18n="fb_h1"><b class='text-white'>Traffic Source:</b> 82.9% ของยอดวิวมาจาก Non-followers (ดันฟีดคนนอก)</li>
-                                <li data-i18n="fb_h2"><b class='text-white'>Top Format:</b> 83.8% ของยอดวิวมาจากฟีเจอร์ Reels</li>
-                                <li data-i18n="fb_h3"><b class='text-white'>Retention:</b> ยอดคนดูคลิปเกิน 1 นาที (1-Min Views) โต 525%</li>
+                                <li data-i18n="ig_h1"><b class='text-white'>Viral Reach:</b> ยอด Reach ทะลุ 7.5M บัญชี (+482.5%)</li>
+                                <li data-i18n="ig_h2"><b class='text-white'>Non-Follower Traffic:</b> 74.8% ของยอดวิวมาจากคนนอกเพจ</li>
+                                <li data-i18n="ig_h3"><b class='text-white'>Interactions:</b> ยอดการโต้ตอบกระโดดขึ้น 208.1% (1.4M ครั้ง)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- 2. INSTAGRAM CARD -->
-                <div class="card-glass p-6 md:p-8 rounded-3xl border-t-4 border-pink-500 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)] transition-shadow duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-4xl drop-shadow-md">📸</span>
-                                <div>
-                                    <h3 class="text-xl font-bold leading-none text-white">Instagram</h3>
-                                    <span data-i18n="ig_foll" class="inline-block mt-2 bg-pink-500/10 border border-pink-500/30 px-3 py-1 rounded-full text-xs font-bold text-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.1)]">1.0M+ Followers</span>
+                
+                <!-- TikTok -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-slate-500 hover:shadow-[0_0_20px_rgba(148,163,184,0.15)] transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-4">
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.tiktok.com/@nokia.ss" target="_blank" rel="noopener noreferrer" class="text-3xl hover:scale-110 transition-transform cursor-pointer drop-shadow-md">🎵</a>
+                            <div>
+                                <a href="https://www.tiktok.com/@nokia.ss" target="_blank" rel="noopener noreferrer" class="hover:underline text-white">
+                                    <h3 class="text-lg font-bold leading-tight">TikTok</h3>
+                                </a>
+                                <div class="mt-1 inline-block bg-slate-700/40 text-slate-300 px-2.5 py-0.5 rounded-full text-xs font-extrabold border border-slate-500/30 shadow-[0_0_10px_rgba(148,163,184,0.3)]">
+                                    1.30M+ Followers
                                 </div>
                             </div>
-                            <a href="https://www.instagram.com/nokia_sutasinee/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-2 bg-pink-500/20 text-pink-400 hover:bg-pink-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
-                                <span data-i18n="btn_visit">ดูโปรไฟล์</span>
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
                         </div>
-                        <ul class="text-sm text-slate-300 space-y-3 mb-6">
-                            <li data-i18n="ig_l1"><b class="text-white">จุดเด่น:</b> ภาพลักษณ์พรีเมียม โมเดลลิ่ง และการสร้าง Conversion</li>
-                            <li data-i18n="ig_l2"><b class="text-white">สถิติ:</b> ยอดวิว 18.2M /ด | Interactions 461.7K+ ครั้ง</li>
-                            <li data-i18n="ig_l3"><b class="text-white">เป้าหมาย:</b> วัยรุ่น-วัยทำงาน เน้นแฟชั่นและไลฟ์สไตล์</li>
-                            <li data-i18n="ig_l4"><b class="text-white">Format:</b> IG Reels, Photo Post OOTD และ IG Stories</li>
-                        </ul>
+                        <a href="https://www.tiktok.com/@nokia.ss" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-1.5 bg-slate-700/50 text-slate-300 hover:bg-slate-200 hover:text-slate-900 rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
+                            <span data-i18n="btn_visit">ดูโปรไฟล์</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    
-                    <div class="pt-4 border-t border-slate-700/50">
-                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-3 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
-                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-4">
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                    <ul class="text-sm text-slate-300 space-y-2 flex-grow mb-4">
+                        <li data-i18n="tk_l1"><b class="text-white">จุดเด่น:</b> คอนเทนต์ไวรัลง่าย ขี้เล่น เป็นกันเอง ตามเทรนด์</li>
+                        <li data-i18n="tk_l2"><b class="text-white">สถิติ:</b> ยอดวิว 5.0M /ด | Likes 273.4K ครั้ง | Profile Views 91.9K</li>
+                        <li data-i18n="tk_l3"><b class="text-white">เป้าหมาย:</b> Gen Z และ Young Adults ชอบความเรียล</li>
+                        <li data-i18n="tk_l4"><b class="text-white">Format:</b> Vertical Video ครีเอทีฟสนุกๆ และป้ายยา</li>
+                    </ul>
+
+                    <div class="mt-auto pt-4 border-t border-slate-700/50">
+                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-3">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="gender" class="text-slate-500 mb-0.5">เพศ</span>
-                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 93.1%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 6.9%</span></div>
+                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 83.0%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 17.0%</span></div>
                             </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="age" class="text-slate-500 mb-0.5">อายุหลัก</span>
-                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(46.6%)</span></span>
+                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(45.4%)</span></span>
                             </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
+                            <div class="bg-slate-900/50 p-2 rounded border border-slate-700 flex flex-col justify-center">
                                 <span data-i18n="location" class="text-slate-500 mb-0.5">พื้นที่</span>
-                                <span data-i18n="loc_ig" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (50.8%)</span>
+                                <span data-i18n="loc_tk" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (71.2%)</span>
                             </div>
                         </div>
-                        
-                        <div class="bg-pink-900/20 p-3.5 rounded-2xl border border-pink-500/30">
+
+                        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-500/30">
                             <p data-i18n="agency_title" class="text-[10px] font-bold text-yellow-400 mb-1.5 uppercase tracking-wider flex items-center gap-1">🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่</p>
                             <ul class="text-[11px] text-slate-300 space-y-1.5">
-                                <li data-i18n="ig_h1"><b class='text-white'>Viral Reach:</b> เข้าถึงคนนอกเพจสูงถึง 1.68M บัญชี (+374%)</li>
-                                <li data-i18n="ig_h2"><b class='text-white'>Profile Visits:</b> ยอดเข้าชมโปรไฟล์พุ่งสูงถึง 157.6K ครั้ง (+233%)</li>
-                                <li data-i18n="ig_h3"><b class='text-white'>Interactions:</b> การโต้ตอบเติบโต 85.5% (469K+)</li>
+                                <li data-i18n="tk_h1"><b class='text-white'>FYP Algorithm:</b> 71.2% ของยอดวิวมาจากหน้า For You Page</li>
+                                <li data-i18n="tk_h2"><b class='text-white'>New Viewers:</b> ดึงดูดผู้ชมหน้าใหม่เข้ามาได้ถึง 2.2 ล้านคน (+31.4%)</li>
+                                <li data-i18n="tk_h3"><b class='text-white'>Total Viewers:</b> ผู้ชมรวมพุ่งแตะ 3.3 ล้านคน / ยอดวิว 5.0M (+20.7%)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- 3. TIKTOK CARD -->
-                <div class="card-glass p-6 md:p-8 rounded-3xl border-t-4 border-slate-500 hover:shadow-[0_0_20px_rgba(148,163,184,0.15)] transition-shadow duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-4xl drop-shadow-md">🎵</span>
-                                <div>
-                                    <h3 class="text-xl font-bold leading-none text-white">TikTok</h3>
-                                    <span data-i18n="tk_foll" class="inline-block mt-2 bg-slate-500/10 border border-slate-500/30 px-3 py-1 rounded-full text-xs font-bold text-slate-300 shadow-[0_0_15px_rgba(148,163,184,0.1)]">1.3M+ Followers</span>
-                                </div>
-                            </div>
-                            <a href="https://www.tiktok.com/@nokia.ss" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-2 bg-slate-700/50 text-slate-300 hover:bg-slate-200 hover:text-slate-900 rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
-                                <span data-i18n="btn_visit">ดูโปรไฟล์</span>
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                        </div>
-                        <ul class="text-sm text-slate-300 space-y-3 mb-6">
-                            <li data-i18n="tk_l1"><b class="text-white">จุดเด่น:</b> คอนเทนต์ไวรัลง่าย ขี้เล่น เป็นกันเอง ตามเทรนด์</li>
-                            <li data-i18n="tk_l2"><b class="text-white">สถิติ:</b> ยอดวิว 5.7M /ด | ยอดถูกใจรวม 290.1K ไลก์</li>
-                            <li data-i18n="tk_l3"><b class="text-white">เป้าหมาย:</b> Gen Z และ Young Adults ชอบความเรียล</li>
-                            <li data-i18n="tk_l4"><b class="text-white">Format:</b> Vertical Video ครีเอทีฟสนุกๆ และป้ายยา</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="pt-4 border-t border-slate-700/50">
-                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-3 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
-                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-4">
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
-                                <span data-i18n="gender" class="text-slate-500 mb-0.5">เพศ</span>
-                                <div class="whitespace-nowrap"><span class="text-cyan-400 font-bold">♂ 84.0%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">♀ 16.0%</span></div>
-                            </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
-                                <span data-i18n="age" class="text-slate-500 mb-0.5">อายุหลัก</span>
-                                <span class="text-white font-bold whitespace-nowrap">25-34 <span class="text-slate-400 font-normal">(45.3%)</span></span>
-                            </div>
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center">
-                                <span data-i18n="location" class="text-slate-500 mb-0.5">พื้นที่</span>
-                                <span data-i18n="loc_tk" class="text-white font-bold whitespace-nowrap">🇹🇭 ไทย (70.9%)</span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-slate-800/80 p-3.5 rounded-2xl border border-slate-500/30">
-                            <p data-i18n="agency_title" class="text-[10px] font-bold text-yellow-400 mb-1.5 uppercase tracking-wider flex items-center gap-1">🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่</p>
-                            <ul class="text-[11px] text-slate-300 space-y-1.5">
-                                <li data-i18n="tk_h1"><b class='text-white'>Profile Visits:</b> ยอดเข้าชมโปรไฟล์พุ่งสูงถึง 145.5K ครั้ง (+260%)</li>
-                                <li data-i18n="tk_h2"><b class='text-white'>New Audience:</b> ดึงดูดผู้ชมหน้าใหม่เข้ามาได้ถึง 736.7K บัญชี</li>
-                                <li data-i18n="tk_h3"><b class='text-white'>Total Views:</b> ยอดวิวเติบโตก้าวกระโดดกลับมาแตะ 2.4M (+174.9%)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. YOUTUBE CARD -->
-                <div class="card-glass p-6 md:p-8 rounded-3xl border-t-4 border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] transition-shadow duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-4xl drop-shadow-md">▶️</span>
-                                <div>
-                                    <h3 class="text-xl font-bold leading-none text-white">YouTube</h3>
-                                    <span data-i18n="yt_foll" class="inline-block mt-2 bg-red-500/10 border border-red-500/30 px-3 py-1 rounded-full text-xs font-bold text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.1)]">260K+ Subscribers</span>
-                                </div>
-                            </div>
-                            <a href="https://www.youtube.com/@NokiaSutasinee" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-2 bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
-                                <span data-i18n="btn_visit">ดูโปรไฟล์</span>
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                        </div>
-                        <ul class="text-sm text-slate-300 space-y-3 mb-6">
-                            <li data-i18n="yt_l1"><b class="text-white">จุดเด่น:</b> ดึงดูดผู้ชมใหม่ได้อย่างมหาศาลผ่านฟีเจอร์ Shorts</li>
-                            <li data-i18n="yt_l2"><b class="text-white">สถิติ:</b> ยอดวิว 67.4K /ด | ผู้ชมไม่ซ้ำ 25.3K บัญชี</li>
-                            <li data-i18n="yt_l3"><b class="text-white">เป้าหมาย:</b> ผู้ที่ชื่นชอบคลิปสั้น, คอมมูนิตี้เจาะลึก</li>
-                            <li data-i18n="yt_l4"><b class="text-white">Format:</b> YT Shorts (Awareness) และ Vlog/Review</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="pt-4 border-t border-slate-700/50">
-                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-3 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
-                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-4">
-                            <div class="bg-slate-900/50 p-2.5 rounded-xl border border-slate-700 flex flex-col justify-center col-span-3">
-                                <div class="flex justify-around items-center w-full">
-                                    <span class="text-slate-500">ประเภทผู้ชม (Watch Behavior)</span>
-                                    <div><span class="text-red-400 font-bold">New: 87.1%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">Casual: 11.9%</span></div>
+                
+                <!-- YouTube -->
+                <div class="card-glass p-6 rounded-2xl border-t-4 border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-4">
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.youtube.com/@NokiaSutasinee" target="_blank" rel="noopener noreferrer" class="text-3xl hover:scale-110 transition-transform cursor-pointer drop-shadow-md">▶️</a>
+                            <div>
+                                <a href="https://www.youtube.com/@NokiaSutasinee" target="_blank" rel="noopener noreferrer" class="hover:underline text-white">
+                                    <h3 class="text-lg font-bold leading-tight">YouTube</h3>
+                                </a>
+                                <div class="mt-1 inline-block bg-red-500/20 text-red-400 px-2.5 py-0.5 rounded-full text-xs font-extrabold border border-red-500/30 shadow-[0_0_10px_rgba(239,68,68,0.3)]">
+                                    260K+ Subscribers
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="bg-red-900/20 p-3.5 rounded-2xl border border-red-500/30">
+                        <a href="https://www.youtube.com/@NokiaSutasinee" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-4 py-1.5 bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white rounded-full text-xs font-bold transition-all duration-300 shadow-sm">
+                            <span data-i18n="btn_visit">ดูโปรไฟล์</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    <ul class="text-sm text-slate-300 space-y-2 flex-grow mb-4">
+                        <li data-i18n="yt_l1"><b class="text-white">จุดเด่น:</b> ดึงดูดผู้ชมใหม่ได้อย่างมหาศาลผ่านฟีเจอร์ Shorts (โตขึ้น 4 เท่า)</li>
+                        <li data-i18n="yt_l2"><b class="text-white">สถิติ:</b> ยอดวิว 159.9K /ด | ผู้ชมไม่ซ้ำ 53.7K บัญชี | Watch Time 381.8 ชม.</li>
+                        <li data-i18n="yt_l3"><b class="text-white">เป้าหมาย:</b> ผู้ที่ชื่นชอบคลิปสั้น, คอมมูนิตี้เจาะลึก</li>
+                        <li data-i18n="yt_l4"><b class="text-white">Format:</b> YT Shorts (Viral Awareness) และ Vlog/Review</li>
+                    </ul>
+
+                    <div class="mt-auto pt-4 border-t border-slate-700/50">
+                        <p data-i18n="insight_title" class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-wider">📊 ข้อมูลเชิงลึกผู้ติดตาม</p>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] sm:text-xs mb-3">
+                            <div class="col-span-3 bg-slate-900/50 p-2 rounded border border-slate-700 flex justify-around items-center">
+                                <span class="text-slate-500">ประเภทผู้ชม (Watch Behavior)</span>
+                                <div><span class="text-red-400 font-bold">New: 82.1%</span> <span class="text-slate-600">|</span> <span class="text-pink-400 font-bold">Casual: 17.0%</span></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-900/20 p-3 rounded-lg border border-red-500/30">
                             <p data-i18n="agency_title" class="text-[10px] font-bold text-yellow-400 mb-1.5 uppercase tracking-wider flex items-center gap-1">🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่</p>
                             <ul class="text-[11px] text-slate-300 space-y-1.5">
-                                <li data-i18n="yt_h1"><b class='text-white'>Shorts Impact:</b> ดันยอดวิวเติบโตขึ้น 2.4 เท่าจากช่วงปกติ</li>
-                                <li data-i18n="yt_h2"><b class='text-white'>Discovery:</b> 87.1% คือผู้ชมหน้าใหม่ (New Viewers)</li>
-                                <li data-i18n="yt_h3"><b class='text-white'>Watch Time:</b> ชั่วโมงการรับชมพุ่งสูงถึง 194.2 ชั่วโมง</li>
+                                <li data-i18n="yt_h1"><b class='text-white'>Shorts Feed Explosive:</b> 137.1K วิว มาจากระบบดันฟีด Shorts (ยอดวิวรวม 159.9K)</li>
+                                <li data-i18n="yt_h2"><b class='text-white'>Discovery Rate:</b> 82.1% คือผู้ชมหน้าใหม่ (New Viewers)</li>
+                                <li data-i18n="yt_h3"><b class='text-white'>Monthly Audience:</b> ผู้ชมไม่ซ้ำพุ่งขึ้น 2 เท่าแตะ 53.7K บัญชี (+194 Subs)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Section 2: A La Carte -->
-        <section>
-            <h2 data-i18n="alacarte_title" class="text-2xl font-bold text-white mb-6 border-l-4 border-pink-500 pl-4">💸 A La Carte Media Rate</h2>
-            <p data-i18n="alacarte_desc" class="text-sm text-slate-400 mb-6">เรทราคาจ้างงานแบบแยกชิ้น สำหรับแบรนด์ที่ต้องการ Custom งานเอง</p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-cyan-400 transition-colors">
-                    <p data-i18n="alc_v" class="text-sm text-slate-400 mb-2">Short Video<br><span class="text-[10px]">(FB+IG+TikTok+Youtube)</span></p>
-                    <p class="text-2xl font-black text-white">30,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-pink-400 transition-colors">
-                    <p data-i18n="alc_p" class="text-sm text-slate-400 mb-2">Photo Album<br><span class="text-[10px]">(FB+IG Post)</span></p>
-                    <p class="text-2xl font-black text-white">15,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-emerald-400 transition-colors">
-                    <p data-i18n="alc_sp" class="text-sm text-slate-400 mb-2">Single Photopost<br><span class="text-[10px]">(FB+IG Post)</span></p>
-                    <p class="text-2xl font-black text-white">10,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-yellow-400 transition-colors">
-                    <p data-i18n="alc_s" class="text-sm text-slate-400 mb-2">IG/FB Story<br><span class="text-[10px]">(พร้อมแปะ Link)</span></p>
-                    <p class="text-2xl font-black text-white">5,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2.1: Add - On -->
-        <section>
-            <h2 data-i18n="addon_title" class="text-2xl font-bold text-white mb-6 border-l-4 border-green-500 pl-4">➕ Add - On</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-green-400 transition-colors">
-                    <p data-i18n="alc_ma" class="text-sm text-slate-400 mb-2">Media Asset<br><span class="text-[10px]">(สิทธิ์ใช้งาน 3 เดือน)</span></p>
-                    <p class="text-2xl font-black text-white">10,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 text-center hover:border-red-400 transition-colors">
-                    <p data-i18n="alc_aa" class="text-sm text-slate-400 mb-2">Ads Asset<br><span class="text-[10px]">(สิทธิ์ยิงแอด 1 เดือน)</span></p>
-                    <p class="text-2xl font-black text-white">5,000 <span class="text-sm font-normal text-slate-500">฿</span></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2.5: Exclusive Appearances & Production -->
-        <section>
-            <h2 data-i18n="ex_title" class="text-2xl font-bold text-white mb-2 border-l-4 border-yellow-400 pl-4">🎬 Exclusive Appearances & Production</h2>
-            <p data-i18n="ex_desc" class="text-sm text-slate-400 mb-8">บริการงานหน้ากล้อง โปรดักชั่นพิเศษ และการปรากฏตัวในงานอีเวนต์</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1: Social Media -->
-                <div class="card-glass p-6 rounded-2xl border-t-4 border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
-                    <h3 data-i18n="ex_c1_title" class="text-lg font-bold text-white mb-4">📱 Social Media</h3>
-                    <ul class="space-y-3 text-sm mb-4">
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c1_2" class="text-slate-300 leading-tight pr-2">Post & Share<br><span class="text-[10px] text-slate-500">(ลูกค้ามีคอนเทนต์)</span></span>
-                            <span class="font-bold text-white">10,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c1_4" class="text-slate-300 leading-tight pr-2">Live On Social<br><span class="text-[10px] text-slate-500">(ช่องโนเกีย)</span></span>
-                            <span class="font-bold text-white">20,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c1_5" class="text-slate-300 leading-tight pr-2">Product Review<br><span class="text-[10px] text-slate-500">(5-10 Min)</span></span>
-                            <span class="font-bold text-white">45,000 ฿</span>
-                        </li>
-                    </ul>
-                    <div class="mb-2 pt-3 border-t border-slate-700/50">
-                        <span data-i18n="ex_c1_sarano_title" class="text-[12px] text-yellow-400 font-bold uppercase tracking-wider">💡 รายการ สาระโน!!</span>
-                    </div>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c1_1" class="text-slate-300">Logo Tie-in</span>
-                            <span class="font-bold text-white">5,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c1_3" class="text-slate-300 leading-tight pr-2">Product Showcase<br><span class="text-[10px] text-slate-500">(10 Sec)</span></span>
-                            <span class="font-bold text-white">10,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c1_6" class="text-slate-300 leading-tight pr-2">Product Showcase<br><span class="text-[10px] text-slate-500">(30 Sec x 10 EP)</span></span>
-                            <span class="font-bold text-white">85,000 ฿</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Card 2: Event -->
-                <div class="card-glass p-6 rounded-2xl border-t-4 border-emerald-500 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
-                    <h3 data-i18n="ex_c2_title" class="text-lg font-bold text-white mb-4">🎤 Event Appearance</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c2_1" class="text-slate-300 leading-tight pr-2">Pretty Indoor<br><span class="text-[10px] text-slate-500">(8 hr + PhotoPost)</span></span>
-                            <span class="font-bold text-white">10,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c2_2" class="text-slate-300 leading-tight pr-2">Pretty RaceQueen<br><span class="text-[10px] text-slate-500">(+ PhotoPost)</span></span>
-                            <span class="font-bold text-white">12,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c2_3" class="text-slate-300 leading-tight pr-2">MC Host Event<br><span class="text-[10px] text-slate-500">(+ PhotoPost)</span></span>
-                            <span class="font-bold text-white">15,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c2_4" class="text-slate-300 leading-tight pr-2">Cosplayer Event<br><span class="text-[10px] text-slate-500">(8 hr + PhotoPost + Tie-in Reel)</span></span>
-                            <span class="font-bold text-white">30,000 ฿</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Card 3: Model -->
-                <div class="card-glass p-6 rounded-2xl border-t-4 border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.15)] transition-all">
-                    <div class="mb-3">
-                        <h3 data-i18n="ex_c3_title" class="text-lg font-bold text-white">📸 Modeling</h3>
-                    </div>
-                    <div class="mb-2">
-                        <span data-i18n="ex_c3_desc_non" class="text-[10px] text-pink-400 font-semibold uppercase tracking-wider">(Non-commercial rate)</span>
-                    </div>
-                    <ul class="space-y-3 text-sm mb-4">
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c3_1" class="text-slate-300">Portrait Model</span>
-                            <span class="font-bold text-white">10,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c3_2" class="text-slate-300">Cosplay Model</span>
-                            <span class="font-bold text-white">20,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c3_3" class="text-slate-300">Lingerie Model</span>
-                            <span class="font-bold text-white">35,000 ฿</span>
-                        </li>
-                    </ul>
-                    <div class="mb-2 pt-3 border-t border-slate-700/50">
-                        <span data-i18n="ex_c3_desc_com" class="text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">(Commercial Rate)</span>
-                    </div>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c3_4" class="text-slate-300 leading-tight pr-2">Event Shooting<br><span class="text-[10px] text-slate-500">(ทำงาน 8 ชม.)</span></span>
-                            <span class="font-bold text-white text-right"><span data-i18n="starts_label" class="text-[10px] text-slate-400 font-normal block leading-none mb-1">เริ่มต้น</span>20,000 ฿</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Card 4: Actress -->
-                <div class="card-glass p-6 rounded-2xl border-t-4 border-purple-500 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all">
-                    <h3 data-i18n="ex_c4_title" class="text-lg font-bold text-white mb-4">🎬 Actress & Host</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between items-end border-b border-slate-700/50 pb-2">
-                            <span data-i18n="ex_c4_1" class="text-slate-300">Guest Interview</span>
-                            <span class="font-bold text-white">10,000 ฿</span>
-                        </li>
-                        <li class="flex justify-between items-end pb-1">
-                            <span data-i18n="ex_c4_2" class="text-slate-300 leading-tight pr-2">Host / Actress<br><span class="text-[10px] text-slate-500">(TVC / Online)</span></span>
-                            <span class="font-bold text-white">15,000 ฿</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Sponsorship Packages -->
-        <section>
-            <div class="text-center mb-10">
-                <h2 id="pkg-main-title" data-i18n="pkg_title" class="text-3xl font-black text-white mb-3">🛍️ RATECARD MEDIA PACKAGES</h2>
-                <p id="pkg-sub-desc" data-i18n="pkg_desc" class="text-slate-400 text-sm">ซื้อเป็นแพ็คเกจคุ้มค่ากว่า! รับส่วนลดพิเศษพร้อมสรุป Data ทุกระยะ</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Package 1 -->
-                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-cyan-400 flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-48 w-full relative">
-                        <img src="S__39870481_0 (1).jpg" alt="" class="w-full h-full object-cover object-[center_30%]" onerror="this.src='https://placehold.co/800x400/0ea5e9/ffffff?text=ON+THE+GO'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-                    </div>
-                    <div class="p-8 pt-2 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black text-white tracking-wide">☕ ON THE GO</h3>
-                        <p data-i18n="p1_sub" class="text-sm text-cyan-400 mb-4 font-semibold uppercase tracking-wider">Awareness Builder</p>
-                        <p data-i18n="p1_desc" class="text-sm text-slate-300 mb-6 flex-grow">เหมาะสำหรับแบรนด์ที่ต้องการสร้างการรับรู้ (Mass Awareness) เจาะกลุ่มคนรุ่นใหม่ด้วยคอนเทนต์ที่ดูเป็นธรรมชาติ ไม่ยัดเยียด</p>
-                        
-                        <div class="mb-6">
-                            <p data-i18n="p_del" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
-                            <ul class="text-sm text-slate-300 space-y-3">
-                                <li data-i18n="p1_l1" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>1x Short Video</b></span>
-                                    <span class="text-right text-cyan-400 font-bold whitespace-nowrap">ลง FB/IG/TikTok</span>
-                                </li>
-                                <li data-i18n="p1_l2" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>1x IG/FB Story</b></span>
-                                    <span class="text-right text-cyan-400 font-bold whitespace-nowrap">พร้อมแปะ Link</span>
-                                </li>
-                                <li data-i18n="p1_l3" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>Ads Asset</b></span>
-                                    <span class="text-right text-cyan-400 font-bold whitespace-nowrap">สิทธิ์ยิงแอด 1 เดือน</span>
-                                </li>
-                                <li data-i18n="p1_l4" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>สรุป Insight & Data</b></span>
-                                    <span class="text-right text-cyan-400 font-bold whitespace-nowrap">(3, 5, 15, 30 วัน)</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-slate-700 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 40,000 THB</p>
-                            <p class="text-4xl font-black text-cyan-400 mb-2">35,000 ฿</p>
-                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 5,000 ฿</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 2 -->
-                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-pink-500 flex flex-col relative transform lg:-translate-y-4 shadow-[0_0_30px_rgba(236,72,153,0.15)] ring-1 ring-pink-500/30">
-                    <div class="absolute top-0 right-0 z-20 bg-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl shadow-lg">⭐ BEST SELLER</div>
-                    <div class="h-48 w-full relative">
-                        <img src="IMG_1649.jpg" alt="" class="w-full h-full object-cover object-[center_20%]" onerror="this.src='https://placehold.co/800x400/ec4899/ffffff?text=STREET+CHIC'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-                    </div>
-                    <div class="p-8 pt-2 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black text-white tracking-wide">👟 STREET CHIC</h3>
-                        <p data-i18n="p2_sub" class="text-sm text-pink-500 mb-4 font-semibold uppercase tracking-wider">Engagement & Conversion</p>
-                        <p data-i18n="p2_desc" class="text-sm text-slate-300 mb-6 flex-grow">แบรนด์แฟชั่น แกดเจ็ต สกินแคร์ ที่ต้องการกระตุ้นยอดขาย ผสมผสานวิดีโอไลฟ์สไตล์และภาพนิ่งคุณภาพสูง</p>
-                        
-                        <div class="mb-6">
-                            <p data-i18n="p_del2" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
-                            <ul class="text-sm text-slate-300 space-y-3">
-                                <li data-i18n="p2_l1" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>2x Short Videos</b></span>
-                                    <span class="text-right text-pink-400 font-bold whitespace-nowrap">ลง FB/IG/TikTok</span>
-                                </li>
-                                <li data-i18n="p2_l2" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>1x Photo Album</b></span>
-                                    <span class="text-right text-pink-400 font-bold whitespace-nowrap">(4-6 ภาพ ลง FB/IG)</span>
-                                </li>
-                                <li data-i18n="p2_l3" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>3x IG/FB Stories</b></span>
-                                    <span class="text-right text-pink-400 font-bold whitespace-nowrap">พร้อมแปะ Link</span>
-                                </li>
-                                <li data-i18n="p2_l4" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>Ads Asset</b></span>
-                                    <span class="text-right text-pink-400 font-bold whitespace-nowrap">สิทธิ์ยิงแอด 1 เดือน</span>
-                                </li>
-                                <li data-i18n="p2_l5" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>สรุป Insight & Data</b></span>
-                                    <span class="text-right text-pink-400 font-bold whitespace-nowrap">(3, 5, 15, 30 วัน)</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-pink-500/30 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
-                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 95,000 THB</p>
-                            <p class="text-5xl font-black text-pink-500 mb-2">55,000 ฿</p>
-                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 40,000 ฿</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="card-glass rounded-2xl overflow-hidden border-t-4 border-purple-400 flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-48 w-full relative">
-                        <img src="DSC04618.jpg" alt="" class="w-full h-full object-cover object-[center_40%]" onerror="this.src='https://placehold.co/800x400/a855f7/ffffff?text=THE+VIP'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-                    </div>
-                    <div class="p-8 pt-2 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black text-white tracking-wide">🌟 THE V.I.P.</h3>
-                        <p data-i18n="p3_sub" class="text-sm text-purple-400 mb-4 font-semibold uppercase tracking-wider">Full Brand Integration</p>
-                        <p data-i18n="p3_desc" class="text-sm text-slate-300 mb-6 flex-grow">เหมาะสำหรับ Main Sponsor สร้าง Brand Loyalty ระยะยาว ครอบคลุมทุกแพลตฟอร์มตามติดชีวิตแบบเจาะลึก</p>
-                        
-                        <div class="mb-6">
-                            <p data-i18n="p_del3" class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-b border-slate-700 pb-2">สิ่งที่แบรนด์จะได้รับ</p>
-                            <ul class="text-sm text-slate-300 space-y-3">
-                                <li data-i18n="p3_l1" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>4x Short Videos</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">ลงครบทุกช่องทาง</span>
-                                </li>
-                                <li data-i18n="p3_l2" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>1x Premium Photo Album</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">จัดเต็ม</span>
-                                </li>
-                                <li data-i18n="p3_l3" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>5x IG/FB Stories</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">กระจายตลอดแคมเปญ</span>
-                                </li>
-                                <li data-i18n="p3_l4" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>1x Event Shoot</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">/ Special Location</span>
-                                </li>
-                                <li data-i18n="p3_l5" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>Media & Ads Asset</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">สิทธิ์เต็ม 3 เดือน</span>
-                                </li>
-                                <li data-i18n="p3_l6" class="flex justify-between items-start">
-                                    <span class="text-slate-300 pr-2">✓ <b>สรุป Insight & Data</b></span>
-                                    <span class="text-right text-purple-400 font-bold whitespace-nowrap">(3, 5, 15, 30 วัน)</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-auto bg-slate-900 rounded-xl p-5 text-center border border-slate-700 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent"></div>
-                            <p class="text-xs text-slate-500 line-through mb-1">Full Value: 205,000 THB</p>
-                            <p class="text-4xl font-black text-purple-400 mb-2">100,000 ฿</p>
-                            <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full">SAVE 105,000 ฿</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="payment-box" data-i18n="payment" class="mt-8 bg-slate-800/60 border border-slate-600 rounded-xl p-4 text-center text-sm text-slate-300">
-                <span class="inline-block mr-4 mb-2 md:mb-0">💳 <b>เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน</span>
-                <span class="inline-block"><span class="text-pink-400">✨ <b>พิเศษ:</b></span> ชำระเงินสด (Cash) <b>รับส่วนลดทันที 10%</b> ทุกแพ็คเกจ</span>
-            </div>
-
-            <!-- Contact Button (Bottom) -->
-            <div class="mt-8 flex flex-col items-center justify-center space-y-3">
-                <span data-i18n="contact_work_2" class="text-sm font-bold text-green-400 uppercase tracking-widest">สอบถามรายละเอียดเพิ่มเติม</span>
-                <a href="https://lin.ee/oBw7GTC" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(0,198,82,0.4)] mb-2">
-                    <img src="https://scdn.line-add-friends.line.me/g2/images/liff/addfriends_en.png" alt="" height="36" border="0" class="h-9">
+        <!-- Rate Card CTA Section -->
+        <section class="bg-gradient-to-r from-pink-900/40 via-purple-900/40 to-cyan-900/40 p-8 md:p-10 rounded-3xl border border-pink-500/40 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-pink-500/10 rounded-full blur-2xl"></div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <span class="inline-block px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs font-bold uppercase tracking-widest mb-3 border border-pink-500/30">🏷️ Official Pricing & Packages</span>
+                <h3 class="text-2xl md:text-3xl font-black text-white mb-3">ต้องการเช็กเรทราคาและแพ็คเกจสื่อโฆษณาฉบับเต็ม?</h3>
+                <p class="text-slate-300 text-sm mb-6">รับข้อเสนอสุดพิเศษพร้อมสิทธิ์ส่วนลดแพ็คเกจ และเงื่อนไขการทำงานอย่างละเอียด</p>
+                <a href="Nokia_RateCard.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white font-extrabold text-sm px-8 py-3.5 rounded-full shadow-lg transition-all transform hover:scale-105">
+                    <span data-i18n="btn_goto_ratecard">ดูตารางราคา & RateCard ฉบับเต็ม</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
-                
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm text-slate-300 bg-slate-900/60 px-6 py-2.5 rounded-full border border-slate-700/50 backdrop-blur-sm shadow-lg">
-                    <div class="flex items-center justify-center gap-2">
-                        <span class="text-pink-400">📞</span> <a href="tel:0947915154" class="hover:text-pink-300 transition-colors font-medium" data-i18n="contact_phone">โทร. คุณบี 0947915154</a>
-                    </div>
-                    <div class="hidden sm:block text-slate-600">|</div>
-                    <div class="flex items-center justify-center gap-2">
-                        <span class="text-cyan-400">✉️</span> <a href="mailto:amsocutecorp@gmail.com" class="hover:text-cyan-300 transition-colors font-medium">amsocutecorp@gmail.com</a>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Section 3.1: Exclusive Partnership -->
-        <section>
-            <div class="text-center mb-10">
-                <h2 data-i18n="am_title" class="text-3xl font-black text-white mb-3">🤝 EXCLUSIVE PARTNERSHIP</h2>
-                <p data-i18n="am_desc" class="text-slate-400 text-sm">แพ็กเกจสัญญาแบรนด์แอมบาสเดอร์ระยะยาว ควบคุมภาพลักษณ์และทำแคมเปญต่อเนื่อง</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-                <!-- Demo Set -->
-                <div class="card-glass rounded-2xl p-8 md:p-10 flex flex-col h-full border-t-4 border-slate-400 relative hover:border-slate-300 transition-colors">
-                    <div class="mb-8">
-                        <div class="inline-block px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-bold uppercase tracking-widest mb-4">Trial Option</div>
-                        <h3 class="text-3xl font-black text-white uppercase tracking-wider mb-2">PhotoSetDemo</h3>
-                        <p data-i18n="am_p1_desc" class="text-sm text-slate-400">แพ็กเกจเริ่มต้น สำหรับทดสอบประสิทธิภาพและเคมีระหว่างแบรนด์กับครีเอเตอร์</p>
-                    </div>
-                    
-                    <div class="mb-8 pb-8 border-b border-slate-700/50">
-                        <p data-i18n="starts_at" class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-1">Starts at</p>
-                        <div class="flex items-end gap-2">
-                            <span class="text-5xl font-black text-white jetbrains leading-none">50,000</span>
-                            <span class="text-xl text-slate-400 font-bold uppercase mb-1">฿ / Set</span>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-4 flex-grow mb-8 text-sm">
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-400 mt-0.5">✓</span>
-                            <span data-i18n="am_p1_l1" class="text-slate-300 font-medium"><b>Full Production</b> (รวมค่าตัวนางแบบ, รถเข้าฉาก, ช่างภาพ)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-400 mt-0.5">✓</span>
-                            <span data-i18n="am_p1_l2" class="text-slate-300 font-medium"><b>5x Social Publish</b> (โพสต์ 5 รูป ลงสื่อโนเกีย)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-400 mt-0.5">✓</span>
-                            <span data-i18n="am_p1_l3" class="text-slate-300 font-medium"><b>20x Photos Delivered</b> (ส่งมอบ 20 รูป ให้แบรนด์ใช้งาน)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-cyan-400 mt-0.5">✦</span>
-                            <span data-i18n="am_p1_l4" class="text-white font-bold">6-Month Usage Right (สิทธิ์ใช้ภาพ 6 เดือน)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-cyan-400 mt-0.5">✦</span>
-                            <span data-i18n="am_p1_l5" class="text-white font-bold">1-Month Ads Asset (สิทธิ์ยิงแอด 1 เดือน)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Brand AM -->
-                <div class="card-glass rounded-2xl p-8 md:p-10 flex flex-col h-full border-t-4 border-yellow-400 relative shadow-[0_0_30px_rgba(250,204,21,0.15)] transform lg:-translate-y-4">
-                    <div class="absolute top-0 right-0 z-20 bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl shadow-lg">⭐ STRATEGIC PARTNER</div>
-                    
-                    <div class="mb-6 relative z-10">
-                        <div class="inline-block px-3 py-1 rounded bg-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-4 border border-yellow-400/30">1-Year Contract</div>
-                        <h3 class="text-4xl font-black text-white uppercase tracking-wider mb-2 drop-shadow-md">Brand AM</h3>
-                        <p data-i18n="am_p2_desc" class="text-sm text-slate-300">แพ็กเกจแอมบาสเดอร์ 1 ปี พร้อมสิทธิ์ส่วนลดพิเศษ</p>
-                    </div>
-
-                    <div class="flex-grow flex flex-col justify-center relative z-10 mt-4">
-                        <div class="bg-gradient-to-r from-pink-900/40 to-purple-900/40 backdrop-blur-md p-6 rounded-2xl border-2 border-pink-500/50 flex flex-col sm:flex-row items-center justify-center gap-4 shadow-[0_0_30px_rgba(236,72,153,0.2)] hover:shadow-[0_0_40px_rgba(236,72,153,0.4)] hover:border-pink-400 transition-all duration-300 hover:scale-[1.02]">
-                            <span class="text-4xl md:text-5xl drop-shadow-lg">🎁</span>
-                            <span id="am-p2-discount-label" data-i18n="am_p2_l5" class="text-pink-100 font-black text-xl md:text-2xl tracking-wide text-center drop-shadow-md">ส่วนลดของ A La Carte Media 50%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3.5: Content Examples & Proofs -->
+        <!-- Section 3.5: Video Portfolio -->
         <section class="space-y-16 overflow-hidden mt-12">
-            
-            <!-- Session 2: Short Videos -->
             <div>
                 <div class="flex items-center justify-between mb-6">
                     <h2 data-i18n="work_video_title" class="text-2xl font-bold text-white border-l-4 border-purple-500 pl-4">🎬 ผลงานวิดีโอสั้น</h2>
@@ -869,7 +473,7 @@
                 <div id="video-gallery" class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 hide-scrollbar">
                     <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
-                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/_w_udoOj7a4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/_w_udoOj7a4" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="p-3 text-center bg-slate-800/80">
                             <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #1</span>
@@ -878,7 +482,7 @@
                     
                     <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
-                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/MlMgJu_BJtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/MlMgJu_BJtY" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="p-3 text-center bg-slate-800/80">
                             <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #2</span>
@@ -887,7 +491,7 @@
 
                     <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
-                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/fkUltL9swdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/fkUltL9swdg" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="p-3 text-center bg-slate-800/80">
                             <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #3</span>
@@ -896,7 +500,7 @@
 
                     <div class="flex-none w-56 md:w-64 bg-slate-800/40 rounded-xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 shadow-lg flex flex-col">
                         <div class="w-full aspect-[9/16] bg-slate-900">
-                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/NYv2X56jo6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="w-full h-full pointer-events-auto" src="https://www.youtube.com/embed/NYv2X56jo6w" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="p-3 text-center bg-slate-800/80">
                             <span class="text-white font-bold text-xs sm:text-sm drop-shadow-md">Showcase #4</span>
@@ -908,10 +512,6 @@
 
         <!-- Section 4: Why Brands Trust -->
         <section class="bg-slate-800/40 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-xl overflow-hidden relative">
-            <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-                <img src="DSC09280 (1).jpg" alt="" class="w-full h-full object-cover object-right" onerror="this.style.display='none'">
-            </div>
-
             <div class="text-center mb-12 relative z-10">
                 <h2 data-i18n="why_title" class="text-3xl font-black text-white mb-3">💡 Why Brands Trust Nokia?</h2>
                 <p data-i18n="why_desc" class="text-slate-400 text-sm">ทำไมแบรนด์ไลฟ์สไตล์ชั้นนำถึงเลือกให้โนเกียเป็นตัวแทนสื่อสาร</p>
@@ -919,8 +519,8 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10 items-center">
                 <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <img src="651983562_18571092487044606_2744104541458264522_n.jpg" alt="" class="rounded-2xl w-full h-56 object-cover object-[center_30%] shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform translate-y-4" onerror="this.src='https://placehold.co/300x400/1e293b/cbd5e1?text=Brand+Image'">
-                    <img src="DSC00982.jpg" alt="" class="rounded-2xl w-full h-56 object-cover object-top shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform -translate-y-4 border-2 border-slate-700" onerror="this.src='https://placehold.co/300x400/1e293b/cbd5e1?text=Brand+Image'">
+                    <img src="651983562_18571092487044606_2744104541458264522_n.jpg" alt="" class="rounded-2xl w-full h-56 object-cover object-[center_30%] shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform translate-y-4">
+                    <img src="DSC00982.jpg" alt="" class="rounded-2xl w-full h-56 object-cover object-top shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform -translate-y-4 border-2 border-slate-700">
                 </div>
 
                 <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -981,783 +581,225 @@
         <p data-i18n="footer" class="mt-2 text-xs">สามารถปรับแต่งแพ็คเกจ (Customize) ตาม Budget/Objective ของลูกค้าได้</p>
     </footer>
 
-    <!-- ✨ LIGHTBOX MODAL (โครงสร้างหน้าจอซูมรูปภาพ พร้อมระบบ Gallery) ✨ -->
-    <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden-modal bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
-        <!-- ปุ่มปิด -->
-        <button class="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 bg-slate-800/80 hover:bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl transition-colors shadow-lg border border-slate-600 z-10" onclick="closeLightbox(); event.stopPropagation();">
-            &times;
-        </button>
-        
-        <!-- รูปภาพ -->
-        <img id="lightbox-img" src="" alt="Insight Proof" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-slate-700/50" onclick="event.stopPropagation()">
-
-        <!-- ปุ่ม Previous (ซ้าย) -->
-        <button id="lightbox-prev" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-slate-800/80 hover:bg-cyan-500 text-white rounded-full flex items-center justify-center text-xl md:text-2xl transition-colors shadow-lg border border-slate-600 hidden z-10" onclick="changeLightboxImage(-1); event.stopPropagation();">
-            &#10094;
-        </button>
-        
-        <!-- ปุ่ม Next (ขวา) -->
-        <button id="lightbox-next" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-slate-800/80 hover:bg-cyan-500 text-white rounded-full flex items-center justify-center text-xl md:text-2xl transition-colors shadow-lg border border-slate-600 hidden z-10" onclick="changeLightboxImage(1); event.stopPropagation();">
-            &#10095;
-        </button>
-
-        <!-- ตัวบอกตำแหน่งรูปภาพ (เช่น 1 / 3) -->
-        <div id="lightbox-indicator" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/80 text-white px-5 py-2 rounded-full text-xs font-bold tracking-[0.2em] border border-slate-700 hidden shadow-lg z-10">
-            1 / 3
-        </div>
-    </div>
-
     <script>
-        // ประกาศตัวแปร Global ไว้ก่อนเพื่อป้องกันปัญหา Reference Error ระหว่างสวิตช์ภาษา
-        let currentLang = 'th';
         let currentPlatform = 'fb';
 
-        // --- 📊 ข้อมูลเปรียบเทียบสถิติล่าสุด (Facebook, Instagram, TikTok, YouTube) ประจำภาษาต่างๆ ---
         const compData = {
             fb: {
-                title: {
-                    th: "อัปเดตสถิติล่าสุด (Facebook)",
-                    en: "Latest Performance Update (Facebook)",
-                    zh: "最新数据更新 (Facebook)",
-                    ja: "最新パフォーマンス更新 (Facebook)"
-                },
-                period: {
-                    th: "รอบการวิเคราะห์: 28 วันล่าสุด (16 มิ.ย. - 13 ก.ค. 2026)",
-                    en: "Analysis Period: Last 28 Days (Jun 16 - Jul 13, 2026)",
-                    zh: "数据周期：过去28天 (6月16日 - 7月13日)",
-                    ja: "分析期間：過去28日間 (6月16日 - 7月13日)"
-                },
-                descText: {
-                    th: "สถิติเฟซบุ๊กในรอบนี้ ถือเป็นระยะสะสมความนิยม โดยมี <b class='text-white'>Reels</b> และวิดีโอทั่วไปทำทราฟฟิกรักษาระดับความไวรัลได้อย่างมีมาตรฐาน",
-                    en: "This Facebook period serves as a consolidation phase, with <b class='text-white'>Reels</b> and standard video formats holding steady virality standards.",
-                    zh: "本期 Facebook 数据处于流量巩固期，其中 <b class='text-white'>Reels</b> 和常规视频保持着稳定的传播标准。",
-                    ja: "今回の Facebook 期間は安定期にあたり、<b class='text-white'>Reels</b> と通常動画が安定した再生基準を維持しています。"
-                },
-                vMain: "16.7M", vOld: "เดิม 19.3M", vTrend: "▼ -13.5%", vColor: "text-red-400",
-                eMain: "777.2K", eOld: "เดิม 862K", eTrend: "▼ -9.9%", eColor: "text-red-400",
-                fMain: "1.26M", fOld: "ผู้ติดตามใหม่สะสม +34.5K", fTrend: "▲ +11.1%", fColor: "text-green-400",
-                nTitle: "Link Clicks", nMain: "463", nOld: "ยอดคนกดลิงก์ออก", nTrend: "🔥 +387.4%", nColor: "text-green-400",
-                insight: {
-                    th: "<span class='text-green-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>High Conversion Intent:</b> แม้ยอดวิวจะเข้าสู่ช่วงสะสมพลัง แต่ <b class='text-green-400'>ยอดคนกดลิงก์ (Link Clicks) พุ่งทะยานถึง 387.4%</b> ชี้ให้เห็นว่าคอนเทนต์สามารถ 'สะกดและส่งต่อ' คนดูให้กลายเป็น Traffic ของแบรนด์ได้อย่างมีประสิทธิภาพ แบรนด์อีคอมเมิร์ซห้ามพลาดครับ!",
-                    en: "<span class='text-green-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>High Conversion Intent:</b> While overall views are in a stabilization phase, <b class='text-green-400'>Link Clicks surged by 387.4%</b>. This proves the content has high purchasing intent, making it highly effective for E-Commerce brands!",
-                    zh: "<span class='text-green-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>高转化意向:</b> 尽管总播放量有所回落，但 <b class='text-green-400'>外部链接点击量狂飙 387.4%</b>。这证明内容具有极高的购买意向，对电商类品牌推广效果极佳！",
-                    ja: "<span class='text-green-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>高い購買意向:</b> 再生数は安定期にありますが、<b class='text-green-400'>リンククリック数が 387.4% 急増</b>しました。これは商品購入へのアクション意欲が非常に高いことを示しており、ECブランドに最適です！"
-                },
-                borderClass: "border-t-blue-500",
-                bgClass: "bg-blue-500/10",
-                btnActive: "bg-blue-600",
-                glowClass: "bg-blue-500/10",
-                insightBg: "bg-blue-900/20",
-                insightBorder: "border-blue-500/30"
+                title: "อัปเดตสถิติล่าสุด (Facebook)",
+                vMain: "31.1M", vOld: "เดิม 16.7M", vTrend: "▲ +83.9%", vColor: "text-green-400",
+                eMain: "1.0M", eOld: "เดิม 777.2K", eTrend: "▲ +30.8%", eColor: "text-green-400",
+                fMain: "1.29M", fOld: "ผู้ติดตามสะสม", fTrend: "▲ +39.6K (New)", fColor: "text-green-400",
+                nTitle: "Total Viewers", nMain: "11.6M", nOld: "ผู้ชมไม่ซ้ำ", nTrend: "🔥 +89.6%", nColor: "text-green-400",
+                insight: "<span class='text-green-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Massive Recovery:</b> การกลับมาทวงบัลลังก์ของ Facebook! ยอดวิวพุ่งกลับขึ้นมาแตะ <b class='text-green-400'>31.1 ล้านวิว (เติบโต 83.9%)</b> พร้อมยอดผู้ชมไม่ซ้ำ (Viewers) ที่ทะยานทะลุ 11.6 ล้านบัญชี แสดงให้เห็นถึงพลังการนำส่งคอนเทนต์ที่เข้าถึงคนหมู่มาก (Mass Scale) ได้อย่างทรงพลัง",
+                borderClass: "border-t-green-400", bgClass: "bg-green-500/10", btnActive: "bg-blue-600",
+                glowClass: "bg-green-500/10", insightBg: "bg-green-900/20", insightBorder: "border-green-500/30"
             },
             ig: {
-                title: {
-                    th: "อัปเดตสถิติล่าสุด (Instagram)",
-                    en: "Latest Performance Update (Instagram)",
-                    zh: "最新数据更新 (Instagram)",
-                    ja: "最新パフォーマンス更新 (Instagram)"
-                },
-                period: {
-                    th: "รอบการวิเคราะห์: 28 วันล่าสุด (16 มิ.ย. - 13 ก.ค. 2026)",
-                    en: "Analysis Period: Last 28 Days (Jun 16 - Jul 13, 2026)",
-                    zh: "数据周期：过去28天 (6月16日 - 7月13日)",
-                    ja: "分析期間：過去28日間 (6月16日 - 7月13日)"
-                },
-                descText: {
-                    th: "สถิติ Instagram รอบนี้เติบโตด้านการสร้างปฏิสัมพันธ์แบบก้าวหน้า มีอัตราผู้เยี่ยมชมโปรไฟล์พุ่งสูงขึ้นอย่างก้าวกระโดด",
-                    en: "Instagram stats show robust progress in engagements and a massive leap in profile visits.",
-                    zh: "Instagram 本期数据显示互动量稳健增长，且个人主页访问量实现了爆发式飞跃。",
-                    ja: "今回の Instagram 統計では、エンゲージメントの堅実な進捗と、プロフィール訪問数の爆発的な急増が示されています。"
-                },
-                vMain: "18.2M", vOld: "เดิม 20.4M", vTrend: "▼ -10.8%", vColor: "text-red-400",
-                eMain: "461.7K", eOld: "เดิม 393K", eTrend: "▲ +17.4%", eColor: "text-green-400",
-                fMain: "1.0M", fOld: "ผู้ติดตามใหม่สะสม +14.3K", fTrend: "▲ +11.1%", fColor: "text-green-400",
-                nTitle: "Total Reach", nMain: "1.3M", nOld: "เข้าถึงบัญชีรวม", nTrend: "🔥 +31.7%", nColor: "text-green-400",
-                insight: {
-                    th: "<span class='text-pink-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Expanding Reach & Engagement:</b> อัลกอริทึมยังคงดันโพสต์อย่างต่อเนื่อง <b class='text-pink-400'>ยอด Reach เติบโตขึ้น 31.7% (ทะลุ 1.3 ล้าน)</b> โดยสามารถดึง 'คนหน้าใหม่' (Non-followers) สูงถึง 1.07M บัญชี เข้ามาร่วมโต้ตอบได้อย่างยอดเยี่ยม เป็นโอกาสกอบโกย Brand Awareness ได้ดีที่สุด!",
-                    en: "<span class='text-pink-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Expanding Reach & Engagement:</b> The Instagram algorithm continues to drive traffic with <b class='text-pink-400'>Reach growing by 31.7% (passing 1.3M)</b>, successfully attracting over 1.07M Non-followers. A golden opportunity for massive organic Brand Awareness!",
-                    zh: "<span class='text-pink-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>触达与互动持续扩大:</b> Instagram 算法持续推送，<b class='text-pink-400'>覆盖人数增长 31.7% (破 130 万)</b>，成功吸引超过 107 万非粉丝群体进行深度互动，是获取品牌曝光的绝佳时机！",
-                    ja: "<span class='text-pink-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>リーチとエンゲージメントの拡大:</b> Instagram のアルゴリズムが引き続き好調で、<b class='text-pink-400'>リーチ数が 31.7% 増加 (130万突破)</b>。107万人以上の非フォロワーを獲得し、絶好のオーガニック露出機会となっています！"
-                },
-                borderClass: "border-t-pink-500",
-                bgClass: "bg-pink-500/10",
-                btnActive: "bg-pink-600",
-                glowClass: "bg-pink-500/10",
-                insightBg: "bg-pink-900/20",
-                insightBorder: "border-pink-500/30"
+                title: "อัปเดตสถิติล่าสุด (Instagram)",
+                vMain: "35.0M", vOld: "เดิม 18.2M", vTrend: "▲ +80.0%", vColor: "text-pink-400",
+                eMain: "1.4M", eOld: "เดิม 461.7K", eTrend: "▲ +208.1%", eColor: "text-pink-400",
+                fMain: "1.03M", fOld: "ผู้ติดตามสะสม", fTrend: "▲ +38.1K (New)", fColor: "text-pink-400",
+                nTitle: "Total Reach", nMain: "7.5M", nOld: "การเข้าถึงบัญชีรวม", nTrend: "🔥 +482.5%", nColor: "text-pink-400",
+                insight: "<span class='text-pink-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>IG Viral Phenomenon:</b> สถิติ Instagram รอบนี้คือ <b class='text-pink-400'>'ระเบิดฟอร์มขั้นสุด'</b> ยอดวิวแซงหน้า Facebook ไปแตะ <b class='text-pink-400'>35.0 ล้านวิว</b>! แต่ที่โหดสุดคือยอด Reach ที่พุ่งทะยานถึง 482.5% (ทะลุ 7.5 ล้านบัญชี) และกวาดยอดโต้ตอบ (Interactions) ไปถึง 1.4 ล้านครั้ง เป็นนาทีทองสำหรับแบรนด์ที่ต้องการ Engagement สูงสุด!",
+                borderClass: "border-t-pink-500", bgClass: "bg-pink-500/10", btnActive: "bg-pink-600",
+                glowClass: "bg-pink-500/10", insightBg: "bg-pink-900/20", insightBorder: "border-pink-500/30"
             },
             tk: {
-                title: {
-                    th: "อัปเดตสถิติล่าสุด (TikTok)",
-                    en: "Latest Performance Update (TikTok)",
-                    zh: "最新数据更新 (TikTok)",
-                    ja: "最新パフォーマンス更新 (TikTok)"
-                },
-                period: {
-                    th: "รอบการวิเคราะห์: 28 วันล่าสุด (16 มิ.ย. - 13 ก.ค. 2026)",
-                    en: "Analysis Period: Last 28 Days (Jun 16 - Jul 13, 2026)",
-                    zh: "数据周期：过去28天 (6月16日 - 7月13日)",
-                    ja: "分析期間：過去28日間 (6月16日 - 7月13日)"
-                },
-                descText: {
-                    th: "สถิติช่อง TikTok เกิดปรากฏการณ์ไวรัลระเบิดฟีด ยอดวิวเฉลี่ยและปฏิสัมพันธ์รวมพุ่งทะยานสู่ระดับสูงสุดใหม่",
-                    en: "TikTok statistics indicate an absolute viral explosion, with video views and interactions hitting historic highs.",
-                    zh: "TikTok 本期数据呈现现象级病毒式爆发，视频播放量 and 深度互动量均创下历史新高。",
-                    ja: "TikTok 統計では、圧倒的なバイラル現象が発生しており、動画再生数とインタラクション数が過去最高を記録しました。"
-                },
-                vMain: "5.7M", vOld: "เดิม 2.4M", vTrend: "▲ +137.5%", vColor: "text-green-400",
-                eMain: "290.1K", eOld: "เดิม 87.6K (ไลก์)", eTrend: "▲ +231.2%", eColor: "text-green-400",
-                fMain: "1.3M", fOld: "ผู้ติดตามใหม่สะสม +12.4K", fTrend: "▲ +153.0%", fColor: "text-green-400",
-                nTitle: "New Viewers", nMain: "2.1M", nOld: "ผู้ชมหน้าใหม่ทั้งหมด", nTrend: "🔥 +736.7K New", nColor: "text-green-400",
-                insight: {
-                    th: "<span class='text-slate-300 font-black text-lg mr-2'>💡</span> <b class='text-white'>พลัง FYP และคนดูหน้าใหม่ระเบิดฟลอร์ (TikTok):</b> การกลับมาอย่างยิ่งใหญ่ด้วยยอดวิวพุ่งกระฉูดถึง <b class='text-cyan-400'>5.7 ล้านครั้ง</b> โดยเป็นยอดคนดูหน้าใหม่ที่ค้นพบเราสูงถึง <b class='text-cyan-400'>2.1 ล้านคน</b> ขับเคลื่อนผ่านหน้าแนะนำ <b class='text-cyan-400'>For You Page (FYP) สูงสุดถึง 83.8%</b> แบรนด์มั่นใจได้เลยว่ายอดรีวิวจะเข้าหูคนใหม่ๆ ที่ไม่ใช่กลุ่มสปอนเซอร์เดิมอย่างแน่นอนครับ!",
-                    en: "<span class='text-slate-300 font-black text-lg mr-2'>💡</span> <b class='text-white'>TikTok For You Page Domination:</b> Rebounded dramatically with views skyrocketing to <b class='text-cyan-400'>5.7M</b>. Among these, over <b class='text-cyan-400'>2.1M are New Viewers</b>, driven by <b class='text-cyan-400'>For You Page (FYP) recommendations at 83.8%</b>. Brands can be assured of reaching entirely fresh market demographics!",
-                    zh: "<span class='text-slate-300 font-black text-lg mr-2'>💡</span> <b class='text-white'>为你推荐页 (FYP) 绝对统治:</b> 强势回归！播放量飙升至 <b class='text-cyan-400'>570 万次</b>。在这些观众中，有超过 <b class='text-cyan-400'>210 万为全新受众</b>，其中 <b class='text-cyan-400'>为你推荐页 (FYP) 的推送比例高达 83.8%</b>。品牌可以确信能够触达全新的潜在消费市场！",
-                    ja: "<span class='text-slate-300 font-black text-lg mr-2'>💡</span> <b class='text-white'>おすすめページ (FYP) の圧倒的露出:</b> 再生数が <b class='text-cyan-400'>570万回</b> に急増し、華麗なる復活を遂げました。このうち <b class='text-cyan-400'>210万人以上が新規視聴者</b> であり、おすすめページ（FYP）からの流入が <b class='text-cyan-400'>83.8%</b> を占めています。ブランドは、既存ファンを超えた全く新しい潜在顧客層へアプローチできます！"
-                },
-                borderClass: "border-t-slate-400",
-                bgClass: "bg-slate-500/10",
-                btnActive: "bg-slate-600",
-                glowClass: "bg-slate-500/10",
-                insightBg: "bg-slate-800/80",
-                insightBorder: "border-slate-500/30"
+                title: "อัปเดตสถิติล่าสุด (TikTok)",
+                vMain: "5.0M", vOld: "เดิม 4.1M", vTrend: "▲ +20.7%", vColor: "text-slate-300",
+                eMain: "273.4K", eOld: "เดิม 228.9K", eTrend: "▲ +19.5%", eColor: "text-slate-300",
+                fMain: "1.30M", fOld: "ผู้ติดตามสะสม", fTrend: "▲ +9.9K (Net)", fColor: "text-slate-300",
+                nTitle: "New Viewers", nMain: "2.2M", nOld: "ผู้ชมใหม่เพิ่มขึ้น", nTrend: "🔥 +31.4%", nColor: "text-slate-300",
+                insight: "<span class='text-slate-300 font-black text-lg mr-2'>💡</span> <b class='text-white'>Strong Viewers Growth (TikTok):</b> ยอดรับชมวิดีโอรวมพุ่งแตะ <b class='text-white'>5.0 ล้านวิว (+20.7%)</b> โดยมีผู้ชมรวม (Total Viewers) สูงถึง <b class='text-white'>3.3 ล้านคน (+34.8%)</b> และดึงดูดผู้ชมหน้าใหม่ (New Viewers) เข้ามาค้นพบช่องได้ถึง <b class='text-white'>2.2 ล้านคน (+31.4%)</b> ผ่านการดันขึ้นหน้า For You Page (FYP) สูงถึง 71.2%!",
+                borderClass: "border-t-slate-400", bgClass: "bg-slate-500/10", btnActive: "bg-slate-600",
+                glowClass: "bg-slate-500/10", insightBg: "bg-slate-800/80", insightBorder: "border-slate-500/30"
             },
             yt: {
-                title: {
-                    th: "อัปเดตสถิติล่าสุด (YouTube)",
-                    en: "Latest Performance Update (YouTube)",
-                    zh: "最新数据更新 (YouTube)",
-                    ja: "最新パフォーマンス更新 (YouTube)"
-                },
-                period: {
-                    th: "รอบการวิเคราะห์: 28 วันล่าสุด (16 มิ.ย. - 13 ก.ค. 2026)",
-                    en: "Analysis Period: Last 28 Days (Jun 16 - Jul 13, 2026)",
-                    zh: "数据周期：过去28天 (6月16日 - 7月13日)",
-                    ja: "分析期間：過去28日間 (6月16日 - 7月13日)"
-                },
-                descText: {
-                    th: "สถิติ YouTube ยอดวิวพุ่งสูงขึ้นด้วย Shorts นำพาผู้ชมและสัดส่วนคอมมูนิตี้ใหม่ๆ เข้าสู่ช่องอย่างสวยงาม",
-                    en: "YouTube stats show a solid performance driven by Shorts, consistently bringing a fresh audience into the channel's ecosystem.",
-                    zh: "YouTube 本期数据在 Shorts 短视频的驱动下表现亮眼，为频道生态持续输送源源不断的新观众。",
-                    ja: "YouTube 統計では、Shorts の貢献により安定した再生回数を維持し、新しい視聴者をチャンネルに惹きつけています。"
-                },
-                vMain: "53.4K", vOld: "Shorts Views (82%)", vTrend: "🙋 53.4K", vColor: "text-red-400",
-                eMain: "27.4K", eOld: "Engaged Views", eTrend: "📊 27.4K", eColor: "text-red-400",
-                fMain: "260K", fOld: "ผู้ติดตามรวม", fTrend: "▲ คงที่", fColor: "text-slate-300",
-                nTitle: "Shorts Retention", nMain: "61.8%", nOld: "เลือกดูต่อไม่ปัดทิ้ง", nTrend: "🔥 Swipe-away ต่ำ", nColor: "text-green-400",
-                insight: {
-                    th: "<span class='text-red-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Shorts Retention ทะลุเกณฑ์เฉลี่ยอย่างมีนัยสำคัญ:</b> สถิติชี้ชัดว่าผู้ชมเลือกดูคลิป Shorts ของโนเกียต่อโดยไม่ปัดทิ้งสูงถึง <b class='text-red-400'>61.8%</b> (ค่าเฉลี่ยตลาดทั่วไปอยู่แค่ 50%) พร้อมสัดส่วนผู้ติดตามเพศหญิง (Female Audience) ที่สูงสุดในพอร์ตถึง 33.0% เหมาะแก่การสร้างการจดจำแบรนด์ในระยะยาวที่สุด!",
-                    en: "<span class='text-red-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Outstanding Shorts Retention:</b> Data proves that viewers stayed to watch Nokia's Shorts instead of swiping away at an exceptional rate of <b class='text-red-400'>61.8%</b> (market baseline is ~50%). With the highest female demographic ratio in her portfolio (33%), it is the ultimate channel for long-term brand recall!",
-                    zh: "<span class='text-red-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>傲人的 Shorts 短视频留存率:</b> 数据证实，观众观看 Nokia 的 Shorts 短视频而非直接划走的留存率高达 <b class='text-red-400'>61.8%</b> (市场基准仅约50%)。结合其所有平台中最高比例的女性受众 (33.0%)，这是进行长期品牌植入与认知建立的最佳渠道！",
-                    ja: "<span class='text-red-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>際立つ Shorts の完全視聴率:</b> 視聴者が動画をスワイプして飛ばさずに最後まで選択した維持率が <b class='text-red-400'>61.8%</b> を記録しました (市場平均は~50%)。全プラットフォームの中で最も高い女性比率 (33%) を誇るため、長期的なブランディングに最適です！"
-                },
-                borderClass: "border-t-red-500",
-                bgClass: "bg-red-500/10",
-                btnActive: "bg-red-600",
-                glowClass: "bg-red-500/10",
-                insightBg: "bg-red-900/20",
-                insightBorder: "border-red-500/30"
+                title: "อัปเดตสถิติล่าสุด (YouTube)",
+                vMain: "159.9K", vOld: "เดิม 53.4K", vTrend: "▲ +199.4% (พุ่ง 4 เท่า)", vColor: "text-red-400",
+                eMain: "381.8h", eOld: "Watch Time (ชม.)", eTrend: "🔥 +251.8 ชม.", eColor: "text-red-400",
+                fMain: "260K", fOld: "ผู้ติดตามสะสม", fTrend: "▲ +194 (New)", fColor: "text-red-400",
+                nTitle: "Monthly Audience", nMain: "53.7K", nOld: "ผู้ชมไม่ซ้ำ", nTrend: "🔥 โตขึ้น 2 เท่า", nColor: "text-red-400",
+                insight: "<span class='text-red-400 font-black text-lg mr-2'>💡</span> <b class='text-white'>Explosive Shorts Growth (YouTube):</b> วิดีโอสั้นระเบิดฟีด! ยอดรับชมพุ่งแตะ <b class='text-red-400'>159.9K วิว (เติบโต 4 เท่า / +199.4%)</b> โดยมีทราฟฟิกหลักมาจาก Shorts Feed ถึง 137.1K วิว ดึงดูดผู้ชมไม่ซ้ำ (Monthly Audience) พุ่งขึ้น 2 เท่าเป็น <b class='text-red-400'>53.7K บัญชี</b> พร้อมผู้ชมหน้าใหม่ (New Viewers) สูงถึง 82.1%!",
+                borderClass: "border-t-red-500", bgClass: "bg-red-500/10", btnActive: "bg-red-600",
+                glowClass: "bg-red-500/10", insightBg: "bg-red-900/20", insightBorder: "border-red-500/30"
             }
         };
 
-        // --- Multi-language Translations Mapping ---
+        function updateCompView(platform) {
+            currentPlatform = platform;
+            document.querySelectorAll('.comp-btn').forEach(btn => {
+                btn.className = 'comp-btn px-4 py-1.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-colors border border-transparent flex items-center gap-2 whitespace-nowrap';
+            });
+            
+            const activeTab = document.getElementById('comp-tab-' + platform);
+            if(activeTab) {
+                activeTab.className = `comp-btn active px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2 whitespace-nowrap ${compData[platform].btnActive}`;
+            }
+
+            const data = compData[platform];
+            const card = document.getElementById('comp-card');
+            
+            if(card) {
+                card.classList.remove('fade-in');
+                void card.offsetWidth;
+                card.classList.add('fade-in');
+                card.className = `card-glass p-6 md:p-8 rounded-3xl shadow-xl border-t-4 relative overflow-hidden transition-all duration-300 fade-in ${data.borderClass}`;
+            }
+
+            const titleMain = document.getElementById('comp-title-main');
+            if(titleMain) titleMain.innerText = data.title;
+            
+            let borderColorClass = 'border-green-400';
+            if (platform === 'ig') borderColorClass = 'border-pink-500';
+            if (platform === 'tk') borderColorClass = 'border-slate-400';
+            if (platform === 'yt') borderColorClass = 'border-red-500';
+            
+            const headerBorder = document.getElementById('comp-header-border');
+            if(headerBorder) headerBorder.className = `flex flex-col md:flex-row md:justify-between md:items-end border-l-4 pl-4 mb-8 ${borderColorClass}`;
+            
+            const glow = document.getElementById('comp-glow');
+            if(glow) glow.className = `absolute -right-20 -bottom-20 w-64 h-64 rounded-full blur-[80px] pointer-events-none transition-all ${data.glowClass}`;
+            
+            document.getElementById('comp-v-main').innerText = data.vMain;
+            document.getElementById('comp-v-old').innerText = data.vOld;
+            document.getElementById('comp-v-trend').innerText = data.vTrend;
+            document.getElementById('comp-v-trend').className = `font-bold flex items-center gap-1 ${data.vColor}`;
+
+            document.getElementById('comp-e-main').innerText = data.eMain;
+            document.getElementById('comp-e-old').innerText = data.eOld;
+            document.getElementById('comp-e-trend').innerText = data.eTrend;
+            document.getElementById('comp-e-trend').className = `font-bold flex items-center gap-1 ${data.eColor}`;
+
+            document.getElementById('comp-f-main').innerText = data.fMain;
+            document.getElementById('comp-f-old').innerText = data.fOld;
+            document.getElementById('comp-f-trend').innerText = data.fTrend;
+            document.getElementById('comp-f-trend').className = `font-bold flex items-center gap-1 ${data.fColor}`;
+
+            document.getElementById('comp-n-title').innerText = data.nTitle;
+            
+            let nMainColor = 'text-green-400';
+            if (platform === 'ig') nMainColor = 'text-pink-400';
+            if (platform === 'tk') nMainColor = 'text-white';
+            if (platform === 'yt') nMainColor = 'text-red-400';
+            
+            document.getElementById('comp-n-main').innerText = data.nMain;
+            document.getElementById('comp-n-main').className = `text-2xl md:text-3xl font-black jetbrains ${nMainColor}`;
+            
+            document.getElementById('comp-n-old').innerText = data.nOld;
+            document.getElementById('comp-n-trend').innerText = data.nTrend;
+            document.getElementById('comp-n-trend').className = `font-bold ${data.nColor}`;
+            
+            let dynBorderClass = 'border-b-green-400';
+            if (platform === 'ig') dynBorderClass = 'border-b-pink-500';
+            if (platform === 'tk') dynBorderClass = 'border-b-slate-400';
+            if (platform === 'yt') dynBorderClass = 'border-b-red-500';
+            
+            const dynBorder = document.getElementById('comp-dyn-border');
+            if(dynBorder) dynBorder.className = `bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 border-b-4 relative overflow-hidden ${dynBorderClass}`;
+
+            const insightText = document.getElementById('comp-insight-text');
+            if(insightText) insightText.innerHTML = data.insight;
+            
+            const insightBox = document.getElementById('comp-insight-box');
+            if(insightBox) insightBox.className = `mt-8 p-5 rounded-2xl border relative z-10 ${data.insightBg} ${data.insightBorder}`;
+        }
+
         const translations = {
             th: {
-                insight_proof_title: "📊 ข้อมูลยืนยันสถิติ (Real Analytics)",
+                nav_ratecard: "ดูตารางราคา Rate Card",
+                rc_banner_title: "🏷️ Dedicated Price List & Packages",
+                rc_banner_heading: "ต้องการดูเรทราคาและแพ็คเกจโฆษณาฉบับเต็ม?",
+                btn_goto_ratecard: "ดูตารางราคา & RateCard ฉบับแยกหน้า",
                 agency_title: "🔥 ข้อมูลไฮไลท์สำหรับเอเจนซี่",
                 insight_title: "📊 ข้อมูลเชิงลึกผู้ติดตาม",
-                gender: "เพศ",
-                age: "อายุหลัก",
-                location: "พื้นที่",
-                loc_fb: "🇹🇭 ไทย (68.9%)",
-                loc_ig: "🇹🇭 ไทย (50.8%)",
-                loc_tk: "🇹🇭 ไทย (70.9%)",
-                loc_yt: "🇹🇭 ไทย (97.9%)",
-                header_sub: "MEDIA KIT & RATE CARD 2026",
-                header_sponsorship: "RateCard",
-                header_packages: "Media Packages",
-                hero_desc: "ตัวแทนนำเสนอแบรนด์ไลฟ์สไตล์ของคุณให้เข้าถึงกลุ่มเป้าหมายอย่างเป็นธรรมชาติ ผ่านคาแรคเตอร์สาวแอคทีฟ พลังงานสูง และที่มีเสน่ห์ไม่เหมือนใคร",
-                creator_label: "Creator",
-                creator_val: "สุธาสินี ศิริรักษ์ (โนเกีย)",
-                followers_label: "Followers Base",
-                followers_val: "~3.8 ล้านบัญชี",
-                audience_label: "Top Audience",
-                audience_val: "Male 25-34 (High Purchasing Power)",
-                hero_highlight: "🚀 ด้วยยอดเข้าชมวิดีโอรวมทะลุ <b>43.2 ล้านวิว/เดือน</b> จากทุกแพลตฟอร์ม และอัลกอริทึมวิดีโอสั้นสุดแกร่ง โนเกียพร้อมพาสินค้าของคุณไวรัลและเข้าถึงกลุ่มเป้าหมายหน้าใหม่ได้อย่างไร้ขีดจำกัด!",
+                gender: "เพศ", age: "อายุหลัก", location: "พื้นที่",
+                loc_fb: "🇹🇭 ไทย (62.1%)", loc_ig: "🇹🇭 ไทย (49.9%)", loc_tk: "🇹🇭 ไทย (71.0%)", loc_yt: "🇹🇭 ไทย (หลัก)",
+                header_sub: "MEDIA KIT & PERFORMANCE HUB 2026", header_sponsorship: "Media Kit", header_packages: "& Analytics",
+                hero_desc: "ตัวแทนนำเสนอแบรนด์ไลฟ์สไตล์ของคุณให้เข้าถึงกลุ่มเป้าหมายอย่างเป็นธรรมชาติ ผ่านคาแรคเตอร์สาวแอคทีฟ พลังงานสูง และมีเสน่ห์ไม่เหมือนใคร",
+                creator_label: "Creator", creator_val: "สุธาสินี ศิริรักษ์ (โนเกีย)",
+                followers_label: "Followers Base", followers_val: "~3.89 ล้านบัญชี",
+                audience_label: "Top Audience", audience_val: "Male 25-34 (High Purchasing Power)",
+                growth_title: "📈 การเติบโตอย่างต่อเนื่อง (Growth Trends)", growth_subtitle: "Monthly Views & Followers Growth", growth_desc: "เปรียบเทียบสถิติการเติบโตย้อนหลัง 6 เดือน",
+                comp_title: "🚀 อัปเดตสถิติล่าสุด (Performance Comparison)", comp_period: "รอบการวิเคราะห์: 28 วันล่าสุด (11 ก.ค. - 7 ส.ค. 2026)",
                 platform_title: "📱 Platform & Channel Details",
-                fb_foll: "1.2M+ Followers",
-                fb_l1: "<b class='text-white'>จุดเด่น:</b> เข้าถึงคนกลุ่มใหญ่ (Mass Scale) ไวรัลได้ง่ายและรวดเร็ว",
-                fb_l2: "<b class='text-white'>สถิติ:</b> ยอดวิว 32.0M+ /ด | Interactions 1.1M+ ครั้ง",
-                fb_l3: "<b class='text-white'>เป้าหมาย:</b> วัยทำงาน 25-34 ปี มีกำลังซื้อสูง",
-                fb_l4: "<b class='text-white'>Format:</b> คลิปวิดีโอสั้น Vlogs และ Photo Album",
-                fb_h1: "<b class='text-white'>Traffic Source:</b> 82.9% ของยอดวิวมาจาก Non-followers (ดันฟีดคนนอก)",
-                fb_h2: "<b class='text-white'>Top Format:</b> 83.8% ของยอดวิวมาจากฟีเจอร์ Reels",
-                fb_h3: "<b class='text-white'>Retention:</b> ยอดคนดูคลิปเกิน 1 นาที (1-Min Views) โต 525%",
-                ig_foll: "1.0M+ Followers",
-                ig_l1: "<b class='text-white'>จุดเด่น:</b> ภาพลักษณ์พรีเมียม โมเดลลิ่ง และการสร้าง Conversion",
-                ig_l2: "<b class='text-white'>สถิติ:</b> ยอดวิว 18.2M /ด | Interactions 461.7K+ ครั้ง",
-                ig_l3: "<b class='text-white'>เป้าหมาย:</b> วัยรุ่น-วัยทำงาน เน้นแฟชั่นและไลฟ์สไตล์",
-                ig_l4: "<b class='text-white'>Format:</b> IG Reels, Photo Post OOTD และ IG Stories",
-                ig_h1: "<b class='text-white'>Viral Reach:</b> เข้าถึงคนนอกเพจสูงถึง 1.68M บัญชี (+374%)",
-                ig_h2: "<b class='text-white'>Profile Visits:</b> ยอดเข้าชมโปรไฟล์พุ่งสูงถึง 157.6K ครั้ง (+233%)",
-                ig_h3: "<b class='text-white'>Interactions:</b> การโต้ตอบเติบโต 85.5% (469K+)",
-                tk_foll: "1.3M+ Followers",
-                tk_l1: "<b class='text-white'>จุดเด่น:</b> คอนเทนต์ไวรัลง่าย ขี้เล่น เป็นกันเอง ตามเทรนด์",
-                tk_l2: "<b class='text-white'>สถิติ:</b> ยอดวิว 5.7M /ด | ยอดถูกใจรวม 290.1K ไลก์",
-                tk_l3: "<b class='text-white'>เป้าหมาย:</b> Gen Z และ Young Adults ชอบความเรียล",
-                tk_l4: "<b class='text-white'>Format:</b> Vertical Video ครีเอทีฟสนุกๆ และป้ายยา",
-                tk_h1: "<b class='text-white'>Profile Visits:</b> ยอดเข้าชมโปรไฟล์พุ่งสูงถึง 145.5K ครั้ง (+260%)",
-                tk_h2: "<b class='text-white'>New Audience:</b> ดึงดูดผู้ชมหน้าใหม่เข้ามาได้ถึง 736.7K บัญชี",
-                tk_h3: "<b class='text-white'>Total Views:</b> ยอดวิวเติบโตก้าวกระโดดกลับมาแตะ 2.4M (+174.9%)",
-                yt_foll: "260K+ Subscribers",
-                yt_l1: "<b class='text-white'>จุดเด่น:</b> ดึงดูดผู้ชมใหม่ได้อย่างมหาศาลผ่านฟีเจอร์ Shorts",
-                yt_l2: "<b class='text-white'>สถิติ:</b> ยอดวิว 67.4K /ด | ผู้ชมไม่ซ้ำ 25.3K บัญชี",
-                yt_l3: "<b class='text-white'>เป้าหมาย:</b> ผู้ที่ชื่นชอบคลิปสั้น, คอมมูนิตี้เจาะลึก",
-                yt_l4: "<b class='text-white'>Format:</b> YT Shorts (Awareness) และ Vlog/Review",
-                yt_h1: "<b class='text-white'>Shorts Impact:</b> ดันยอดวิวเติบโตขึ้น 2.4 เท่าจากช่วงปกติ",
-                yt_h2: "<b class='text-white'>Discovery:</b> 87.1% คือผู้ชมหน้าใหม่ (New Viewers)",
-                yt_h3: "<b class='text-white'>Watch Time:</b> ชั่วโมงการรับชมพุ่งสูงถึง 194.2 ชั่วโมง",
-                alacarte_title: "💸 A La Carte Media Rate",
-                alacarte_desc: "เรทราคาจ้างงานแบบแยกชิ้น สำหรับแบรนด์ที่ต้องการ Custom งานเอง",
-                alc_v: "Short Video<br><span class='text-[10px]'>(FB+IG+TikTok+Youtube)</span>",
-                alc_p: "Photo Album<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_sp: "Single Photopost<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_s: "IG/FB Story<br><span class='text-[10px]'>(พร้อมแปะ Link)</span>",
-                alc_ma: "Media Asset<br><span class='text-[10px]'>(สิทธิ์ใช้งาน 3 เดือน)</span>",
-                alc_aa: "Ads Asset<br><span class='text-[10px]'>(สิทธิ์ยิงแอด 1 เดือน)</span>",
-                addon_title: "➕ Add - On",
-                ex_title: "🎬 Exclusive Appearances & Production",
-                ex_desc: "บริการงานหน้ากล้อง โปรดักชั่นพิเศษ และการปรากฏตัวในงานอีเวนต์",
-                ex_c1_title: "📱 Social Media",
-                ex_c1_sarano_title: "💡 รายการ สาระโน!!",
-                ex_c1_1: "Logo Tie-in",
-                ex_c1_2: "Post & Share<br><span class='text-[10px] text-slate-500'>(ลูกค้ามีคอนเทนต์)</span>",
-                ex_c1_3: "Product Showcase<br><span class='text-[10px] text-slate-500'>(10 Sec)</span>",
-                ex_c1_4: "Live On Social<br><span class='text-[10px] text-slate-500'>(ช่องโนเกีย)</span>",
-                ex_c1_5: "Product Review<br><span class='text-[10px] text-slate-500'>(5-10 Min)</span>",
-                ex_c1_6: "Product Showcase<br><span class='text-[10px] text-slate-500'>(30 Sec x 10 EP)</span>",
-                ex_c2_title: "🎤 Event Appearance",
-                ex_c2_1: "Pretty Indoor<br><span class='text-[10px] text-slate-500'>(8 hr + PhotoPost)</span>",
-                ex_c2_2: "Pretty RaceQueen<br><span class='text-[10px] text-slate-500'>(+ PhotoPost)</span>",
-                ex_c2_3: "MC Host Event<br><span class='text-[10px] text-slate-500'>(+ PhotoPost)</span>",
-                ex_c2_4: "Cosplayer Event<br><span class='text-[10px] text-slate-500'>(8 hr + PhotoPost + Tie-in Reel)</span>",
-                ex_c3_title: "📸 Modeling",
-                ex_c3_desc_non: "(Non-commercial rate)",
-                ex_c3_1: "Portrait Model",
-                ex_c3_2: "Cosplay Model",
-                ex_c3_3: "Lingerie Model",
-                ex_c3_desc_com: "(Commercial Rate)",
-                ex_c3_4: "Event Shooting<br><span class='text-[10px] text-slate-500'>(ทำงาน 8 ชม.)</span>",
-                starts_label: "เริ่มต้น",
-                ex_c4_title: "🎬 Actress & Host",
-                ex_c4_1: "Guest Interview",
-                ex_c4_2: "Host / Actress<br><span class='text-[10px] text-slate-500'>(TVC / Online)</span>",
-                pkg_title: "🛍️ RATECARD MEDIA PACKAGES",
-                pkg_desc: "ซื้อเป็นแพ็คเกจคุ้มค่ากว่า! รับส่วนลดพิเศษพร้อมสรุป Data ทุกระยะ",
-                p1_sub: "Awareness Builder",
-                p1_desc: "เหมาะสำหรับแบรนด์ที่ต้องการสร้างการรับรู้ (Mass Awareness) เจาะกลุ่มคนรุ่นใหม่ด้วยคอนเทนต์ที่ดูเป็นธรรมชาติ ไม่ยัดเยียด",
-                p_del: "สิ่งที่แบรนด์จะได้รับ",
-                p1_l1: "<span class='text-slate-300 pr-2'>✓ <b>1x Short Video</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p1_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x IG/FB Story</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p1_l3: "<span class='text-slate-300 pr-2'>✓ <b>Ads Asset</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>สิทธิ์ยิงแอด 1 เดือน</span>",
-                p1_l4: "<span class='text-slate-300 pr-2'>✓ <b>สรุป Insight & Data</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 วัน)</span>",
-                p2_sub: "Engagement & Conversion",
-                p2_desc: "แบรนด์แฟชั่น แกดเจ็ต สกินแคร์ ที่ต้องการกระตุ้นยอดขาย ผสมผสานวิดีโอไลฟ์สไตล์และภาพนิ่งคุณภาพสูง",
-                p_del2: "สิ่งที่แบรนด์จะได้รับ",
-                p2_l1: "<span class='text-slate-300 pr-2'>✓ <b>2x Short Videos</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p2_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x Photo Album</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(4-6 ภาพ ลง FB/IG)</span>",
-                p2_l3: "<span class='text-slate-300 pr-2'>✓ <b>3x IG/FB Stories</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p2_l4: "<span class='text-slate-300 pr-2'>✓ <b>Ads Asset</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>สิทธิ์ยิงแอด 1 เดือน</span>",
-                p2_l5: "<span class='text-slate-300 pr-2'>✓ <b>สรุป Insight & Data</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 วัน)</span>",
-                p3_sub: "Full Brand Integration",
-                p3_desc: "เหมาะสำหรับ Main Sponsor สร้าง Brand Loyalty ระยะยาว ครอบคลุมทุกแพลตฟอร์มตามติดชีวิตแบบเจาะลึก",
-                p_del3: "สิ่งที่แบรนด์จะได้รับ",
-                p3_l1: "<span class='text-slate-300 pr-2'>✓ <b>4x Short Videos</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>ลงครบทุกช่องทาง</span>",
-                p3_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x Premium Photo Album</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>จัดเต็ม</span>",
-                p3_l3: "<span class='text-slate-300 pr-2'>✓ <b>5x IG/FB Stories</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>กระจายตลอดแคมเปญ</span>",
-                p3_l4: "<span class='text-slate-300 pr-2'>✓ <b>1x Event Shoot</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>/ Special Location</span>",
-                p3_l5: "<span class='text-slate-300 pr-2'>✓ <b>Media & Ads Asset</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>สิทธิ์เต็ม 3 เดือน</span>",
-                p3_l6: "<span class='text-slate-300 pr-2'>✓ <b>สรุป Insight & Data</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 วัน)</span>",
-                payment: "<span class='inline-block mr-4 mb-2 md:mb-0'>💳 <b>เงื่อนไขชำระเงิน:</b> นิติบุคคล เครดิตเทอม 30 วัน | บุคคล มัดจำ 50% ก่อนเริ่มงาน</span><span class='inline-block'><span class='text-pink-400'>✨ <b>พิเศษ:</b></span> ชำระเงินสด (Cash) <b>รับส่วนลดทันที 10%</b> ทุกแพ็คเกจ</span>",
-                am_title: "🤝 EXCLUSIVE PARTNERSHIP",
-                am_desc: "แพ็กเกจสัญญาแบรนด์แอมบาสเดอร์ระยะยาว ควบคุมภาพลักษณ์และทำแคมเปญต่อเนื่อง",
-                am_p1_desc: "แพ็กเกจเริ่มต้น สำหรับทดสอบประสิทธิภาพและเคมีระหว่างแบรนด์กับครีเอเตอร์",
-                starts_at: "เริ่มต้น",
-                am_p1_l1: "<b>Full Production</b> (รวมค่าตัวนางแบบ, รถเข้าฉาก, ช่างภาพ)",
-                am_p1_l2: "<b>5x Social Publish</b> (โพสต์ 5 รูป ลงสื่อโนเกีย)",
-                am_p1_l3: "<b>20x Photos Delivered</b> (ส่งมอบ 20 รูป ให้แบรนด์ใช้งาน)",
-                am_p1_l4: "<b>6-Month Usage Right</b> (สิทธิ์ใช้ภาพ 6 เดือน)",
-                am_p1_l5: "<b>1-Month Ads Asset</b> (สิทธิ์ยิงแอด 1 เดือน)",
-                am_p2_desc: "แพ็กเกจแอมบาสเดอร์ 1 ปี พร้อมสิทธิ์ส่วนลดพิเศษ",
-                am_p2_l5: "ส่วนลดของ A La Carte Media 50%",
-                why_title: "💡 Why Brands Trust Nokia?",
-                why_desc: "ทำไมแบรนด์ไลฟ์สไตล์ชั้นนำถึงเลือกให้โนเกียเป็นตัวแทนสื่อสาร",
-                why1: "ภาพลักษณ์สาวแอคทีฟมีเสน่ห์ ผสมผสานความมั่นใจ ทะมัดทะแมง และความเป็นแฟชั่นโมเดล ทำให้พรีเซนต์สินค้าได้ \"คูล\" และน่าใช้ตามแบบไม่ซ้ำใคร",
-                why2: "สถิติยอดคลิกลิงก์สูงถึง 1,909 ครั้ง/เดือน พิสูจน์ว่าผู้ติดตามพร้อม Action ตามคำแนะนำ โดยเฉพาะกลุ่มแฟชั่น แกดเจ็ต และอีคอมเมิร์ซ",
-                why3: "Tie-in สินค้ากลมกลืนไปกับชีวิตประจำวันที่มีพลังงานล้นเหลือ ไม่ว่าจะฟิตเนส วิ่งมาราธอน คอสเพลย์ ทำให้แบรนด์เข้าถึงใจคนดูอย่างเป็นธรรมชาติ",
-                growth_title: "📈 การเติบโตอย่างต่อเนื่อง (Growth Trends)",
-                growth_subtitle: "Monthly Views & Followers Growth",
-                growth_desc: "เปรียบเทียบสถิติการเติบโตย้อนหลัง 4 เดือน",
-                comp_title: "🚀 อัปเดตสถิติล่าสุด (Performance Comparison)",
-                comp_period: "รอบการวิเคราะห์: 28 วันล่าสุด (พฤษภาคม 2026)",
-                work_video_title: "🎬 ผลงานวิดีโอสั้น",
-                partner_title: "แบรนด์พาร์ทเนอร์ (Trusted By)",
-                footer: "สามารถปรับแต่งแพ็คเกจ (Customize) ตาม Budget/Objective ของลูกค้าได้",
-                contact_work: "ติดต่อขอรับใบเสนอราคา / Contact for Work",
-                contact_work_2: "สอบถามรายละเอียดเพิ่มเติม (Contact Us)",
-                contact_phone: "โทร. คุณบี 0947915154",
-                btn_visit: "เปิดโปรไฟล์",
-                btn_back_main: "Back to Main"
+                work_video_title: "🎬 ผลงานวิดีโอสั้น", partner_title: "แบรนด์พาร์ทเนอร์ (Trusted By)",
+                why_title: "💡 Why Brands Trust Nokia?", why_desc: "ทำไมแบรนด์ไลฟ์สไตล์ชั้นนำถึงเลือกให้โนเกียเป็นตัวแทนสื่อสาร",
+                contact_work: "ติดต่อขอรับใบเสนอราคา / Contact for Work", btn_visit: "ดูโปรไฟล์"
             },
             en: {
-                insight_proof_title: "📊 Real Analytics Proofs",
+                nav_ratecard: "View Rate Card",
+                rc_banner_title: "🏷️ Dedicated Price List & Packages",
+                rc_banner_heading: "Looking for Official RateCard & Media Packages?",
+                btn_goto_ratecard: "View Full RateCard & Pricing Page",
                 agency_title: "🔥 Agency & Brand Highlights",
                 insight_title: "📊 Audience Insights",
-                gender: "Gender",
-                age: "Top Age",
-                location: "Location",
-                loc_fb: "🇹🇭 TH (68.9%)",
-                loc_ig: "🇹🇭 TH (50.8%)",
-                loc_tk: "🇹🇭 TH (70.9%)",
-                loc_yt: "🇹🇭 TH (Main)",
-                header_sub: "MEDIA KIT & RATE CARD 2026",
-                header_sponsorship: "RateCard",
-                header_packages: "Media Packages",
+                gender: "Gender", age: "Top Age", location: "Location",
+                loc_fb: "🇹🇭 TH (62.1%)", loc_ig: "🇹🇭 TH (49.9%)", loc_tk: "🇹🇭 TH (71.0%)", loc_yt: "🇹🇭 TH (Main)",
+                header_sub: "MEDIA KIT & PERFORMANCE HUB 2026", header_sponsorship: "Media Kit", header_packages: "& Analytics",
                 hero_desc: "Representing your lifestyle brand to naturally reach the target audience through an active, high-energy, and uniquely charming character.",
-                creator_label: "Creator",
-                creator_val: "Sutasinee Sirirak (Nokia)",
-                followers_label: "Followers Base",
-                followers_val: "~3.8 Million Accounts",
-                audience_label: "Top Audience",
-                audience_val: "Male 25-34 (High Purchasing Power)",
-                hero_highlight: "🚀 With over <b>43.2 million</b> monthly video views across platforms and a powerful short video algorithm, Nokia is ready to skyrocket your products!",
+                creator_label: "Creator", creator_val: "Sutasinee Sirirak (Nokia)",
+                followers_label: "Followers Base", followers_val: "~3.89 Million Accounts",
+                audience_label: "Top Audience", audience_val: "Male 25-34 (High Purchasing Power)",
+                growth_title: "📈 Steady Growth & Trends", growth_subtitle: "Monthly Views & Followers Growth", growth_desc: "Growth comparison over the last 6 months",
+                comp_title: "🚀 Latest Performance Update", comp_period: "Analysis Period: Last 28 Days (11 Jul - 7 Aug 2026)",
                 platform_title: "📱 Platform & Channel Details",
-                fb_foll: "1.2M+ Followers",
-                fb_l1: "<b class='text-white'>Highlights:</b> Mass scale reach, easy and fast virality.",
-                fb_l2: "<b class='text-white'>Stats:</b> 32.0M+ views/mo | 1.1M+ Interactions.",
-                fb_l3: "<b class='text-white'>Target:</b> Working age 25-34 with high purchasing power.",
-                fb_l4: "<b class='text-white'>Format:</b> Short videos, Vlogs, and Photo Albums.",
-                fb_h1: "<b class='text-white'>Traffic Source:</b> 82.9% of views are from Non-followers.",
-                fb_h2: "<b class='text-white'>Top Format:</b> 83.8% of all views come from Reels.",
-                fb_h3: "<b class='text-white'>Retention:</b> 1-Minute Views skyrocketed by 525%.",
-                ig_foll: "1.0M+ Followers",
-                ig_l1: "<b class='text-white'>Highlights:</b> Premium image, modeling, and high conversion.",
-                ig_l2: "<b class='text-white'>Stats:</b> 18.2M views/mo | 461.7K+ Interactions.",
-                ig_l3: "<b class='text-white'>Target:</b> Teens to young adults focusing on fashion and lifestyle.",
-                ig_l4: "<b class='text-white'>Format:</b> IG Reels, OOTD Photo Posts, IG Stories.",
-                ig_h1: "<b class='text-white'>Viral Reach:</b> Non-follower reach hit 1.68M accounts (+374%)",
-                ig_h2: "<b class='text-white'>Profile Visits:</b> Profile visits surged to 157.6K (+233%)",
-                ig_h3: "<b class='text-white'>Interactions:</b> Interactions grew by 85.5% (469K+)",
-                tk_foll: "1.3M+ Followers",
-                tk_l1: "<b class='text-white'>Highlights:</b> Easy virality, playful, friendly, and trendy.",
-                tk_l2: "<b class='text-white'>Stats:</b> 5.7M views/mo | 290.1K Total Likes",
-                tk_l3: "<b class='text-white'>Target:</b> Gen Z and Young Adults (Authenticity).",
-                tk_l4: "<b class='text-white'>Format:</b> Creative vertical videos and product reviews.",
-                tk_h1: "<b class='text-white'>Profile Visits:</b> Profile visits surged by 260% to 145.5K",
-                tk_h2: "<b class='text-white'>New Audience:</b> Attracted over 736.7K new viewers",
-                tk_h3: "<b class='text-white'>Total Views:</b> Views skyrocketed back to 2.4M (+174.9%)",
-                yt_foll: "260K+ Subscribers",
-                yt_l1: "<b class='text-white'>Highlights:</b> Massive new audience attraction via Shorts.",
-                yt_l2: "<b class='text-white'>Stats:</b> 67.4K views/mo | 25.3K Unique Audience",
-                yt_l3: "<b class='text-white'>Target:</b> Short video lovers, engaged community.",
-                yt_l4: "<b class='text-white'>Format:</b> YT Shorts (Awareness) and Vlogs.",
-                yt_h1: "<b class='text-white'>Shorts Impact:</b> Boosted views by 2.4x above usual.",
-                yt_h2: "<b class='text-white'>Discovery:</b> 87.1% are New Viewers.",
-                yt_h3: "<b class='text-white'>Watch Time:</b> Watch hours surged to 194.2 hours.",
-                alacarte_title: "💸 A La Carte Media Rate",
-                alacarte_desc: "Individual rates for brands looking to customize their own campaigns.",
-                alc_v: "Short Video<br><span class='text-[10px]'>(FB+IG+TikTok+Youtube)</span>",
-                alc_p: "Photo Album<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_sp: "Single Photopost<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_s: "IG/FB Story<br><span class='text-[10px]'>(With Link)</span>",
-                alc_ma: "Media Asset<br><span class='text-[10px]'>(3-Month Rights)</span>",
-                alc_aa: "Ads Asset<br><span class='text-[10px]'>(1-Month Rights)</span>",
-                addon_title: "➕ Add - On",
-                ex_title: "🎬 Exclusive Appearances & Production",
-                ex_desc: "On-camera services, special productions, and event appearances.",
-                ex_c1_title: "📱 Social Media",
-                ex_c1_sarano_title: "💡 Sara-No Program",
-                ex_c1_1: "Logo Tie-in",
-                ex_c1_2: "Post & Share<br><span class='text-[10px] text-slate-500'>(Client provides content)</span>",
-                ex_c1_3: "Product Showcase<br><span class='text-[10px] text-slate-500'>(10 Sec)</span>",
-                ex_c1_4: "Live On Social<br><span class='text-[10px] text-slate-500'>(Nokia's Channel)</span>",
-                ex_c1_5: "Product Review<br><span class='text-[10px] text-slate-500'>(5-10 Min)</span>",
-                ex_c1_6: "Product Showcase<br><span class='text-[10px] text-slate-500'>(30 Sec x 10 EP)</span>",
-                ex_c2_title: "🎤 Event Appearance",
-                ex_c2_1: "Pretty Indoor<br><span class='text-[10px] text-slate-500'>(8 hr + PhotoPost)</span>",
-                ex_c2_2: "Pretty RaceQueen<br><span class='text-[10px] text-slate-500'>(+ PhotoPost)</span>",
-                ex_c2_3: "MC Host Event<br><span class='text-[10px] text-slate-500'>(+ PhotoPost)</span>",
-                ex_c2_4: "Cosplayer Event<br><span class='text-[10px] text-slate-500'>(8 hr + PhotoPost + Tie-in Reel)</span>",
-                ex_c3_title: "📸 Modeling",
-                ex_c3_desc_non: "(Non-commercial rate)",
-                ex_c3_1: "Portrait Model",
-                ex_c3_2: "Cosplay Model",
-                ex_c3_3: "Lingerie Model",
-                ex_c3_desc_com: "(Commercial Rate)",
-                ex_c3_4: "Event Shooting<br><span class='text-[10px] text-slate-500'>(8 Hours)</span>",
-                starts_label: "Starts",
-                ex_c4_title: "🎬 Actress & Host",
-                ex_c4_1: "Guest Interview",
-                ex_c4_2: "Host / Actress<br><span class='text-[10px] text-slate-500'>(TVC / Online)</span>",
-                pkg_title: "🛍️ RATECARD MEDIA PACKAGES",
-                pkg_desc: "Buying in packages is more cost-effective! Get special discounts and data reports.",
-                p1_sub: "Awareness Builder",
-                p1_desc: "Suitable for brands wanting to create mass awareness targeting the new generation with natural, non-intrusive content.",
-                p_del: "Deliverables",
-                p1_l1: "<span class='text-slate-300 pr-2'>✓ <b>1x Short Video</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>FB/IG/TikTok</span>",
-                p1_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x IG/FB Story</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>With Link</span>",
-                p1_l3: "<span class='text-slate-300 pr-2'>✓ <b>Ads Asset</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>1 Month</span>",
-                p1_l4: "<span class='text-slate-300 pr-2'>✓ <b>Insight & Data Report</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 Days)</span>",
-                p2_sub: "Engagement & Conversion",
-                p2_desc: "Fashion, gadget, and skincare brands looking to boost sales by blending lifestyle videos and high-quality stills.",
-                p_del2: "Deliverables",
-                p2_l1: "<span class='text-slate-300 pr-2'>✓ <b>2x Short Videos</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>FB/IG/TikTok</span>",
-                p2_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x Photo Album</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(4-6 photos)</span>",
-                p2_l3: "<span class='text-slate-300 pr-2'>✓ <b>3x IG/FB Stories</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>With Link</span>",
-                p2_l4: "<span class='text-slate-300 pr-2'>✓ <b>Ads Asset</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>1 Month</span>",
-                p2_l5: "<span class='text-slate-300 pr-2'>✓ <b>Insight & Data Report</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 Days)</span>",
-                p3_sub: "Full Brand Integration",
-                p3_desc: "Ideal for Main Sponsors building long-term brand loyalty. Covers all platforms with deep daily life integration.",
-                p_del3: "Deliverables",
-                p3_l1: "<span class='text-slate-300 pr-2'>✓ <b>4x Short Videos</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>All Channels</span>",
-                p3_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x Premium Photo Album</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>Retouched</span>",
-                p3_l3: "<span class='text-slate-300 pr-2'>✓ <b>5x IG/FB Stories</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>Distributed</span>",
-                p3_l4: "<span class='text-slate-300 pr-2'>✓ <b>1x Event Shoot</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>/ Special Location</span>",
-                p3_l5: "<span class='text-slate-300 pr-2'>✓ <b>Media & Ads Asset</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>3 Months</span>",
-                p3_l6: "<span class='text-slate-300 pr-2'>✓ <b>Insight & Data Report</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 Days)</span>",
-                payment: "<span class='inline-block mr-4 mb-2 md:mb-0'>💳 <b>Payment Terms:</b> Corporate 30 days credit | Individual 50% deposit before start</span><span class='inline-block'><span class='text-pink-400'>✨ <b>Special:</b></span> Cash payments get <b>10% instant discount</b></span>",
-                am_title: "🤝 EXCLUSIVE PARTNERSHIP",
-                am_desc: "Long-term brand ambassador packages. Maintain brand image and run continuous campaigns.",
-                am_p1_desc: "Starter package to test the performance and chemistry between brand and creator.",
-                starts_at: "Starts at",
-                am_p1_l1: "<b>Full Production</b> (Model, Cars, Photographer)",
-                am_p1_l2: "<b>5x Social Publish</b> on Nokia's channels",
-                am_p1_l3: "<b>20x Photos Delivered</b> to brand",
-                am_p1_l4: "<b>6-Month Usage Right</b>",
-                am_p1_l5: "<b>1-Month Ads Asset</b>",
-                am_p2_desc: "1-Year Ambassador Package with special discounts.",
-                am_p2_l5: "50% Discount on A La Carte Media",
-                why_title: "💡 Why Brands Trust Nokia?",
-                why_desc: "Why top lifestyle brands choose Nokia as their communicator.",
-                why1: "Active, confident, and fashion-model image makes presenting products 'cool' and naturally appealing.",
-                why2: "Up to 1,909 link clicks/month proves followers take action, especially for fashion, gadgets, and e-commerce.",
-                why3: "Seamless product tie-ins in daily energetic activities like fitness, marathons, or cosplay, reaching hearts naturally.",
-                growth_title: "📈 Steady Growth & Trends",
-                growth_subtitle: "Monthly Views & Followers Growth",
-                growth_desc: "Growth comparison over the last 4 months",
-                comp_title: "🚀 Latest Performance Update",
-                comp_period: "Analysis Period: Last 28 Days (May 2026)",
-                work_video_title: "🎬 Short Video Content",
-                partner_title: "Trusted Brand Partners",
-                footer: "Packages can be customized according to the client's budget/objectives.",
-                contact_work: "Request Quotation / Contact for Work",
-                contact_work_2: "Contact us for more details",
-                contact_phone: "Tel. Khun Bee: 0947915154"
+                work_video_title: "🎬 Short Video Content", partner_title: "Trusted Brand Partners",
+                why_title: "💡 Why Brands Trust Nokia?", why_desc: "Why leading lifestyle brands choose Nokia",
+                contact_work: "Request Quotation / Contact for Work", btn_visit: "Visit Profile"
             },
             zh: {
-                insight_proof_title: "📊 真实数据洞察 (Real Analytics)",
+                nav_ratecard: "查看价格表 (Rate Card)",
+                rc_banner_title: "🏷️ 专属价格与套餐",
+                rc_banner_heading: "需要查看完整的官方媒体报价单与套餐？",
+                btn_goto_ratecard: "点击进入专属报价单页面 (RateCard Page)",
                 agency_title: "🔥 代理商与品牌亮点",
                 insight_title: "📊 受众洞察",
-                gender: "性别",
-                age: "主要年龄段",
-                location: "地区",
-                loc_fb: "🇹🇭 泰国 (68.9%)",
-                loc_ig: "🇹🇭 泰国 (50.8%)",
-                loc_tk: "🇹🇭 泰国 (70.9%)",
-                loc_yt: "🇹🇭 泰国 (主要)",
-                header_sub: "2026 媒体手册与报价单",
-                header_sponsorship: "RateCard",
-                header_packages: "Media Packages",
+                gender: "性别", age: "主要年龄段", location: "地区",
+                loc_fb: "🇹🇭 泰国 (62.1%)", loc_ig: "🇹🇭 泰国 (49.9%)", loc_tk: "🇹🇭 泰国 (71.0%)", loc_yt: "🇹🇭 泰国 (主要)",
+                header_sub: "2026 媒体手册与性能中心",
+                header_sponsorship: "Media Kit", header_packages: "& Analytics",
                 hero_desc: "通过充满活力、高能量且魅力独特的性格，将您的生活方式品牌自然地呈现给目标受众。",
-                creator_label: "创作者",
-                creator_val: "Sutasinee Sirirak (Nokia)",
-                followers_label: "粉丝基础",
-                followers_val: "约 380 万账号",
-                audience_label: "主要受众",
-                audience_val: "25-34岁男性（高购买力）",
-                hero_highlight: "🚀 凭借每月超过 <b>43.2 百万</b> 的视频播放量跨平台，以及通过短视频算法触达新受众（非粉丝）的能力，Nokia 已准备好让您的产品大获成功！",
+                creator_label: "创作者", creator_val: "Sutasinee Sirirak (Nokia)",
+                followers_label: "粉丝基础", followers_val: "约 389 万账号",
+                audience_label: "主要受众", audience_val: "25-34岁男性（高购买力）",
+                growth_title: "📈 持续增长与趋势 (Growth Trends)", growth_subtitle: "月度播放量与粉丝增长", growth_desc: "过去6个月的增长对比",
+                comp_title: "🚀 最新绩效更新", comp_period: "分析周期：过去28天 (2026年7月11日 - 8月7日)",
                 platform_title: "📱 平台与渠道详情",
-                fb_foll: "1.2M+ 粉丝",
-                fb_l1: "<b class='text-white'>亮点：</b> 触达大规模人群，易于快速产生病毒式传播。",
-                fb_l2: "<b class='text-white'>统计：</b> 每月32.0M+播放量 | 1.1M+互动",
-                fb_l3: "<b class='text-white'>目标：</b> 25-34岁高购买力上班族",
-                fb_l4: "<b class='text-white'>形式：</b> 短视频、Vlog 和照片集",
-                fb_h1: "<b class='text-white'>流量来源:</b> 82.9% 的播放量来自非粉丝 (触达新受众)",
-                fb_h2: "<b class='text-white'>最佳格式:</b> 83.8% 的播放量来自 Reels 短视频",
-                fb_h3: "<b class='text-white'>观看留存:</b> 1分钟以上观看次数飙升 525%",
-                ig_foll: "1.0M+ 粉丝",
-                ig_l1: "<b class='text-white'>亮点：</b> 高端形象、模特展示和高转化率。",
-                ig_l2: "<b class='text-white'>统计：</b> 每月18.2M播放量 | 461.7K+互动",
-                ig_l3: "<b class='text-white'>目标：</b> 关注时尚和生活方式的年轻人",
-                ig_l4: "<b class='text-white'>形式：</b> IG Reels, 穿搭照片, 带链接快拍",
-                ig_h1: "<b class='text-white'>病毒触达:</b> 非粉丝触达高达168万账号 (+374%)",
-                ig_h2: "<b class='text-white'>主页访问:</b> 主页访问量飙升至15.7万次 (+233%)",
-                ig_h3: "<b class='text-white'>互动:</b> 互动量增长85.5% (46.9万+)",
-                tk_foll: "1.3M+ 粉丝",
-                tk_l1: "<b class='text-white'>亮点：</b> 容易病毒式传播、有趣、友好且紧跟潮流。",
-                tk_l2: "<b class='text-white'>统计：</b> 每月5.7M播放 | ไลก์ 290.1K ครั้ง",
-                tk_l3: "<b class='text-white'>目标：</b> Z世代和喜欢真实感的年轻人",
-                tk_l4: "<b class='text-white'>形式：</b> 创意竖屏视频和产品种草",
-                tk_h1: "<b class='text-white'>主页访问:</b> 主页访问量飙升260%至14.5万次",
-                tk_h2: "<b class='text-white'>新观众:</b> 吸引了超过73.6万名新观众",
-                tk_h3: "<b class='text-white'>总播放量:</b> 播放量猛增至240万 (+174.9%)",
-                yt_foll: "260K+ 粉丝",
-                yt_l1: "<b class='text-white'>亮点：</b> 通过Shorts吸引大量新观众。",
-                yt_l2: "<b class='text-white'>统计：</b> 每月67.4K播放 | 25.3K独立观众",
-                yt_l3: "<b class='text-white'>目标：</b> 短视频爱好者，深度社区用户",
-                yt_l4: "<b class='text-white'>形式：</b> YT Shorts 和 深入测评/Vlog",
-                yt_h1: "<b class='text-white'>Shorts 影响:</b> 播放量提升至平时的2.4倍",
-                yt_h2: "<b class='text-white'>发现页:</b> 87.1% 为新观众 (New Viewers)",
-                yt_h3: "<b class='text-white'>观看时长:</b> 观看时长飙升至 194.2 小时",
-                alacarte_title: "💸 单项媒体报价 (A La Carte Media Rate)",
-                alacarte_desc: "为需要定制营销活动的品牌提供单独定价。",
-                alc_v: "短视频<br><span class='text-[10px]'>(FB+IG+TikTok+Youtube)</span>",
-                alc_p: "照片集<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_sp: "单张照片推文<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_s: "IG/FB快拍<br><span class='text-[10px]'>(带链接)</span>",
-                alc_ma: "媒体资产<br><span class='text-[10px]'>(3个月使用权)</span>",
-                alc_aa: "广告资产<br><span class='text-[10px]'>(1个月广告权)</span>",
-                addon_title: "➕ 附加服务 (Add - On)",
-                ex_title: "🎬 独家出场与特别视频制作",
-                ex_desc: "出镜服务、特别视频制作及线下活动出席。",
-                ex_c1_title: "📱 社交媒体",
-                ex_c1_sarano_title: "💡 Sara-No 节目",
-                ex_c1_1: "Logo植入 (Logo Tie-in)",
-                ex_c1_2: "发帖与分享<br><span class='text-[10px] text-slate-500'>(客户提供内容)</span>",
-                ex_c1_3: "产品展示<br><span class='text-[10px] text-slate-500'>(10秒)</span>",
-                ex_c1_4: "社交媒体直播<br><span class='text-[10px] text-slate-500'>(Nokia频道)</span>",
-                ex_c1_5: "产品深度评测<br><span class='text-[10px] text-slate-500'>(5-10分钟)</span>",
-                ex_c1_6: "产品展示<br><span class='text-[10px] text-slate-500'>(30秒 x 10期)</span>",
-                ex_c2_title: "🎤 活动与出席",
-                ex_c2_1: "室内展会模特<br><span class='text-[10px] text-slate-500'>(8小时+照片发帖)</span>",
-                ex_c2_2: "赛车女郎<br><span class='text-[10px] text-slate-500'>(+照片发帖)</span>",
-                ex_c2_3: "活动主持/MC<br><span class='text-[10px] text-slate-500'>(+照片发帖)</span>",
-                ex_c2_4: "Cosplayer 展会模特<br><span class='text-[10px] text-slate-500'>(8小时+照片发帖+植入短视频)</span>",
-                ex_c3_title: "📸 专业模特",
-                ex_c3_desc_non: "(非商业用途)",
-                ex_c3_1: "肖像模特",
-                ex_c3_2: "Cosplay模特",
-                ex_c3_3: "内衣模特",
-                ex_c3_desc_com: "(商业用途)",
-                ex_c3_4: "Event Shooting<br><span class='text-[10px] text-slate-500'>(8 小时)</span>",
-                starts_label: "起价",
-                ex_c4_title: "🎬 演员与主持",
-                ex_c4_1: "嘉宾访谈",
-                ex_c4_2: "主持 / 演员<br><span class='text-[10px] text-slate-500'>(TVC / 线上广告)</span>",
-                pkg_title: "🛍️ 媒体报价单套餐 (RATECARD MEDIA PACKAGES)",
-                pkg_desc: "购买套餐更划算！享受特别折扣及各阶段数据报告。",
-                p1_sub: "提升知名度",
-                p1_desc: "适合希望通过自然、非侵入式内容，针对新一代群体创造大众知名度的品牌。",
-                p_del: "品牌将获得",
-                p1_l1: "<span class='text-slate-300 pr-2'>✓ <b>1x 短视频</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p1_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x 快拍</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p1_l3: "<span class='text-slate-300 pr-2'>✓ <b>广告投放</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>1个月使用权</span>",
-                p1_l4: "<span class='text-slate-300 pr-2'>✓ <b>数据分析报告</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>(3, 5, 15, 30天)</span>",
-                p2_sub: "互动与转化",
-                p2_desc: "适合时尚、数码产品和护肤品牌，通过融合生活方式视频和高质量静物照片来促进销售。",
-                p_del2: "品牌将获得",
-                p2_l1: "<span class='text-slate-300 pr-2'>✓ <b>2x 短视频</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p2_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x 照片集</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(4-6 张照片)</span>",
-                p2_l3: "<span class='text-slate-300 pr-2'>✓ <b>3x 快拍</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p2_l4: "<span class='text-slate-300 pr-2'>✓ <b>广告投放</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>1个月使用权</span>",
-                p2_l5: "<span class='text-slate-300 pr-2'>✓ <b>数据分析报告</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(3, 5, 15, 30天)</span>",
-                p3_sub: "全面品牌整合",
-                p3_desc: "非常适合主赞助商建立长期的品牌忠诚度。覆盖所有平台，深度融入日常生活。",
-                p_del3: "品牌将获得",
-                p3_l1: "<span class='text-slate-300 pr-2'>✓ <b>4x 短视频</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>ลงครบทุกช่องทาง</span>",
-                p3_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x 高级照片集</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>จัดเต็ม</span>",
-                p3_l3: "<span class='text-slate-300 pr-2'>✓ <b>5x 快拍</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>Distributed</span>",
-                p3_l4: "<span class='text-slate-300 pr-2'>✓ <b>1x 活动拍摄</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>/ Special Location</span>",
-                p3_l5: "<span class='text-slate-300 pr-2'>✓ <b>双重授权 (Media & Ads)</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>สิทธิ์เต็ม 3 เดือน</span>",
-                p3_l6: "<span class='text-slate-300 pr-2'>✓ <b>数据分析报告</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>(3, 5, 15, 30天)</span>",
-                payment: "<span class='inline-block mr-4 mb-2 md:mb-0'>💳 <b>付款条件：</b> 企业客户 30天账期 | 个人客户 需预付50%定金</span><span class='inline-block'><span class='text-pink-400'>✨ <b>特别优惠：</b></span> 现金支付立享 <b>10% 折扣</b></span>",
-                am_title: "🤝 独家合作 (Brand Ambassador)",
-                am_desc: "长期品牌大使套餐。维护品牌形象并开展持续活动。",
-                am_p1_desc: "入门套餐，用于测试品牌与创作者之间的表现和契合度。",
-                starts_at: "起价",
-                am_p1_l1: "<b>全套制作 (Full Production)</b> (模特、汽车、摄影师)",
-                am_p1_l2: "<b>5次社交媒体发布</b>",
-                am_p1_l3: "<b>交付20张照片</b> 供品牌使用",
-                am_p1_l4: "<b>6个月图像使用权</b>",
-                am_p1_l5: "<b>1个月广告投放权</b>",
-                am_p2_desc: "1年大使套餐及特别折扣。",
-                am_p2_l5: "A La Carte 单项媒体报价 50% 折扣",
-                why_title: "💡 为什么品牌信任Nokia？",
-                why_desc: "为什么顶级生活方式品牌选择Nokia作为他们的传播者。",
-                why1: "活跃、自信和时装模特的形象让展示产品变得“酷”且自然吸引人。",
-                why2: "每月高达1,909次链接点击证明粉丝会采取行动，尤其是时尚、数码和电商领域。",
-                why3: "产品完美融入健身、马拉松或Cosplay等充满活力的日常活动中，自然触动人心。",
-                growth_title: "📈 持续增长与趋势 (Growth Trends)",
-                growth_subtitle: "月度播放量与粉丝增长 (Views & Followers)",
-                growth_desc: "过去4个月的增长对比统计",
-                comp_title: "🚀 最新绩效更新",
-                comp_period: "分析周期：过去28天 (2026年5月)",
-                work_video_title: "🎬 短视频内容 (Short Videos)",
-                partner_title: "合作品牌 (Trusted Partners)",
-                footer: "套餐可根据客户的预算/目标进行定制。",
-                contact_work: "获取报价 / Contact for Work",
-                contact_work_2: "联系我们了解更多详情",
-                contact_phone: "电话 (Bee): 0947915154"
+                work_video_title: "🎬 短视频内容", partner_title: "合作品牌 (Trusted Partners)",
+                why_title: "💡 为什么品牌信任 Nokia？", why_desc: "为什么众多生活方式品牌选择 Nokia 作为代言人",
+                contact_work: "获取报价 / Contact for Work", btn_visit: "访问主页"
             },
             ja: {
-                insight_proof_title: "📊 リアルな分析データ (Real Analytics)",
+                nav_ratecard: "料金表を見る (Rate Card)",
+                rc_banner_title: "🏷️ 専用料金＆パッケージ案内",
+                rc_banner_heading: "公式メディア料金表およびパッケージをお探しですか？",
+                btn_goto_ratecard: "専用 RateCard 料金ページへ移動",
                 agency_title: "🔥 エージェンシー向けハイライト",
                 insight_title: "📊 オーディエンス分析",
-                gender: "性別",
-                age: "主要年齢層",
-                location: "地域",
-                loc_fb: "🇹🇭 タイ (68.9%)",
-                loc_ig: "🇹🇭 タイ (50.8%)",
-                loc_tk: "🇹🇭 タイ (92.9%)",
-                loc_yt: "🇹🇭 タイ (主要)",
-                header_sub: "2026 メディアキット＆料金表",
-                header_sponsorship: "RateCard",
-                header_packages: "Media Packages",
-                hero_desc: "アクティブでエネルギッシュ、...自然にアピールします。",
-                creator_label: "クリエイター",
-                creator_val: "Sutasinee Sirirak (Nokia)",
-                followers_label: "フォロワー基盤",
-                followers_val: "約380万アカウント",
-                audience_label: "主要オーディエンス",
-                audience_val: "25〜34歳の男性（高い購買力）",
-                hero_highlight: "🚀 月間<b>4,300万回以上</b>の動画再生回数を誇り、ショート動画アルゴリズムを通じて新規視聴者にリーチする能力で、Nokiaはあなたの製品を成功へと導きます！",
+                gender: "性別", age: "主要年齢層", location: "地域",
+                loc_fb: "🇹🇭 タイ (62.1%)", loc_ig: "🇹🇭 タイ (49.9%)", loc_tk: "🇹🇭 タイ (71.0%)", loc_yt: "🇹🇭 タイ (主要)",
+                header_sub: "2026 メディアキット＆パフォーマンス Hub",
+                header_sponsorship: "Media Kit", header_packages: "& Analytics",
+                hero_desc: "アクティブでエネルギッシュ、ユニークな魅力を持つキャラクターを通じて、ターゲット層に自然にアピールします。",
+                creator_label: "クリエイター", creator_val: "Sutasinee Sirirak (Nokia)",
+                followers_label: "フォロワー基盤", followers_val: "約389万アカウント",
+                audience_label: "主要オーディエンス", audience_val: "25〜34歳の男性（高い購買力）",
+                growth_title: "📈 継続的な成長とトレンド", growth_subtitle: "月間再生数とフォロワーの成長", growth_desc: "過去6ヶ月の成長比較",
+                comp_title: "🚀 最新パフォーマンス更新", comp_period: "分析期間：過去28日間 (2026年7月11日 - 8月7日)",
                 platform_title: "📱 プラットフォームとチャンネルの詳細",
-                fb_foll: "1.2M+ フォロワー",
-                fb_l1: "<b class='text-white'>特徴：</b> 大規模なリーチ、簡単かつ迅速なバイラル効果。",
-                fb_l2: "<b class='text-white'>統計：</b> 月間3,200万回以上の再生 | 110万+エンゲージメント",
-                fb_l3: "<b class='text-white'>対象：</b> 高い購買力を持つ25〜34歳の労働世代",
-                fb_l4: "<b class='text-white'>形式：</b> ショート動画、Vlog、フォトアルバム",
-                fb_h1: "<b class='text-white'>トラフィック源:</b> 再生数の82.9%が非フォロワーからです",
-                fb_h2: "<b class='text-white'>トップフォーマット:</b> 総再生数の83.8%がReelsから",
-                fb_h3: "<b class='text-white'>視聴維持率:</b> 1分以上の視聴回数が525%急増",
-                ig_foll: "1.0M+ フォロワー",
-                ig_l1: "<b class='text-white'>特徴：</b> プレミアムなイメージ、モデリング、高いコンバージョン。",
-                ig_l2: "<b class='text-white'>統計：</b> 月間18.2M再生 | 461.7K+エンゲージメント",
-                ig_l3: "<b class='text-white'>対象：</b> ファッションやライフスタイルを重視する若者〜大人",
-                ig_l4: "<b class='text-white'>形式：</b> IG Reels, OOTD投稿, リンク付きストーリー",
-                ig_h1: "<b class='text-white'>バイラルリーチ:</b> 非フォロワーへのリーチが168万アカウントに到達 (+374%)",
-                ig_h2: "<b class='text-white'>プロフィール訪問:</b> プロフィール訪問数が15.7万回に急増 (+233%)",
-                ig_h3: "<b class='text-white'>インタラクション:</b> インタラクションが85.5%増加 (46.9万+)",
-                tk_foll: "1.3M+ フォロワー",
-                tk_l1: "<b class='text-white'>特徴：</b> バイラルになりやすい、遊び心、親しみやすさ、トレンド。",
-                tk_l2: "<b class='text-white'>統計：</b> 月間5.7M再生 | ไลก์ 290.1K ครั้ง",
-                tk_l3: "<b class='text-white'>対象：</b> Z世代および若年層",
-                tk_l4: "<b class='text-white'>形式：</b> クリエイティブな縦型動画や商品レビュー",
-                tk_h1: "<b class='text-white'>プロフィール訪問:</b> プロフィール訪問数が260%急増 (145.5K回)",
-                tk_h2: "<b class='text-white'>新規視聴者:</b> 73.6万人以上の新規視聴者を獲得",
-                tk_h3: "<b class='text-white'>総再生数:</b> 再生回数が2.4Mに急増 (+174.9%)",
-                yt_foll: "260K+ フォロワー",
-                yt_l1: "<b class='text-white'>特徴：</b> Shortsを通じて新規視聴者を大量に獲得。",
-                yt_l2: "<b class='text-white'>統計：</b> 月間67.4K再生 | ユニーク視聴者25.3K",
-                yt_l3: "<b class='text-white'>対象：</b> ショート動画愛好家、熱心なコミュニティ",
-                yt_l4: "<b class='text-white'>形式：</b> YT Shorts と詳細なレビュー/Vlog",
-                yt_h1: "<b class='text-white'>Shortsの影響:</b> 再生回数が通常の2.4倍に急増",
-                yt_h2: "<b class='text-white'>発見:</b> 87.1%が新規視聴者 (New Viewers)",
-                yt_h3: "<b class='text-white'>視聴時間:</b> 視聴時間が194.2時間に急増",
-                alacarte_title: "💸 アラカルトメディア料金 (A La Carte Media Rate)",
-                alacarte_desc: "カスタムキャンペーンを希望するブランド向けの個別料金。",
-                alc_v: "ショート動画<br><span class='text-[10px]'>(FB+IG+TikTok+Youtube)</span>",
-                alc_p: "フォトアルバム<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_sp: "シングル写真投稿<br><span class='text-[10px]'>(FB+IG Post)</span>",
-                alc_s: "IG/FBストーリー<br><span class='text-[10px]'>(リンク付き)</span>",
-                alc_ma: "メディア資産<br><span class='text-[10px]'>(3ヶ月利用権)</span>",
-                alc_aa: "広告資産<br><span class='text-[10px]'>(1ヶ月広告権)</span>",
-                addon_title: "➕ 追加オプション (Add - On)",
-                ex_title: "🎬 独占出演＆特別プロダクション",
-                ex_desc: "カメラ出演サービス、特別制作、イベント出演。",
-                ex_c1_title: "📱 ソーシャルメディア",
-                ex_c1_sarano_title: "💡 番組 Sara-No",
-                ex_c1_1: "ロゴのタイアップ",
-                ex_c1_2: "投稿＆シェア<br><span class='text-[10px] text-slate-500'>(クライアントが提供)</span>",
-                ex_c1_3: "製品紹介<br><span class='text-[10px] text-slate-500'>(10秒)</span>",
-                ex_c1_4: "ソーシャルライブ<br><span class='text-[10px] text-slate-500'>(Nokiaのチャンネル)</span>",
-                ex_c1_5: "製品レビュー<br><span class='text-[10px] text-slate-500'>(5-10分)</span>",
-                ex_c1_6: "製品紹介<br><span class='text-[10px] text-slate-500'>(30秒 x 10話)</span>",
-                ex_c2_title: "🎤 イベント出演",
-                ex_c2_1: "屋内イベントコンパニオン<br><span class='text-[10px] text-slate-500'>(8時間 + 写真投稿)</span>",
-                ex_c2_2: "レースクイーン<br><span class='text-[10px] text-slate-500'>(+ 写真投稿)</span>",
-                ex_c2_3: "イベントMC / 司会<br><span class='text-[10px] text-slate-500'>(+ 写真投稿)</span>",
-                ex_c2_4: "コスプレイヤーイベント<br><span class='text-[10px] text-slate-500'>(8時間 + 写真投稿 + タイアップ動画)</span>",
-                ex_c3_title: "📸 モデル撮影",
-                ex_c3_desc_non: "(非商用レート)",
-                ex_c3_1: "ポートレートモデル",
-                ex_c3_2: "コスプレモデル",
-                ex_c3_3: "ランジェリーモデル",
-                ex_c3_desc_com: "(商用レート)",
-                ex_c3_4: "イベント撮影<br><span class='text-[10px] text-slate-500'>(8 時間)</span>",
-                starts_label: "〜",
-                ex_c4_title: "🎬 女優＆司会",
-                ex_c4_1: "ゲストインタビュー",
-                ex_c4_2: "司会 / 女優<br><span class='text-[10px] text-slate-500'>(TVC / オンライン)</span>",
-                pkg_title: "🛍️ メディア料金表パッケージ (RATECARD MEDIA PACKAGES)",
-                pkg_desc: "パッケージ購入がお得！特別割引と各段階のデータレポートをご提供。",
-                p1_sub: "認知度向上",
-                p1_desc: "自然で控えめなコンテンツで新世代をターゲットに、マス認知度を創出したいブランドに適しています。",
-                p_del: "提供内容",
-                p1_l1: "<span class='text-slate-300 pr-2'>✓ <b>1x ショート動画</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p1_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x IG/FBストーリー</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p1_l3: "<span class='text-slate-300 pr-2'>✓ <b>広告運用権</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>สิทธิ์ยิงแอด 1 เดือน</span>",
-                p1_l4: "<span class='text-slate-300 pr-2'>✓ <b>レポート</b></span><span class='text-right text-cyan-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 日)</span>",
-                p2_sub: "エンゲージメント＆コンバージョン",
-                p2_desc: "ライフスタイル動画と高品質な写真を組み合わせて売上を伸ばしたいファッション、ガジェット、スキンケアブランド向け。",
-                p_del2: "提供内容",
-                p2_l1: "<span class='text-slate-300 pr-2'>✓ <b>2x ショート動画</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>ลง FB/IG/TikTok</span>",
-                p2_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x フォトアルバム</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(4-6 ภาพ)</span>",
-                p2_l3: "<span class='text-slate-300 pr-2'>✓ <b>3x IG/FBストーリー</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>พร้อมแปะ Link</span>",
-                p2_l4: "<span class='text-slate-300 pr-2'>✓ <b>広告運用権</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>สิทธิ์ยิงแอด 1 เดือน</span>",
-                p2_l5: "<span class='text-slate-300 pr-2'>✓ <b>レポート</b></span><span class='text-right text-pink-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 日)</span>",
-                p3_sub: "フルブランド統合",
-                p3_desc: "長期的なブランドロイヤルティを構築するメインスポンサーに最適。日常生活に深く浸透する全プラットフォームをカバー。",
-                p_del3: "提供内容",
-                p3_l1: "<span class='text-slate-300 pr-2'>✓ <b>4x ショート動画</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>ลงครบทุกช่องทาง</span>",
-                p3_l2: "<span class='text-slate-300 pr-2'>✓ <b>1x プレミアムフォトアルバム</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>จัดเต็ม</span>",
-                p3_l3: "<span class='text-slate-300 pr-2'>✓ <b>5x IG/FBストーリー</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>กระจายตลอด</span>",
-                p3_l4: "<span class='text-slate-300 pr-2'>✓ <b>1x イベント撮影</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>/ Special Location</span>",
-                p3_l5: "<span class='text-slate-300 pr-2'>✓ <b>メディア運用権</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>สิทธิ์ใช้งาน 3 เดือน</span>",
-                p3_l6: "<span class='text-slate-300 pr-2'>✓ <b>レポート</b></span><span class='text-right text-purple-400 font-bold whitespace-nowrap'>(3, 5, 15, 30 日)</span>",
-                payment: "<span class='inline-block mr-4 mb-2 md:mb-0'>💳 <b>支払い条件：</b> 法人 30日間のクレジット | 個人 業務開始前に50%のデポジット</span><span class='inline-block'><span class='text-pink-400'>✨ <b>特別特典：</b></span> 現金支払いの場合、<b>10％の即時割引</b></span>",
-                am_title: "🤝 独占パートナーシップ (Brand Ambassador)",
-                am_desc: "長期アンバサダー契約。イメージコントロールとシームレスな広告展開。",
-                am_p1_desc: "化学反応と効果検証のためのトライアルアンバサダー。",
-                starts_at: "〜",
-                am_p1_l1: "<b>フルプロダクション</b> (モデル、車、カメラマン)",
-                am_p1_l2: "<b>5x ソーシャル投稿</b>",
-                am_p1_l3: "<b>20x 写真納品</b> (ブランド使用向け)",
-                am_p1_l4: "<b>6ヶ月の画像使用権</b>",
-                am_p1_l5: "<b>1ヶ月の広告運用権</b>",
-                am_p2_desc: "特別割引付き1年アンバサダーパッケージ。",
-                am_p2_l5: "50% Discount on A La Carte Media",
-                why_title: "💡 なぜブランドはNokiaを信頼するのか？",
-                why_desc: "トップのライフスタイルブランドがコミュニケーションの代表としてNokiaを選ぶ理由。",
-                why1: "アクティブで自信に満ちたファッションモデルのイメージが、製品を「クール」で自然に魅力的なものとして提示します。",
-                why2: "月間最大1,909回のリンククリックは、特にファッションやガジェットにおいて、フォロワーが実際に行動を起こすことを証明しています。",
-                why3: "フィットネス、マラソン、コスプレなど、エネルギーに満ちた日常の活動に製品をシームレスに組み込みます。",
-                growth_title: "📈 継続的な成長とトレンド (Growth Trends)",
-                growth_subtitle: "月間再生数とフォロワーの成長",
-                growth_desc: "過去4ヶ月の成長比較",
-                comp_title: "🚀 最新パフォーマンス更新",
-                comp_period: "分析期間：過去28日間 (2026年5月)",
-                work_video_title: "🎬 ショート動画コンテンツ",
-                partner_title: "ブランドパートナー (Trusted By)",
-                footer: "パッケージはクライアントの予算/目標に応じてカスタマイズ可能です。",
-                contact_work: "見積もり依頼 / Contact for Work",
-                contact_work_2: "詳細についてはお問い合わせください",
-                contact_phone: "電話 (Bee): 0947915154"
+                work_video_title: "🎬 ショート動画コンテンツ", partner_title: "ブランドパートナー (Trusted By)",
+                why_title: "💡 なぜブランドはノキアを選ぶのか？", why_desc: "トップライフスタイルブランドがノキアを選ぶ理由",
+                contact_work: "見積もり依頼 / Contact for Work", btn_visit: "プロフィール"
             }
         };
 
-        // --- STREAMING_CHUNK: Setup active selection for language selector ---
         function setLanguage(lang) {
-            currentLang = lang;
-            
-            // Toggle active styling
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn) btn.classList.remove('active');
-            });
-            const activeBtn = document.getElementById('btn-' + lang);
-            if (activeBtn) activeBtn.classList.add('active');
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById('btn-' + lang);
+            if(btn) btn.classList.add('active');
 
-            // Apply global translations with data-i18n
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1765,145 +807,19 @@
                     el.innerHTML = translations[lang][key];
                 }
             });
-            
-            // Adjust typeface for target asian languages
-            if(lang === 'zh' || lang === 'ja') {
-                document.body.style.fontFamily = "'Prompt', 'Noto Sans SC', 'Noto Sans JP', sans-serif";
-            } else {
-                document.body.style.fontFamily = "'Prompt', sans-serif";
-            }
-
-            // Sync current platform comparison text safely
-            if (typeof updateCompView === 'function') {
-                updateCompView(currentPlatform);
-            }
         }
-
-        // --- STREAMING_CHUNK: Dynamic comparison updater algorithm ---
-        function updateCompView(platform) {
-            currentPlatform = platform;
-            
-            // Sync tab button styles
-            document.querySelectorAll('.comp-btn').forEach(btn => {
-                if (btn) btn.className = 'comp-btn px-4 py-1.5 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-colors border border-transparent flex items-center gap-2 whitespace-nowrap';
-            });
-            
-            const targetTab = document.getElementById('comp-tab-' + platform);
-            if (targetTab) {
-                targetTab.className = `comp-btn active px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2 whitespace-nowrap ${compData[platform].btnActive}`;
-            }
-
-            const data = compData[platform];
-            const card = document.getElementById('comp-card');
-            
-            if (card) {
-                // Trigger transition effect
-                card.classList.remove('fade-in');
-                void card.offsetWidth; // force redraw
-                card.classList.add('fade-in');
-                card.className = `card-glass p-6 md:p-8 rounded-3xl shadow-xl border-t-4 relative overflow-hidden transition-all duration-300 fade-in ${data.borderClass}`;
-            }
-
-            // Update content elements with safe checks
-            const titleEl = document.getElementById('comp-title-main');
-            if (titleEl) titleEl.innerText = data.title[currentLang];
-
-            const periodEl = document.getElementById('comp-period-header');
-            if (periodEl) periodEl.innerText = data.period[currentLang];
-
-            const descEl = document.getElementById('comp-desc-text');
-            if (descEl) descEl.innerHTML = data.descText[currentLang];
-
-            const glowEl = document.getElementById('comp-glow');
-            if (glowEl) glowEl.className = `absolute -right-20 -bottom-20 w-64 h-64 rounded-full blur-[80px] pointer-events-none transition-all ${data.glowClass}`;
-            
-            // Numeric and trend bindings
-            const vMain = document.getElementById('comp-v-main');
-            if (vMain) vMain.innerText = data.vMain;
-            const vOld = document.getElementById('comp-v-old');
-            if (vOld) vOld.innerText = data.vOld;
-            const vTrend = document.getElementById('comp-v-trend');
-            if (vTrend) {
-                vTrend.innerText = data.vTrend;
-                vTrend.className = `font-bold flex items-center gap-1 ${data.vColor}`;
-            }
-
-            const eMain = document.getElementById('comp-e-main');
-            if (eMain) eMain.innerText = data.eMain;
-            const eOld = document.getElementById('comp-e-old');
-            if (eOld) eOld.innerText = data.eOld;
-            const eTrend = document.getElementById('comp-e-trend');
-            if (eTrend) {
-                eTrend.innerText = data.eTrend;
-                eTrend.className = `font-bold flex items-center gap-1 ${data.eColor}`;
-            }
-
-            const fMain = document.getElementById('comp-f-main');
-            if (fMain) fMain.innerText = data.fMain;
-            const fOld = document.getElementById('comp-f-old');
-            if (fOld) fOld.innerText = data.fOld;
-            const fTrend = document.getElementById('comp-f-trend');
-            if (fTrend) {
-                fTrend.innerText = data.fTrend;
-                fTrend.className = `font-bold flex items-center gap-1 ${data.fColor}`;
-            }
-
-            const nTitle = document.getElementById('comp-n-title');
-            if (nTitle) nTitle.innerText = data.nTitle;
-            const nMain = document.getElementById('comp-n-main');
-            if (nMain) {
-                nMain.innerText = data.nMain;
-                let nMainColor = 'text-green-400';
-                if (platform === 'ig') nMainColor = 'text-pink-400';
-                if (platform === 'tk') nMainColor = 'text-white';
-                if (platform === 'yt') nMainColor = 'text-red-400';
-                nMain.className = `text-2xl md:text-3xl font-black jetbrains ${nMainColor}`;
-            }
-            
-            const nOld = document.getElementById('comp-n-old');
-            if (nOld) nOld.innerText = data.nOld;
-            const nTrend = document.getElementById('comp-n-trend');
-            if (nTrend) {
-                nTrend.innerText = data.nTrend;
-                nTrend.className = `font-bold ${data.nColor}`;
-            }
-
-            const dynBorder = document.getElementById('comp-dyn-border');
-            if (dynBorder) {
-                let dynBorderClass = 'border-b-green-400';
-                if (platform === 'ig') dynBorderClass = 'border-b-pink-500';
-                if (platform === 'tk') dynBorderClass = 'border-b-slate-400';
-                if (platform === 'yt') dynBorderClass = 'border-b-red-500';
-                dynBorder.className = `bg-slate-900/60 p-5 md:p-6 rounded-2xl border border-slate-700/50 border-b-4 relative overflow-hidden ${dynBorderClass}`;
-            }
-
-            // Update Analytical Insights
-            const insightText = document.getElementById('comp-insight-text');
-            if (insightText) insightText.innerHTML = data.insight[currentLang];
-
-            const insightBox = document.getElementById('comp-insight-box');
-            if (insightBox) {
-                insightBox.className = `mt-8 p-5 rounded-2xl border relative z-10 ${data.insightBg} ${data.insightBorder}`;
-            }
-        }
-
-        // --- STREAMING_CHUNK: Implementing auto scrolling gallery ---
+        
         function setupAutoScroll(containerId) {
             const container = document.getElementById(containerId);
             if (!container) return;
 
             let isDown = false;
-            
             container.addEventListener('mouseenter', () => isDown = true);
             container.addEventListener('mouseleave', () => isDown = false);
-            container.addEventListener('touchstart', () => isDown = true, {passive: true});
-            container.addEventListener('touchend', () => {
-                setTimeout(() => { isDown = false; }, 1500); 
-            });
 
             function step() {
                 if (!isDown) {
-                    container.scrollLeft += 0.8; 
+                    container.scrollLeft += 1; 
                     if (container.scrollLeft >= (container.scrollWidth - container.clientWidth - 1)) {
                         container.scrollLeft = 0;
                     }
@@ -1913,7 +829,13 @@
             requestAnimationFrame(step);
         }
 
-        // --- STREAMING_CHUNK: Designing growth stacked bar chart using Chart.js ---
+        window.addEventListener('DOMContentLoaded', () => {
+            setupAutoScroll('video-gallery');
+            initGrowthChart();
+            updateCompView('fb');
+            setLanguage('th');
+        });
+
         function initGrowthChart() {
             const ctx = document.getElementById('growthChart');
             if(!ctx) return;
@@ -1923,12 +845,12 @@
             new Chart(ctx.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026'],
+                    labels: ['Mar 2026', 'Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026', 'Aug 2026'],
                     datasets: [
                         {
                             label: 'Followers (Millions)',
                             type: 'line',
-                            data: [3.77, 3.82, 3.85, 3.88],
+                            data: [3.72, 3.77, 3.82, 3.83, 3.84, 3.89],
                             borderColor: '#ec4899', 
                             backgroundColor: '#ec4899',
                             borderWidth: 4,
@@ -1944,11 +866,8 @@
                         {
                             label: 'Facebook Views (M)',
                             type: 'bar',
-                            data: [15.3, 32.0, 19.3, 16.7],
+                            data: [14.5, 15.3, 32.0, 14.5, 16.7, 31.1],
                             backgroundColor: 'rgba(59, 130, 246, 0.8)',
-                            hoverBackgroundColor: 'rgba(59, 130, 246, 1)',
-                            borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 4, bottomRight: 4 },
-                            barPercentage: 0.5,
                             yAxisID: 'y',
                             stack: 'Stack 0',
                             order: 2
@@ -1956,11 +875,8 @@
                         {
                             label: 'Instagram Views (M)',
                             type: 'bar',
-                            data: [4.8, 8.7, 20.4, 18.2],
+                            data: [4.0, 4.8, 8.7, 4.0, 18.2, 15.4],
                             backgroundColor: 'rgba(236, 72, 153, 0.8)',
-                            hoverBackgroundColor: 'rgba(236, 72, 153, 1)',
-                            borderRadius: 0,
-                            barPercentage: 0.5,
                             yAxisID: 'y',
                             stack: 'Stack 0',
                             order: 2
@@ -1968,11 +884,8 @@
                         {
                             label: 'TikTok Views (M)',
                             type: 'bar',
-                            data: [0.89, 2.4, 0.89, 5.7], 
+                            data: [0.7, 0.89, 2.4, 0.7, 5.7, 5.0],
                             backgroundColor: 'rgba(148, 163, 184, 0.8)',
-                            hoverBackgroundColor: 'rgba(148, 163, 184, 1)',
-                            borderRadius: 0,
-                            barPercentage: 0.5,
                             yAxisID: 'y',
                             stack: 'Stack 0',
                             order: 2
@@ -1980,11 +893,8 @@
                         {
                             label: 'YouTube Views (M)',
                             type: 'bar',
-                            data: [0.03, 0.07, 0.03, 0.07],
+                            data: [0.02, 0.03, 0.07, 0.02, 0.05, 0.16],
                             backgroundColor: 'rgba(239, 68, 68, 0.8)',
-                            hoverBackgroundColor: 'rgba(239, 68, 68, 1)',
-                            borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 },
-                            barPercentage: 0.5,
                             yAxisID: 'y',
                             stack: 'Stack 0',
                             order: 2
@@ -1994,160 +904,14 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
                     scales: {
-                        x: {
-                            stacked: true,
-                            grid: { display: false, drawBorder: false },
-                            ticks: { color: '#94a3b8', font: { weight: '600' } }
-                        },
-                        y: {
-                            stacked: true,
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            title: { display: true, text: 'Views (M)', color: '#22d3ee', font: { weight: 'bold', size: 10 } },
-                            grid: { color: 'rgba(51, 65, 85, 0.4)', borderDash: [5, 5], drawBorder: false },
-                            ticks: { color: '#94a3b8', callback: function(val) { return val + 'M'; } },
-                            min: 0,
-                            max: 50.0
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: { display: true, text: 'Followers (M)', color: '#ec4899', font: { weight: 'bold', size: 10 } },
-                            grid: { drawOnChartArea: false },
-                            ticks: { color: '#94a3b8', callback: function(val) { return val + 'M'; } },
-                            min: 3.5, 
-                            max: 4.0
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                            titleColor: '#fff',
-                            bodyColor: '#cbd5e1',
-                            borderColor: 'rgba(51, 65, 85, 0.8)',
-                            borderWidth: 1,
-                            padding: 12,
-                            boxPadding: 6,
-                            usePointStyle: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return ' ' + context.dataset.label + ': ' + context.parsed.y + 'M';
-                                },
-                                footer: function(tooltipItems) {
-                                    let totalViews = 0;
-                                    let isBar = false;
-                                    tooltipItems.forEach(function(tooltipItem) {
-                                        if (tooltipItem.dataset.type === 'bar') {
-                                            totalViews += tooltipItem.parsed.y;
-                                            isBar = true;
-                                        }
-                                    });
-                                    if (isBar) {
-                                        return '\n------------------\nTotal Views: ' + totalViews.toFixed(2) + 'M';
-                                    }
-                                    return null;
-                                }
-                            }
-                        }
+                        x: { stacked: true, grid: { display: false } },
+                        y: { stacked: true, min: 0, max: 85.0 },
+                        y1: { position: 'right', min: 3.5, max: 4.0, grid: { drawOnChartArea: false } }
                     }
                 }
             });
         }
-
-        // --- STREAMING_CHUNK: Lightbox gallery control loops ---
-        let currentGallery = [];
-        let currentGalleryIndex = 0;
-
-        function openLightbox(source) {
-            const modal = document.getElementById('lightbox-modal');
-            const img = document.getElementById('lightbox-img');
-            const prevBtn = document.getElementById('lightbox-prev');
-            const nextBtn = document.getElementById('lightbox-next');
-            const indicator = document.getElementById('lightbox-indicator');
-            
-            if (Array.isArray(source)) {
-                currentGallery = source;
-                currentGalleryIndex = 0;
-                img.src = currentGallery[currentGalleryIndex];
-                
-                if (source.length > 1) {
-                    prevBtn.classList.remove('hidden');
-                    nextBtn.classList.remove('hidden');
-                    indicator.classList.remove('hidden');
-                    updateIndicator();
-                } else {
-                    prevBtn.classList.add('hidden');
-                    nextBtn.classList.add('hidden');
-                    indicator.classList.add('hidden');
-                }
-            } else {
-                currentGallery = [source];
-                currentGalleryIndex = 0;
-                img.src = source;
-                
-                prevBtn.classList.add('hidden');
-                nextBtn.classList.add('hidden');
-                indicator.classList.add('hidden');
-            }
-            
-            modal.classList.remove('hidden-modal');
-            modal.classList.add('active-modal');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function changeLightboxImage(direction) {
-            if (currentGallery.length <= 1) return;
-            
-            currentGalleryIndex += direction;
-            
-            if (currentGalleryIndex < 0) currentGalleryIndex = currentGallery.length - 1;
-            if (currentGalleryIndex >= currentGallery.length) currentGalleryIndex = 0;
-            
-            document.getElementById('lightbox-img').src = currentGallery[currentGalleryIndex];
-            updateIndicator();
-        }
-
-        function updateIndicator() {
-            document.getElementById('lightbox-indicator').innerText = (currentGalleryIndex + 1) + ' / ' + currentGallery.length;
-        }
-
-        function closeLightbox() {
-            const modal = document.getElementById('lightbox-modal');
-            if (modal) {
-                modal.classList.remove('active-modal');
-                modal.classList.add('hidden-modal');
-            }
-            document.body.style.overflow = 'auto'; 
-            currentGallery = []; 
-        }
-        
-        document.addEventListener('keydown', function(event) {
-            const modal = document.getElementById('lightbox-modal');
-            if (modal && modal.classList.contains('active-modal')) {
-                if (event.key === "Escape") {
-                    closeLightbox();
-                } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-                    changeLightboxImage(1);
-                } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-                    changeLightboxImage(-1);
-                }
-            }
-        });
-
-        // --- STREAMING_CHUNK: Initialization on window DOMContentLoaded ---
-        window.addEventListener('DOMContentLoaded', () => {
-            setupAutoScroll('video-gallery');
-            initGrowthChart();
-            setLanguage('th'); // Sets default language to Thai and runs updateCompView
-        });
     </script>
 </body>
 </html>
